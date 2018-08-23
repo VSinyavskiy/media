@@ -1,0 +1,126 @@
+.ninja-block {
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  position: relative;
+  height: 400px;
+
+  &__bg-piece {
+    $baseW: 375px;
+    $baseH: 400px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+
+    &_1 {
+      // _potato-chip
+      left: (10px / $baseW) * 100%;
+      top: (10px / $baseH) * 100%;
+      @include bg-piece-size($baseW, 82px * 1.25, 62px * 1.25);
+      transform: scaleX(-1) rotate(16deg);
+    }
+    &_2 {
+      // _garlic
+      left: (290px / $baseW) * 100%;
+      top: (90px / $baseH) * 100%;
+      @include bg-piece-size($baseW, 62px, 70px);
+      transform: rotate(-110deg);
+    }
+    &_3 {
+      // _tomato
+      left: (-30px / $baseW) * 100%;
+      top: (250px / $baseH) * 100%;
+      @include bg-piece-size($baseW, 86px, 86px);
+      transform: rotate(50deg);
+    }
+    &_4 {
+      // _potato-chip
+      left: (300px / $baseW) * 100%;
+      top: (270px / $baseH) * 100%;
+      @include bg-piece-size($baseW, 54px * 1.75, 41px * 1.75);
+      transform: scaleX(-1) rotate(80deg);
+    }
+  }
+  &__bg {
+    // overflow: hidden;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('~Images/doner-ninja.png');
+    background-position: 50% 30%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-color: transparent;
+  }
+  &__desc {
+    align-self: stretch;
+    position: relative;
+    margin: 0 50px 30px 50px;
+    line-height: 1.3;
+    color: $color-white;
+    text-align: center;
+
+    strong, b {
+      display: block;
+    }
+  }
+  &__btn {
+    width: 200px;
+    margin: 0 0 35px 0;
+  }
+
+  @media (min-width: 1200px) {
+    $baseW: 683px;
+    $baseH: 735px;
+
+    &__bg-piece {
+      &_1 {
+        // _potato-chip
+        left: (-20px / $baseW) * 100%;
+        top: (0px / $baseH) * 100%;
+        @include bg-piece-size($baseW, 160px, 122px);
+        // transform: scaleX(-1) rotate(16deg);
+      }
+      &_2 {
+        // _garlic
+        left: (560px / $baseW) * 100%;
+        top: (30px / $baseH) * 100%;
+        @include bg-piece-size($baseW, 125px, 141px);
+        // transform: rotate(-110deg);
+      }
+      &_3 {
+        // _tomato
+        left: (-60px / $baseW) * 100%;
+        top: (610px / $baseH) * 100%;
+        @include bg-piece-size($baseW, 191px, 190px);
+        // transform: rotate(50deg);
+      }
+      &_4 {
+        // _potato-chip
+        left: (540px / $baseW) * 100%;
+        top: (620px / $baseH) * 100%;
+        @include bg-piece-size($baseW, 103px * 1.5, 78px * 1.5);
+        // transform: scaleX(-1) rotate(80deg);
+      }
+    }
+    &__bg {
+      background-position: 50% 50%;
+    }
+    &__desc {
+      font-size: 20px;
+
+      strong, b {
+        font-size: 36px;
+      }
+    }
+    &__btn {
+      margin-bottom: (100px / $baseH) * 100%;
+    }
+  }
+  // END .ninja-block
+}

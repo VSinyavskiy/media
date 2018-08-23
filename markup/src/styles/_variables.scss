@@ -1,0 +1,42 @@
+$color-white: #fefefe;
+$color-black: #000000;
+
+$color-dark: #333333;
+$color-red: #e42313;
+$color-red-dark: #b1171e;
+$color-yellow: #fdd903;
+$color-yellow-dark: #fcb615;
+$color-blue: #02aae7;
+$color-violet: #c51ea1;
+$color-green: #07aa4f;
+$color-gray-1: #58595b;
+$color-gray-2: #646464;
+$color-gray-3: #666666;
+$color-gray-4: #eeeeee;
+$color-gray-5: #e5e5e5;
+
+$color-text: $color-dark;
+$color-note: #bebebe;
+
+$thin: 100;
+$extra-light: 200;
+$light: 300;
+$normal: 400;
+$medium: 500;
+$semi-bold: 600;
+$bold: 700;
+$extra-bold: 800;
+$black: 900;
+
+$font-arial: Arial, Helvetica, FreeSans, 'Liberation Sans', 'Nimbus Sans L', sans-serif;
+$font-gotham-pro: 'Gotham Pro', sans-serif;
+$font-default: $font-gotham-pro;
+
+// Media
+$phone-width: 320px;
+$tablet-width: 768px;
+$desktop-width: 1025px;
+
+// Bourbon
+// Sets global base em size for the px-to-em and px-to-rem function. This should be the same size as your body font-size. Setting default is 16px.
+$em-base: 16px;

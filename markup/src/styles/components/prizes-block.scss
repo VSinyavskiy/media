@@ -1,0 +1,52 @@
+.prizes-block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  padding: 40px 0 50px 0;
+  background-color: $color-yellow;
+
+  &__title {
+    width: (110 / 375) * 100%;
+    margin: 0 auto 35px auto;
+  }
+  &__slider {
+    align-self: stretch;
+    position: relative;
+    max-width: 640px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 20px;
+  }
+  &__desc {
+    align-self: stretch;
+    width: calc(100% - 40px);
+    margin: 0 auto 20px auto;
+    line-height: 1.4;
+    text-align: center;
+  }
+  &__btn {
+    width: 200px;
+  }
+
+  @media (min-width: 600px) {
+    &__desc {
+      max-width: 710px;
+    }
+  }
+  @media (min-width: 800px) {
+    $baseW: 1366px;
+
+    &__title {
+      position: absolute;
+      left: (70px / $baseW) * 100%;
+      top: 65px;
+      width: (260px / $baseW) * 100%;
+      transform: rotate(-14deg);
+    }
+    &__desc {
+      font-size: 20px;
+    }
+  }
+  // END .prizes-block
+}

@@ -1,0 +1,51 @@
+.form {
+  $font-size: 14px;
+
+  input, textarea {
+    // &[placeholder] { @include placeholder-styling; }
+    &::-webkit-input-placeholder { @include placeholder-styling; }
+    &:-moz-placeholder { @include placeholder-styling; }
+    &::-moz-placeholder { @include placeholder-styling; }
+    &:-ms-input-placeholder { @include placeholder-styling; }
+  }
+  textarea { height: auto; }
+  select { min-width: 0; }
+  // label {}
+
+  &__label {
+    display: block;
+    margin: 0 0 6px 0;
+    font-size: em($font-size);
+    color: $color-gray-3;
+  }
+
+  &__control {
+    box-sizing: border-box;
+    width: 100%;
+    min-width: 0;
+    height: em(44px, $font-size);
+    @include padding(
+      em(10px, $font-size)
+      em(20px, $font-size)
+      em(10px, $font-size)
+      em(20px, $font-size)
+    );
+    border: solid 1px $color-gray-5;
+    border-radius: rem(5px);
+    background: $color-white;
+    font-family: $font-default;
+    font-size: rem($font-size);
+    line-height: em(20px, $font-size);
+    color: $color-gray-3;
+    vertical-align: middle;
+
+    &:focus {
+      border-color: $color-yellow;
+    }
+  }
+
+  &__item {
+    margin: 0 0 rem($font-size) 0;
+  }
+  // END .form
+}

@@ -1,0 +1,21 @@
+header.header
+  a.header__button.header__button_open(href='#', data-title='Меню')
+    +svg-include('ico-menu')
+  a.header__button.header__button_close(href='#', data-title='Меню')
+    +svg-include('ico-close')
+  .header__menu.menu
+    nav.menu__nav
+      ul.menu__list
+        li.menu__item.menu__item_active: a.menu__link(href='#') Главная
+        li.menu__item: a.menu__link(href='#') Игра
+        li.menu__item: a.menu__link(href='#') Личный кабинет
+        li.menu__item: a.menu__link(href='#') Победители
+        li.menu__item: a.menu__link(href='#') Правила
+      ul.menu__lang.lang
+        li.lang__item.lang__item_active: a.lang__link(href='#') Рус
+        li.lang__item: a.lang__link(href='#') Каз
+  a.header__logo.logo(href='#')
+    img.logo__img(src=require('Images/logo.png'), alt='logo')
+  a.header__user.user(href='#')
+    .user__name Личный кабинет
+    .user__avatar: +svg-include('ico-person')

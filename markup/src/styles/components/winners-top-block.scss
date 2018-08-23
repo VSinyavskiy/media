@@ -1,0 +1,58 @@
+.winners-top-block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  box-sizing: border-box;
+  height: 400px;
+  padding: 30px;
+  background-image: url('~Images/winners-tab.png');
+  background-position: 50% 30%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-color: $color-yellow;
+
+  &__label {
+    margin-bottom: 15px;
+    font-weight: $bold;
+    font-size: 20px;
+    line-height: 1;
+    color: $color-red;
+  }
+  &__control {
+    width: 285px;
+    height: em(44px, 16px);
+    margin-bottom: 30px;
+    border-width: 3px;
+    border-color: $color-yellow-dark;
+    font-weight: $bold;
+    font-size: rem(16px);
+    color: $color-red;
+    text-align: center;
+
+    &:focus {
+      border-color: $color-yellow-dark;
+    }
+  }
+  &__btn {
+    width: 200px;
+  }
+
+  @media (min-width: 800px) {
+    height: 550px;
+    background-image: url('~Images/winners-desktop.png');
+    background-position: 50% 50%;
+  }
+
+  @media (min-width: 1200px) {
+    &__label {
+      font-size: 30px;
+    }
+    &__control {
+      width: 425px;
+      height: em(60px, 24px);
+      font-size: rem(24px);
+    }
+  }
+  // END .winners-top-block
+}

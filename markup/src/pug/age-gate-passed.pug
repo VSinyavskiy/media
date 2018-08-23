@@ -1,0 +1,29 @@
+extends layouts/main.pug
+
+//- Don't forget that you can use block/append/prepend on blocks
+//- Pass your variables through this block.
+block variables
+  +setVariable('title', 'Age gate page')
+  //- 'route' corresponds to JS route module name in 'src/js/app/routes/', must be unique
+  //- +setVariable('route', 'main')
+
+//- Debug links. Add some.
+append debug_links
+  //- a(href='http://google.com') google, for example
+
+block header
+  include ~Templates/components/header_age-gate.pug
+
+block body
+  main.main
+    section.age-gate
+      .age-gate__question Тебе исполнилось 14 лет?
+      .age-gate__response Политика компании позволяет открывать сайт только пользователям старше 14 лет. К сожалению, остальные страницы сайта останутся закрытыми
+      //- .age-gate__btns
+        a.age-gate__btn.btn.btn_default(href='#') ДА
+        a.age-gate__btn.btn.btn_default(href='#') НЕТ
+
+block footer
+  //- include ~Templates/components/footer.pug
+
+//- Use block/append/prepend 'scripts' to override/add scripts

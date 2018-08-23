@@ -1,0 +1,86 @@
+extends layouts/main.pug
+
+//- Don't forget that you can use block/append/prepend on blocks
+//- Pass your variables through this block.
+block variables
+  +setVariable('title', 'Winners page')
+  //- 'route' corresponds to JS route module name in 'src/js/app/routes/', must be unique
+  //- +setVariable('route', 'main')
+
+//- Debug links. Add some.
+append debug_links
+  //- a(href='http://google.com') google, for example
+
+block header
+  include ~Templates/components/header.pug
+
+block body
+  main.main
+    form.winners-top-block.form(action='#')
+      .winners-top-block__label Искать по номеру телефона
+      input.form__control.winners-top-block__control.mask.mask_tel(
+        type='tel',
+        name='telephone',
+        placeholder='+7 ______ ___ ___'
+      )
+      button.winners-top-block__btn.btn.btn_default(type='submit') НАЙТИ
+
+    section.doners-block
+      .doners-block__bg.scene
+        .scene__layer(data-depth='0.6')
+          .doners-block__bg-piece.doners-block__bg-piece_1.bg-piece.bg-piece_potato-chip
+        .scene__layer(data-depth='0.1')
+          .doners-block__bg-piece.doners-block__bg-piece_2.bg-piece.bg-piece_onion-rings
+        .scene__layer(data-depth='0.6')
+          .doners-block__bg-piece.doners-block__bg-piece_3.bg-piece.bg-piece_tomato
+        .scene__layer(data-depth='0.8')
+          .doners-block__bg-piece.doners-block__bg-piece_4.bg-piece.bg-piece_paprica
+        .scene__layer(data-depth='0.7')
+          .doners-block__bg-piece.doners-block__bg-piece_5.bg-piece.bg-piece_garlic
+        .scene__layer(data-depth='0.9')
+          .doners-block__bg-piece.doners-block__bg-piece_6.bg-piece.bg-piece_potato-chip
+      //- .doners-block__title
+      //-   | САМЫЕ ДЛИННЫЕ
+      //-   strong ДОООООНЕРЫ
+      ul.doners-block__list
+        li.doners-block__item: .doner-dude.doner-dude_w-prize
+          .doner-dude__avatar
+            //- img.doner-dude__img(src='https://via.placeholder.com/50x50')
+            .doner-dude__place 1
+          .doner-dude__name Name Surname
+            span.doner-dude__note your moto here
+          .doner-dude__prize: img(src=require('Images/gift-card.png'))
+        li.doners-block__item: .doner-dude.doner-dude_w-prize
+          .doner-dude__avatar
+            //- img.doner-dude__img(src='https://via.placeholder.com/50x50')
+            .doner-dude__place 2
+          .doner-dude__name Name Surname
+            span.doner-dude__note your moto here
+          .doner-dude__prize: img(src=require('Images/gift-card.png'))
+        li.doners-block__item: .doner-dude.doner-dude_w-prize
+          .doner-dude__avatar
+            //- img.doner-dude__img(src='https://via.placeholder.com/50x50')
+            .doner-dude__place 3
+          .doner-dude__name Name Surname
+            span.doner-dude__note your moto here
+          .doner-dude__prize: img(src=require('Images/gift-card.png'))
+        li.doners-block__item: .doner-dude.doner-dude_w-prize
+          .doner-dude__avatar
+            //- img.doner-dude__img(src='https://via.placeholder.com/50x50')
+            .doner-dude__place 4
+          .doner-dude__name Name Surname
+            span.doner-dude__note your moto here
+          .doner-dude__prize: img(src=require('Images/gift-card.png'))
+        li.doners-block__item: .doner-dude.doner-dude_w-prize
+          .doner-dude__avatar
+            //- img.doner-dude__img(src='https://via.placeholder.com/50x50')
+            .doner-dude__place 5
+          .doner-dude__name Name Surname
+            span.doner-dude__note your moto here
+          .doner-dude__prize: img(src=require('Images/gift-card.png'))
+      a.doners-block__btn.btn.btn_default(href='#') ПОКАЗАТЬ БОЛЬШЕ
+
+block footer
+  include ~Templates/components/footer.pug
+
+//- Use block/append/prepend 'scripts' to override/add scripts

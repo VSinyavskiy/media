@@ -1,0 +1,176 @@
+extends layouts/main.pug
+
+//- Don't forget that you can use block/append/prepend on blocks
+//- Pass your variables through this block.
+block variables
+  +setVariable('title', 'Main page')
+  //- 'route' corresponds to JS route module name in 'src/js/app/routes/', must be unique
+  //- +setVariable('route', 'main')
+
+//- Debug links. Add some.
+append debug_links
+  //- a(href='http://google.com') google, for example
+
+block header
+  include ~Templates/components/header.pug
+
+block body
+  main.main
+    section.top-block
+      .top-block__bg.scene
+        .scene__layer(data-depth='0.6')
+          .top-block__bg-piece.top-block__bg-piece_1.bg-piece.bg-piece_tomato
+        .scene__layer(data-depth='0.5')
+          .top-block__bg-piece.top-block__bg-piece_2.bg-piece.bg-piece_onion
+        .scene__layer(data-depth='0.1')
+          .top-block__bg-piece.top-block__bg-piece_3.bg-piece.bg-piece_garlic
+        .scene__layer(data-depth='0.6')
+          .top-block__bg-piece.top-block__bg-piece_4.bg-piece.bg-piece_potato-chip
+        .scene__layer(data-depth='0.8')
+          .top-block__bg-piece.top-block__bg-piece_5.bg-piece.bg-piece_potato-chip
+        .scene__layer(data-depth='0.7')
+          .top-block__bg-piece.top-block__bg-piece_6.bg-piece.bg-piece_paprica
+        .scene__layer(data-depth='0.9')
+          .top-block__bg-piece.top-block__bg-piece_7.bg-piece.bg-piece_onion-rings
+        .scene__layer(data-depth='0.1')
+          .top-block__bg-piece.top-block__bg-piece_8.bg-piece.bg-piece_pepper
+      a.top-block__btn.btn.btn_default(href='#') ПОЗВАТЬ ДРУЗЕЙ
+
+    section.steps-block
+      ul.steps-block__list
+        li.steps-block__item.step
+          .step__bg
+            .step__bg-piece.step__bg-piece_1.bg-piece.bg-piece_onion-rings
+            .step__img
+              img.step__visual.img(src=require('Images/step-1.png'))
+              img.step__number(src=require('Images/number-1.png'))
+          .step__desc Регистрируйся, делись в соцсетях и зови друзей на помощь!
+        li.steps-block__item.step
+          .step__bg
+            .step__bg-piece.step__bg-piece_2.bg-piece.bg-piece_paprica
+            .step__img
+              img.step__visual.img(src=require('Images/step-2.png'))
+              img.step__number.step__number_right(src=require('Images/number-2.png'))
+          .step__desc Сделай самый вкусный дооонер!
+        li.steps-block__item.step
+          .step__bg
+            .step__bg-piece.step__bg-piece_3.bg-piece.bg-piece_potato-chip
+            .step__img
+              img.step__visual.img(src=require('Images/step-3.png'))
+              img.step__number(src=require('Images/number-3.png'))
+          .step__desc Лидируй в рейтинге донеров и получай призы!
+      a.steps-block__btn.btn.btn_default(href='#') ПОЗВАТЬ ДРУЗЕЙ
+
+    section.prizes-block
+      img.prizes-block__title(src=require('Images/text-presents.png'), alt='prizes')
+      .prizes-block__slider.slider.slider_prizes
+        .slider__track(data-glide-el='track')
+          ul.slider__slides
+            li.slider__slide.slide.slide_prize: img(src=require('Images/gift-card.png'))
+        .slider__arrows(data-glide-el='controls')
+          button.slider__arrow.slider__arrow_left(data-glide-dir='<')
+            +svg-include('ico-chevron-left')
+          button.slider__arrow.slider__arrow_right(data-glide-dir='>')
+            +svg-include('ico-chevron-right')
+      .prizes-block__desc Среди топ-100 тех, кто привел больше всего друзей, мы разыграем три сертификата в магазин электроники
+      a.prizes-block__btn.btn.btn_default(href='#') ПОДРОБНЕЕ
+
+    .row
+      .row__col
+        section.ninja-block.row__block
+          .ninja-block__bg
+            .ninja-block__bg-piece.ninja-block__bg-piece_1.bg-piece.bg-piece_potato-chip
+            .ninja-block__bg-piece.ninja-block__bg-piece_2.bg-piece.bg-piece_garlic
+            .ninja-block__bg-piece.ninja-block__bg-piece_3.bg-piece.bg-piece_tomato
+            .ninja-block__bg-piece.ninja-block__bg-piece_4.bg-piece.bg-piece_potato-chip
+          .ninja-block__desc
+            b Играй и попадай в топ лучших
+            | чем больше результат, тем длинее твой донер
+          a.ninja-block__btn.btn.btn_default(href='#') ИГРАТЬ
+      .row__col
+        section.doners-block.row__block
+          .doners-block__title
+            | САМЫЕ ДЛИННЫЕ
+            strong ДОООООНЕРЫ
+          ul.doners-block__list
+            li.doners-block__item: .doner-dude
+              .doner-dude__avatar
+                img.doner-dude__img(src='https://via.placeholder.com/50x50')
+                .doner-dude__place 1
+              .doner-dude__name Name Surname
+                span.doner-dude__note your moto here
+              .doner-dude__score 120
+            li.doners-block__item: .doner-dude
+              .doner-dude__avatar
+                img.doner-dude__img(src='https://via.placeholder.com/50x50')
+                .doner-dude__place 2
+              .doner-dude__name Name Surname
+                span.doner-dude__note your moto here
+              .doner-dude__score 98
+            li.doners-block__item: .doner-dude
+              .doner-dude__avatar
+                img.doner-dude__img(src='https://via.placeholder.com/50x50')
+                .doner-dude__place 3
+              .doner-dude__name Name Surname
+                span.doner-dude__note your moto here
+              .doner-dude__score 87
+            li.doners-block__item: .doner-dude
+              .doner-dude__avatar
+                img.doner-dude__img(src='https://via.placeholder.com/50x50')
+                .doner-dude__place 4
+              .doner-dude__name Name Surname
+                span.doner-dude__note your moto here
+              .doner-dude__score 67
+            li.doners-block__item: .doner-dude
+              .doner-dude__avatar
+                img.doner-dude__img(src='https://via.placeholder.com/50x50')
+                .doner-dude__place 5
+              .doner-dude__name Name Surname
+                span.doner-dude__note your moto here
+              .doner-dude__score 45
+
+    .row
+      .row__col
+        section.friends-block.row__block.row__block_half
+          .friends-block__container
+            .friends-block__bg
+              .friends-block__bg-piece.friends-block__bg-piece_1.bg-piece.bg-piece_garlic
+              .friends-block__bg-piece.friends-block__bg-piece_2.bg-piece.bg-piece_potato-chip
+              .friends-block__bg-piece.friends-block__bg-piece_3.bg-piece.bg-piece_potato-chip
+              .friends-block__bg-piece.friends-block__bg-piece_4.bg-piece.bg-piece_onion-slices
+            .friends-block__desc
+              | Окажись в числе самых длинных!
+              strong Больше друзей – длиннее дооооонер!
+            a.friends-block__btn.btn.btn_default(href='#') ПОЗВАТЬ ДРУЗЕЙ
+
+        section.social-block.row__block.row__block_half
+          .social-block__desc
+            strong Подпишись на нас в соцсетях
+            | и участвуй в розыгрышах дополнительных подарков!
+          .social-block__socials
+            a.social-block__social(href='#'): +svg-include('ico-vk')
+            a.social-block__social(href='#'): +svg-include('ico-fb')
+      .row__col
+        section.squares-block.row__block
+          img.squares-block__bg(src=require('Images/text-new-lays-doner-whats-it-like.png'))
+          .squares-block__square.squares-block__square_1.square.square_yellow.square_active
+            .square__bg
+            .square__text: span Такой же насыщенный вкус
+            //- a.square__btn(href='#')
+          .squares-block__square.squares-block__square_2.square.square_red
+            .square__bg
+            .square__text: span С привкусом нежного соуса и специй
+            a.square__btn(href='#')
+          .squares-block__square.squares-block__square_3.square.square_green
+            .square__bg
+            .square__text: span С оттенком свежих овощей
+            a.square__btn(href='#')
+          .squares-block__square.squares-block__square_4.square.square_violet
+            .square__bg
+            .square__text: span Такой, как твой любимый донер
+            a.square__btn(href='#')
+
+block footer
+  include ~Templates/components/footer.pug
+
+//- Use block/append/prepend 'scripts' to override/add scripts

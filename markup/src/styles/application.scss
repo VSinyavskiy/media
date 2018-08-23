@@ -1,0 +1,223 @@
+@import '~Styles/variables';
+@import '~bourbon/core/bourbon';
+@import '~Styles/mixins';
+
+* { outline: none; }
+
+html {
+  background: $color-white;
+  font-family: $font-default;
+  font-weight: $normal;
+  font-size: $em-base;
+  line-height: 1.123;
+  color: $color-text;
+  cursor: default;
+}
+
+html, body {
+  height: 100%;
+  min-height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+}
+
+:root {
+  -webkit-text-size-adjust: none;
+  -moz-text-size-adjust: none;
+  -ms-text-size-adjust: none;
+  -o-text-size-adjust: none;
+  text-size-adjust: none;
+}
+
+audio, canvas, iframe, img, svg, video {
+  vertical-align: middle;
+}
+
+fieldset {
+  border: 0;
+  margin: 0;
+  padding: 0;
+}
+
+textarea {
+  resize: vertical;
+}
+
+hr {
+  display: block;
+  border: none;
+  background: $color-black;
+  height: 1px; width: 3rem;
+  margin: 1.14rem auto; padding: 0;
+}
+
+p { margin: 0 0 1em 0; }
+
+.text {
+  &-center    { text-align: center; }
+  &-left      { text-align: left; }
+  &-right     { text-align: right; }
+  &-justify   { text-align: justify; }
+  &-uppercase { text-transform: uppercase; }
+  &-lowercase { text-transform: lowercase; }
+  // &-note      { font-style: italic; color: $color-note; }
+}
+
+.symbols {
+  display: none;
+  width: 0;
+  height: 0;
+  // END .symbols
+}
+
+.bg-piece {
+  $baseW: 1366px;
+  display: block;
+  width: 100%;
+  height: 0;
+  background-position: 0 0;
+  background-size: 100% auto;
+  background-repeat: no-repeat;
+  background-color: transparent;
+  pointer-events: none;
+
+  &_garlic {
+    // 141x159
+    @include bg-piece-size($baseW, 141px, 159px);
+    max-width: 141px;
+    background-image: url('~Images/garlic.png');
+  }
+  &_onion {
+    // 147x111
+    @include bg-piece-size($baseW, 147px, 111px);
+    max-width: 147px;
+    background-image: url('~Images/onion.png');
+  }
+  &_onion-rings {
+    // 907x619
+    @include bg-piece-size($baseW, 210px, 136px);
+    max-width: 210px;
+    background-image: url('~Images/onion-rings.png');
+  }
+  &_paprica {
+    // 175x215
+    @include bg-piece-size($baseW, 175px, 215px);
+    max-width: 175px;
+    background-image: url('~Images/paprica.png');
+  }
+  &_potato-chip {
+    // 234x178
+    @include bg-piece-size($baseW, 234px, 178px);
+    max-width: 234px;
+    background-image: url('~Images/potato-chip.png');
+  }
+  &_tomato {
+    // 208x207
+    @include bg-piece-size($baseW, 190px, 188px);
+    max-width: 190px;
+    background-image: url('~Images/tomato.png');
+  }
+  &_pepper {
+    // 209x143
+    @include bg-piece-size($baseW, 208px, 143px);
+    max-width: 208px;
+    background-image: url('~Images/pepper.png');
+  }
+  &_onion-slices {
+    // 239x327
+    @include bg-piece-size($baseW, 239px, 327px);
+    max-width: 239px;
+    background-image: url('~Images/onion-slices.png');
+  }
+}
+
+.scene {
+  position: relative;
+
+  &__layer {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+  }
+  // END .scene
+}
+
+@import '~Styles/debug-menu';
+@import '~Styles/buttons';
+@import '~Styles/forms';
+
+@import '~Styles/components/header';
+@import '~Styles/components/footer';
+@import '~Styles/components/slide';
+@import '~Styles/components/age-gate';
+@import '~Styles/components/top-block';
+@import '~Styles/components/steps-block';
+@import '~Styles/components/ninja-block';
+@import '~Styles/components/doners-block';
+@import '~Styles/components/friends-block';
+@import '~Styles/components/social-block';
+@import '~Styles/components/squares-block';
+@import '~Styles/components/prizes-block';
+@import '~Styles/components/winners-top-block';
+@import '~Styles/components/share-block';
+@import '~Styles/components/doner';
+@import '~Styles/components/user-top-block';
+
+.row {
+  display: flex;
+  flex-direction: column;
+
+  &__col {}
+  &__block {
+    box-sizing: border-box;
+
+    // &_half {}
+  }
+
+  @media (min-width: 800px) {
+    flex-direction: row;
+
+    &__col {
+      width: 50%;
+    }
+    &__block {
+      height: 100%;
+
+      &_half {
+        height: 50%;
+      }
+    }
+  }
+  // END .row
+}
+
+// Main
+.app {
+  flex-shrink: 0;
+  flex-grow: 0;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+
+  .header {
+    flex-shrink: 0;
+    flex-grow: 0;
+  }
+  .main {
+    flex-shrink: 0;
+    flex-grow: 1;
+    overflow-x: hidden;
+  }
+  .footer {
+    flex-shrink: 0;
+    flex-grow: 0;
+  }
+}

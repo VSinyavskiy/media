@@ -1,0 +1,132 @@
+// @import '~@mdi/font/scss/variables';
+// @import '~@mdi/font/scss/functions';
+
+// @mixin mdi {
+//   font: {
+//     family: 'Material Design Icons';
+//     weight: normal;
+//     size: inherit;
+//     style: normal;
+//     variant: normal;
+//   }
+//   line-height: 1;
+//   text-rendering: auto;
+//   -webkit-font-smoothing: antialiased;
+//   -moz-osx-font-smoothing: grayscale;
+//   transform: translate(0%,0%);
+// }
+
+@mixin no-selection {
+  &::-moz-selection {
+    background: transparent;
+    text-shadow: none;
+  }
+
+  &::selection {
+    background: transparent;
+    text-shadow: none;
+  }
+}
+
+@mixin placeholder-styling {
+  color: rgba(#c7c7c7, 1) !important;
+  opacity: 1;
+}
+
+@mixin bg-piece-size($base, $width, $height) {
+  width: ($width / $base) * 100%;
+  padding-top: ($height / $base) * 100%;
+}
+
+@mixin shadow-1 {
+  box-shadow: 0 4px 15px 0 rgba($color-black, 0.1);
+}
+
+@mixin shadow-2 {
+  box-shadow: 0 0 25px 0 rgba($color-black, 0.25);
+}
+
+// Deprecated em() and rem() fucntions from Bourbon@4.3.4:
+// https://github.com/thoughtbot/bourbon/blob/v4.3.4/app/assets/stylesheets/functions/_px-to-em.scss
+// https://github.com/thoughtbot/bourbon/blob/v4.3.4/app/assets/stylesheets/functions/_px-to-rem.scss
+$em-base: 16px !default;
+
+@function em($pxval, $base: $em-base) {
+  @if not unitless($pxval) {
+    $pxval: ($pxval / ($pxval * 0 + 1));
+  }
+  @if not unitless($base) {
+    $base: ($base / ($base * 0 + 1));
+  }
+
+  @return ($pxval / $base) * 1em;
+}
+
+@function rem($pxval) {
+  @if not unitless($pxval) {
+    $pxval: ($pxval / ($pxval * 0 + 1));
+  }
+
+  $base: $em-base;
+  @if not unitless($base) {
+    $base: ($base / ($base * 0 + 1));
+  }
+
+  @return ($pxval / $base) * 1rem;
+}
+
+@function pct($target, $context) {
+  @if not unitless($target) {
+    $target: strip-units($target);
+  }
+  @if not unitless($context) {
+    $context: strip-units($context);
+  }
+  @return ($target / $context) * 100%;
+}
+
+@function percs($target, $context) {
+  @return pct($target, $context);
+}
+
+// MIXINS MEDIA
+@mixin phone {
+  @media screen and (min-width: #{$phone-width}) and (max-width: #{$tablet-width - 1px}) {
+    @content;
+  }
+}
+@mixin tablet {
+  @media screen and (min-width: #{$tablet-width}) and (max-width: #{$desktop-width - 1px}) {
+    @content;
+  }
+}
+@mixin tabletLand {
+  @media screen and (min-width: #{$tablet-width}) and (max-width: #{$desktop-width - 1px}) and (orientation: landscape) {
+    @content;
+  }
+}
+@mixin desktop {
+  @media screen and (min-width: #{$desktop-width}) {
+    @content;
+  }
+}
+@mixin maxW($width) {
+  @media screen and (max-width: $width) {
+    @content;
+  }
+}
+@mixin minW($width) {
+  @media screen and (min-width: $width) {
+    @content;
+  }
+}
+@mixin maxH($height) {
+  @media screen and (max-height: $height) {
+    @content;
+  }
+}
+@mixin laptop {
+  @media screen and (min-width: 1280px) and (max-width: 1440px) and (min-height: 600px) and (max-height: 760px) {
+    @content;
+  }
+}

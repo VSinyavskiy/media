@@ -1,0 +1,29 @@
+{
+  "indent_size": 2,
+  "html": {
+    "indent_size": 4,
+    "preserve_newlines": false,
+    "end_with_newline": true,
+    "unformatted": [
+      "a", "abbr", "area", "audio", "b", "bdi", "bdo", "br", "button", "canvas", "cite",
+      "code", "data", "datalist", "del", "dfn", "em", "embed", "i", "iframe", "img",
+      "input", "ins", "kbd", "keygen", "label", "map", "mark", "math", "meter", "noscript",
+      "object", "output", "progress", "q", "ruby", "s", "samp", "small",
+      "span", "strong", "sub", "sup", "template", "textarea", "time", "u", "var",
+      "video", "wbr", "text", "acronym", "address", "big", "dt", "ins", "strike", "tt"
+    ],
+    "wrap_line_length": 0,
+    "js": {
+      "indent_size": 2
+    },
+    "css": {
+      "indent_size": 2
+    }
+  },
+  "css": {
+    "indent_size": 2
+  },
+  "js": {
+    "preserve-newlines": true
+  }
+}

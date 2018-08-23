@@ -1,0 +1,101 @@
+.user-top-block {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  position: relative;
+  // height: 680px;
+  padding: 100px 20px 30px 20px;
+  background-color: $color-yellow;
+
+  &__bg-piece {
+    $baseW: 1366px;
+    $baseH: 670px;
+    position: absolute;
+    width: 100%;
+
+    &_1 {
+      // _potato-chip
+      left: (20px / $baseW) * 100%;
+      top: (140px / $baseH) * 100%;
+      @include bg-piece-size($baseW, 175px, 133px);
+      transform: scaleX(-1) rotate(-260deg);
+    }
+    &_2 {
+      // _garlic
+      left: (1200px / $baseW) * 100%;
+      top: (150px / $baseH) * 100%;
+      @include bg-piece-size($baseW, 150px, 169px);
+    }
+    &_3 {
+      // _paprica
+      left: (-90px / $baseW) * 100%;
+      top: (290px / $baseH) * 100%;
+      @include bg-piece-size($baseW, 168px, 206px);
+      transform: rotate(70deg);
+    }
+    &_4 {
+      // _paprica
+      left: (1260px / $baseW) * 100%;
+      top: (330px / $baseH) * 100%;
+      @include bg-piece-size($baseW, 117px, 144px);
+      transform: rotate(20deg);
+    }
+    &_5 {
+      // _onion-rings
+      left: (90px / $baseW) * 100%;
+      top: (510px / $baseH) * 100%;
+      @include bg-piece-size($baseW, 209px, 143px);
+    }
+    &_6 {
+      // _potato-chip
+      left: (1060px / $baseW) * 100%;
+      top: (530px / $baseH) * 100%;
+      @include bg-piece-size($baseW, 175px, 133px);
+      transform: scaleY(-1) rotate(70deg);
+    }
+  }
+  &__bg {
+    // overflow: hidden;
+    display: none;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+  }
+  &__title {
+    width: calc(100% - 40px);
+    max-width: 510px;
+    margin-bottom: 30px;
+  }
+  &__doner {
+    margin-bottom: 30px;
+  }
+  &__counter {
+    margin-bottom: 15px;
+    font-weight: $medium;
+    font-size: 14px;
+    line-height: 1;
+    color: $color-red;
+  }
+  &__btn {
+    width: 200px;
+  }
+
+  @media (min-width: 800px) {
+    &__bg {
+      display: block;
+    }
+  }
+  @media (min-width: 1200px) {
+    padding-top: 170px;
+
+    &__doner {
+      width: 550px;
+    }
+  }
+  // END .user-top-block
+}

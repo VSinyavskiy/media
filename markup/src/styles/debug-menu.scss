@@ -1,0 +1,29 @@
+#debug {
+  display: block;
+  position: fixed;
+  background: #e8514a;
+  left: 30px;
+  bottom: 0;
+  padding: 5px 20px;
+  z-index: 200;
+  font-size: 12px;
+  line-height: 1.5;
+  opacity: 0.8;
+  transform-origin: 100% 100%;
+  transform: translate(-100%,0%) rotate(-45deg);
+  transition: transform 0.2s, left 0.2s;
+
+  &:hover { left: 0px; transform: none; }
+
+  a {
+    display: block;
+    color: $color-white;
+
+    &:hover { color: $color-black; }
+  }
+
+  @media (max-width: 1279px) {
+    left: 0px;
+    transform: none;
+  }
+}

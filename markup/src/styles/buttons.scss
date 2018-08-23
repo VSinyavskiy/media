@@ -1,0 +1,52 @@
+.btn {
+  $font-size: 14px;
+  @include no-selection;
+  box-sizing: border-box;
+  display: inline-block;
+  vertical-align: middle;
+  position: relative;
+  height: em(50px, $font-size);
+  padding: 0 em(30px, $font-size);
+  border: none; border-collapse: collapse;
+  border-radius: rem(5px);
+  font-family: $font-default;
+  font-size: rem($font-size);
+  line-height: em(52px, $font-size);
+  text-align: center;
+  text-decoration: none !important;
+
+  &::-moz-focus-inner { border: none; }
+  &:hover { cursor: pointer; }
+
+  &_disabled { pointer-events: none !important; cursor: default; }
+  &_default {
+    background-color: $color-red; color: $color-white;
+    font-weight: $bold;
+    text-transform: uppercase;
+
+    &:focus { background-color: $color-red; color: $color-white; }
+    &:hover { background-color: $color-red-dark; color: $color-white; }
+    &:active { background-color: $color-red; color: $color-white; }
+    &.btn_disabled, &:disabled, &[disabled] {
+      background-color: shade($color-red, 30%);
+      color: shade($color-white, 30%);
+    }
+  }
+
+  &_file {
+    overflow: hidden;
+
+    input[type=file] {
+      display: block;
+      background: white;
+      position: absolute; top: 0; right: 0;
+      min-width: 100%; min-height: 100%;
+      font-size: rem(100px);
+      text-align: right;
+      outline: none;
+      opacity: 0;
+      cursor: inherit;
+    }
+  }
+  // END .btn
+}

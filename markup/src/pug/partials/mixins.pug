@@ -1,0 +1,5 @@
+mixin setVariable(variable, value)
+  - locals[variable] = value
+
+mixin svg-include(svgId)
+  svg.svg: use(xlink:href=`#svg-${svgId}`)

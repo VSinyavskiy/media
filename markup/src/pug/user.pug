@@ -1,0 +1,113 @@
+extends layouts/main.pug
+
+//- Don't forget that you can use block/append/prepend on blocks
+//- Pass your variables through this block.
+block variables
+  +setVariable('title', 'User page')
+  //- 'route' corresponds to JS route module name in 'src/js/app/routes/', must be unique
+  //- +setVariable('route', 'main')
+
+//- Debug links. Add some.
+append debug_links
+  //- a(href='http://google.com') google, for example
+
+block header
+  include ~Templates/components/header.pug
+
+block body
+  main.main
+    section.user-top-block
+      .user-top-block__bg.scene
+        .scene__layer(data-depth='0.6')
+          .user-top-block__bg-piece.user-top-block__bg-piece_1.bg-piece.bg-piece_potato-chip
+        .scene__layer(data-depth='0.1')
+          .user-top-block__bg-piece.user-top-block__bg-piece_2.bg-piece.bg-piece_garlic
+        .scene__layer(data-depth='0.7')
+          .user-top-block__bg-piece.user-top-block__bg-piece_3.bg-piece.bg-piece_paprica
+        .scene__layer(data-depth='0.7')
+          .user-top-block__bg-piece.user-top-block__bg-piece_4.bg-piece.bg-piece_paprica
+        .scene__layer(data-depth='0.9')
+          .user-top-block__bg-piece.user-top-block__bg-piece_5.bg-piece.bg-piece_onion-rings
+        .scene__layer(data-depth='0.8')
+          .user-top-block__bg-piece.user-top-block__bg-piece_6.bg-piece.bg-piece_potato-chip
+      img.user-top-block__title(
+        src=require('Images/text-personal-donery.png'),
+        alt='personal donery'
+      )
+      .user-top-block__doner.doner
+        .doner__name Nurlan Dzhaksygulov
+        .doner__info
+          .doner__avatar
+            img.doner__img(src='https://via.placeholder.com/120x120')
+            a.doner__logout(href='#'): +svg-include('ico-logout')
+          .doner__score 30
+        .doner__desc
+          b Размер твоего донера
+          a.doner__link(href='#') История получения баллов
+      .user-top-block__counter Ты позвал ХХ друзей
+      a.user-top-block__btn.btn.btn_default(href='#') ПОЗВАТЬ ЕЩЕ
+
+    section.share-block
+      .share-block__socials
+          a.share-block__social(href='#'): +svg-include('ico-vk')
+          a.share-block__social(href='#'): +svg-include('ico-fb')
+
+    section.doners-block
+      .doners-block__bg.scene
+        .scene__layer(data-depth='0.6')
+          .doners-block__bg-piece.doners-block__bg-piece_1.bg-piece.bg-piece_potato-chip
+        .scene__layer(data-depth='0.1')
+          .doners-block__bg-piece.doners-block__bg-piece_2.bg-piece.bg-piece_onion-rings
+        .scene__layer(data-depth='0.6')
+          .doners-block__bg-piece.doners-block__bg-piece_3.bg-piece.bg-piece_tomato
+        .scene__layer(data-depth='0.8')
+          .doners-block__bg-piece.doners-block__bg-piece_4.bg-piece.bg-piece_paprica
+        .scene__layer(data-depth='0.7')
+          .doners-block__bg-piece.doners-block__bg-piece_5.bg-piece.bg-piece_garlic
+        .scene__layer(data-depth='0.9')
+          .doners-block__bg-piece.doners-block__bg-piece_6.bg-piece.bg-piece_potato-chip
+      .doners-block__title
+        | САМЫЕ ДЛИННЫЕ
+        strong ДОООООНЕРЫ
+      ul.doners-block__list
+        li.doners-block__item: .doner-dude
+          .doner-dude__avatar
+            img.doner-dude__img(src='https://via.placeholder.com/50x50')
+            .doner-dude__place 1
+          .doner-dude__name Name Surname
+            span.doner-dude__note your moto here
+          .doner-dude__score 120
+        li.doners-block__item: .doner-dude
+          .doner-dude__avatar
+            img.doner-dude__img(src='https://via.placeholder.com/50x50')
+            .doner-dude__place 2
+          .doner-dude__name Name Surname
+            span.doner-dude__note your moto here
+          .doner-dude__score 98
+        li.doners-block__item: .doner-dude
+          .doner-dude__avatar
+            img.doner-dude__img(src='https://via.placeholder.com/50x50')
+            .doner-dude__place 3
+          .doner-dude__name Name Surname
+            span.doner-dude__note your moto here
+          .doner-dude__score 87
+        li.doners-block__item: .doner-dude
+          .doner-dude__avatar
+            img.doner-dude__img(src='https://via.placeholder.com/50x50')
+            .doner-dude__place 4
+          .doner-dude__name Name Surname
+            span.doner-dude__note your moto here
+          .doner-dude__score 67
+        li.doners-block__item.doners-block__item_highlighted: .doner-dude
+          .doner-dude__avatar
+            img.doner-dude__img(src='https://via.placeholder.com/50x50')
+            .doner-dude__place 35
+          .doner-dude__name Name Surname
+            span.doner-dude__note your moto here
+          .doner-dude__score 45
+      //- a.doners-block__btn.btn.btn_default(href='#') ПОКАЗАТЬ БОЛЬШЕ
+
+block footer
+  include ~Templates/components/footer.pug
+
+//- Use block/append/prepend 'scripts' to override/add scripts
