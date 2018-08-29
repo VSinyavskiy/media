@@ -55,9 +55,11 @@
 }
 
 .user {
+  $self: &;
   display: flex;
   align-items: center;
   text-decoration: none;
+  color: $color-white;
 
   &__name {
     display: none;
@@ -65,7 +67,6 @@
     font-weight: $medium;
     font-size: 16px;
     line-height: 1;
-    color: $color-white;
   }
   &__avatar {
     display: flex;
@@ -147,9 +148,6 @@
     display: flex;
     flex-direction: column;
   }
-
-  @media (min-width: 1200px) {
-  }
   // END .menu
 }
 
@@ -222,6 +220,18 @@
     z-index: 30;
     right: 20px;
     top: 20px;
+    color: $color-white;
+  }
+
+  &_dark {
+    #{ $self }__button {
+      &::after {
+        color: $color-gray-1;
+      }
+    }
+    #{ $self }__user {
+      color: $color-gray-1;
+    }
   }
 
   &_isOpened {

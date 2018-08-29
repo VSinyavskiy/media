@@ -11,7 +11,7 @@
     <link rel="icon" href="favicon.png" type="image/png">
     <link rel="shortcut icon" href="favicon.png" type="image/png">
     <link rel="stylesheet" href="assets/css/application.css" type="text/css" media="screen">
-    <title>Age gate page</title>
+    <title>Register page</title>
 </head>
 
 <body>
@@ -51,13 +51,89 @@
         </defs>
     </svg>
     <div class="app">
-        <header class="header"><a class="header__logo logo" href="#"><img class="logo__img" src="assets/img/logo.png" alt="logo"></a></header>
+        <header class="header header_dark">
+            <a class="header__button header__button_open" href="#" data-title="Меню">
+                <svg class="svg">
+                    <use xlink:href="#svg-ico-menu"></use>
+                </svg>
+            </a>
+            <a class="header__button header__button_close" href="#" data-title="Меню">
+                <svg class="svg">
+                    <use xlink:href="#svg-ico-close"></use>
+                </svg>
+            </a>
+            <div class="header__menu menu">
+                <nav class="menu__nav">
+                    <ul class="menu__list">
+                        <li class="menu__item menu__item_active"><a class="menu__link" href="#">Главная</a></li>
+                        <li class="menu__item"><a class="menu__link" href="#">Игра</a></li>
+                        <li class="menu__item"><a class="menu__link" href="#">Личный кабинет</a></li>
+                        <li class="menu__item"><a class="menu__link" href="#">Победители</a></li>
+                        <li class="menu__item"><a class="menu__link" href="#">Правила</a></li>
+                    </ul>
+                    <ul class="menu__lang lang">
+                        <li class="lang__item lang__item_active"><a class="lang__link" href="#">Рус</a></li>
+                        <li class="lang__item"><a class="lang__link" href="#">Каз</a></li>
+                    </ul>
+                </nav>
+            </div><a class="header__logo logo" href="#"><img class="logo__img" src="assets/img/logo.png" alt="logo"></a>
+            <a class="header__user user" href="#">
+                <div class="user__name">Личный кабинет</div>
+                <div class="user__avatar">
+                    <svg class="svg">
+                        <use xlink:href="#svg-ico-person"></use>
+                    </svg>
+                </div>
+            </a>
+        </header>
         <main class="main">
-            <section class="age-gate">
-                <div class="age-gate__question">Тебе исполнилось 14 лет?</div>
-                <div class="age-gate__response">Политика компании позволяет открывать сайт только пользователям старше 14 лет. К сожалению, остальные страницы сайта останутся закрытыми</div>
+            <section class="top-spacer"></section>
+            <section class="links-block">
+                <ul class="links-block__list">
+                    <li class="links-block__item"><a class="links-block__link" href="#">Вход</a></li>
+                    <li class="links-block__item links-block__item_active"><a class="links-block__link" href="#">Регистрация</a></li>
+                </ul>
+                <div class="links-block__socials">
+                    <a class="links-block__social" href="#">
+                        <svg class="svg">
+                            <use xlink:href="#svg-ico-vk"></use>
+                        </svg>
+                    </a>
+                    <a class="links-block__social" href="#">
+                        <svg class="svg">
+                            <use xlink:href="#svg-ico-fb"></use>
+                        </svg>
+                    </a>
+                </div>
+            </section>
+            <section class="register-block form"><label class="form__label">Ваше имя</label>
+                <div class="form__item form__item_required"><input class="form__control" type="text" name="" placeholder="Введите ваше имя"></div><label class="form__label">Фамилия</label>
+                <div class="form__item"><input class="form__control" type="text" name="" placeholder="Введите вашу фамилию"></div><label class="form__label">Номер телефона</label>
+                <div class="form__item form__item_required"><input class="form__control mask mask_tel" type="text" name="" placeholder="+7 ______ ___ ___"></div><label class="form__label">Повторите номер телефона</label>
+                <div class="form__item form__item_required"><input class="form__control mask mask_tel" type="text" name="" placeholder="+7 ______ ___ ___"></div><label class="form__label">Город</label>
+                <div class="form__item form__item_required"><input class="form__control" type="text" name="" placeholder="Введите ваш город"></div><label class="form__label">Email</label>
+                <div class="form__item form__item_required form__item_error"><input class="form__control" type="text" name="" placeholder="Введите ваш email"></div><label class="form__label">Пароль</label>
+                <div class="form__item form__item_required"><input class="form__control" type="password" name=""></div><label class="form__label">Повторите пароль</label>
+                <div class="form__item form__item_required"><input class="form__control" type="password" name=""></div>
+                <div class="form__buttons"><button class="btn btn_default btn_block" type="submit">Регистрация</button></div>
             </section>
         </main>
+        <footer class="footer">
+            <div class="footer__contacts"><a class="footer__contact" href="tel:+70007788"><b>Viber:</b> +7 000 77 88</a><a class="footer__contact" href="tel:+70007788"><b>Контактный телефон:</b> +7 000 77 88</a></div>
+            <div class="footer__socials">
+                <a class="footer__social" href="#">
+                    <svg class="svg">
+                        <use xlink:href="#svg-ico-vk"></use>
+                    </svg>
+                </a>
+                <a class="footer__social" href="#">
+                    <svg class="svg">
+                        <use xlink:href="#svg-ico-fb"></use>
+                    </svg>
+                </a>
+            </div>
+            <div class="footer__copyright">&copy;2017 LAY’S INS. All rights resserved</div>
+        </footer>
     </div>
     <div class="dialog dialog_centered" id="copy-link">
         <div class="dialog__container">

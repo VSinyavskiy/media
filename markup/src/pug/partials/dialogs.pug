@@ -1,0 +1,22 @@
+#copy-link.dialog.dialog_centered: .dialog__container
+  a.dialog__close(href='#', data-dialog-dismiss): +svg-include('ico-close')
+  .dialog__title Пригласить друга
+  .dialog__body.form
+    p
+      | Скопируй ссылку и отправляй другу.
+      br
+      | За каждого друга +1 к твоему донеру
+    .form__item.form__item_w-icon
+      input.form__control.form__control_focused.form__control_bold(
+        type='text',
+        name='copy-to-clipboard',
+        value='Lays.kz/ashdgausjhcvb',
+        readonly
+      )
+      a.form__control-icon.copy-icon(
+        href='#',
+        data-copy-to-clipboard='Lays.kz/ashdgausjhcvb',
+        data-copy-to-clipboard-success='Ссылка скопирована'
+      )
+        .copy-icon__default: +svg-include('ico-copy')
+        .copy-icon__success: +svg-include('ico-check')

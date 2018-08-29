@@ -1,0 +1,12 @@
+.register-block {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 424px;
+  margin: 0 auto 60px auto;
+  padding: 0 20px;
+
+  @media (min-width: 1200px) {
+    margin-bottom: 80px;
+  }
+  // END .register-block
+}

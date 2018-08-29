@@ -15,9 +15,15 @@
 </head>
 
 <body>
-    <div id="debug"><a href="age-gate-confirm.html">age-gate-confirm</a><a href="age-gate-passed.html">age-gate-passed</a><a href="index.html">index</a><a href="user.html">user</a><a href="winners.html">winners</a></div>
+    <div id="debug"><a href="age-gate-confirm.html">age-gate-confirm</a><a href="age-gate-passed.html">age-gate-passed</a><a href="history.html">history</a><a href="index.html">index</a><a href="login.html">login</a><a href="register.html">register</a><a href="user.html">user</a><a href="winners.html">winners</a></div>
     <svg class="symbols" xmlns="http://www.w3.org/2000/svg">
         <defs>
+            <symbol id="svg-ico-check" viewBox="0 0 20 20">
+                <path fill="CurrentColor" d="M19.639 4.571c.241.235.361.522.361.858 0 .337-.12.623-.361.859l-9.342 9.141-1.755 1.717a1.207 1.207 0 0 1-.877.354c-.344 0-.637-.118-.877-.354l-1.755-1.717-4.671-4.571C.12 10.623 0 10.337 0 10s.12-.623.361-.859l1.755-1.717c.241-.236.533-.354.877-.354s.637.118.877.354l3.794 3.725 8.464-8.295c.242-.236.534-.354.879-.354.344 0 .636.118.877.354l1.755 1.717z"></path>
+            </symbol>
+            <symbol id="svg-ico-copy" viewBox="0 0 17.692 20">
+                <path fill="CurrentColor" d="M12.637 17.5H6.003c-.632 0-1.145-.195-1.58-.625s-.632-.937-.632-1.563V3.75H.948a.959.959 0 0 0-.671.273.91.91 0 0 0-.277.665v14.375c0 .273.079.508.276.664.158.195.395.273.672.273H11.69a.937.937 0 0 0 .947-.937V17.5zm0-13.437c0 .273.079.508.276.664.159.195.396.273.672.273h4.107v10.312a.937.937 0 0 1-.947.937H6.003c-.276 0-.513-.078-.671-.273-.197-.156-.276-.391-.276-.664V.938c0-.234.079-.469.276-.664A.951.951 0 0 1 6.003 0h6.635v4.063zm4.779-1.211c.158.195.276.43.276.664v.234h-3.791V0h.237c.237 0 .474.117.671.273l2.607 2.579z"></path>
+            </symbol>
             <symbol id="svg-ico-logout" viewBox="0 0 21 22">
                 <path fill="CurrentColor" d="M5.039 16.374c.397.39 1.04.391 1.437 0a.988.988 0 0 0 0-1.414L3.469 12h12.45c.561 0 1.016-.448 1.016-1s-.455-1-1.016-1H3.469l3.007-2.959a.988.988 0 0 0 0-1.414 1.02 1.02 0 0 0-1.436-.001L.298 10.293a.988.988 0 0 0 0 1.414l4.741 4.667zM11.177 0c-.561 0-1.016.448-1.016 1s.455 1 1.016 1h7.79v18h-7.79c-.561 0-1.016.448-1.016 1s.455 1 1.016 1h8.807c.561 0 1.016-.448 1.016-1V1c0-.552-.455-1-1.016-1h-8.807z"></path>
             </symbol>
@@ -269,6 +275,33 @@
             </div>
             <div class="footer__copyright">&copy;2017 LAY’S INS. All rights resserved</div>
         </footer>
+    </div>
+    <div class="dialog dialog_centered" id="copy-link">
+        <div class="dialog__container">
+            <a class="dialog__close" href="#" data-dialog-dismiss>
+                <svg class="svg">
+                    <use xlink:href="#svg-ico-close"></use>
+                </svg>
+            </a>
+            <div class="dialog__title">Пригласить друга</div>
+            <div class="dialog__body form">
+                <p>Скопируй ссылку и отправляй другу.<br>За каждого друга +1 к твоему донеру</p>
+                <div class="form__item form__item_w-icon"><input class="form__control form__control_focused form__control_bold" type="text" name="copy-to-clipboard" value="Lays.kz/ashdgausjhcvb" readonly="readonly">
+                    <a class="form__control-icon copy-icon" href="#" data-copy-to-clipboard="Lays.kz/ashdgausjhcvb" data-copy-to-clipboard-success="Ссылка скопирована">
+                        <div class="copy-icon__default">
+                            <svg class="svg">
+                                <use xlink:href="#svg-ico-copy"></use>
+                            </svg>
+                        </div>
+                        <div class="copy-icon__success">
+                            <svg class="svg">
+                                <use xlink:href="#svg-ico-check"></use>
+                            </svg>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
     </div>
     <script src="assets/js/common.js"></script>
     <script src="assets/js/vendor.js"></script>

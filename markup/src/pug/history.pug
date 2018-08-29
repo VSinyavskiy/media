@@ -1,0 +1,69 @@
+extends layouts/main.pug
+
+//- Don't forget that you can use block/append/prepend on blocks
+//- Pass your variables through this block.
+block variables
+  +setVariable('title', 'History page')
+  //- 'route' corresponds to JS route module name in 'src/js/app/routes/', must be unique
+  //- +setVariable('route', 'main')
+
+//- Debug links. Add some.
+append debug_links
+  //- a(href='http://google.com') google, for example
+
+block header
+  include ~Templates/components/header_dark.pug
+
+block body
+  main.main
+    section.top-spacer
+    section.doners-block
+      .doners-block__title
+        strong ИСТОРИЯ ПОЛУЧЕНИЯ БАЛЛОВ
+      ul.doners-block__list
+        li.doners-block__item: .doner-dude
+          //- .doner-dude__avatar
+            img.doner-dude__img(src='https://via.placeholder.com/50x50')
+            .doner-dude__place 1
+          .doner-dude__action
+            span.doner-dude__date 26.10.2018
+            | Привел друга
+          .doner-dude__score 120
+        li.doners-block__item: .doner-dude
+          //- .doner-dude__avatar
+            img.doner-dude__img(src='https://via.placeholder.com/50x50')
+            .doner-dude__place 2
+          .doner-dude__action
+            span.doner-dude__date 26.10.2018
+            | Топ 1 в игре
+          .doner-dude__score 98
+        li.doners-block__item: .doner-dude
+          //- .doner-dude__avatar
+            img.doner-dude__img(src='https://via.placeholder.com/50x50')
+            .doner-dude__place 3
+          .doner-dude__action
+            span.doner-dude__date 26.10.2018
+            | Привел друга
+          .doner-dude__score 87
+        li.doners-block__item: .doner-dude
+          //- .doner-dude__avatar
+            img.doner-dude__img(src='https://via.placeholder.com/50x50')
+            .doner-dude__place 4
+          .doner-dude__action
+            span.doner-dude__date 26.10.2018
+            | Топ 1 в игре
+          .doner-dude__score 67
+        li.doners-block__item: .doner-dude
+          //- .doner-dude__avatar
+            img.doner-dude__img(src='https://via.placeholder.com/50x50')
+            .doner-dude__place 35
+          .doner-dude__action
+            span.doner-dude__date 26.10.2018
+            | Привел друга
+          .doner-dude__score 45
+      a.doners-block__btn.btn.btn_default(href='#') ПОКАЗАТЬ БОЛЬШЕ
+
+block footer
+  include ~Templates/components/footer.pug
+
+//- Use block/append/prepend 'scripts' to override/add scripts

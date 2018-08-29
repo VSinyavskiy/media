@@ -1,0 +1,27 @@
+.login-block {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 424px;
+  margin: 0 auto 60px auto;
+  padding: 0 20px;
+
+  &__link {
+    display: inline-block;
+    line-height: 1.4;
+    color: $color-gray-3;
+    text-decoration: none;
+
+    &:hover {
+      color: $color-red;
+    }
+  }
+  &__footer {
+    margin: 20px 0 0 0;
+    text-align: center;
+  }
+
+  @media (min-width: 1200px) {
+    margin-bottom: 80px;
+  }
+  // END .login-block
+}

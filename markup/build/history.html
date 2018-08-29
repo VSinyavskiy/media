@@ -11,7 +11,7 @@
     <link rel="icon" href="favicon.png" type="image/png">
     <link rel="shortcut icon" href="favicon.png" type="image/png">
     <link rel="stylesheet" href="assets/css/application.css" type="text/css" media="screen">
-    <title>Age gate page</title>
+    <title>History page</title>
 </head>
 
 <body>
@@ -51,13 +51,94 @@
         </defs>
     </svg>
     <div class="app">
-        <header class="header"><a class="header__logo logo" href="#"><img class="logo__img" src="assets/img/logo.png" alt="logo"></a></header>
+        <header class="header header_dark">
+            <a class="header__button header__button_open" href="#" data-title="Меню">
+                <svg class="svg">
+                    <use xlink:href="#svg-ico-menu"></use>
+                </svg>
+            </a>
+            <a class="header__button header__button_close" href="#" data-title="Меню">
+                <svg class="svg">
+                    <use xlink:href="#svg-ico-close"></use>
+                </svg>
+            </a>
+            <div class="header__menu menu">
+                <nav class="menu__nav">
+                    <ul class="menu__list">
+                        <li class="menu__item menu__item_active"><a class="menu__link" href="#">Главная</a></li>
+                        <li class="menu__item"><a class="menu__link" href="#">Игра</a></li>
+                        <li class="menu__item"><a class="menu__link" href="#">Личный кабинет</a></li>
+                        <li class="menu__item"><a class="menu__link" href="#">Победители</a></li>
+                        <li class="menu__item"><a class="menu__link" href="#">Правила</a></li>
+                    </ul>
+                    <ul class="menu__lang lang">
+                        <li class="lang__item lang__item_active"><a class="lang__link" href="#">Рус</a></li>
+                        <li class="lang__item"><a class="lang__link" href="#">Каз</a></li>
+                    </ul>
+                </nav>
+            </div><a class="header__logo logo" href="#"><img class="logo__img" src="assets/img/logo.png" alt="logo"></a>
+            <a class="header__user user" href="#">
+                <div class="user__name">Личный кабинет</div>
+                <div class="user__avatar">
+                    <svg class="svg">
+                        <use xlink:href="#svg-ico-person"></use>
+                    </svg>
+                </div>
+            </a>
+        </header>
         <main class="main">
-            <section class="age-gate">
-                <div class="age-gate__question">Тебе исполнилось 14 лет?</div>
-                <div class="age-gate__response">Политика компании позволяет открывать сайт только пользователям старше 14 лет. К сожалению, остальные страницы сайта останутся закрытыми</div>
-            </section>
+            <section class="top-spacer"></section>
+            <section class="doners-block">
+                <div class="doners-block__title"><strong>ИСТОРИЯ ПОЛУЧЕНИЯ БАЛЛОВ</strong></div>
+                <ul class="doners-block__list">
+                    <li class="doners-block__item">
+                        <div class="doner-dude">
+                            <div class="doner-dude__action"><span class="doner-dude__date">26.10.2018</span>Привел друга</div>
+                            <div class="doner-dude__score">120</div>
+                        </div>
+                    </li>
+                    <li class="doners-block__item">
+                        <div class="doner-dude">
+                            <div class="doner-dude__action"><span class="doner-dude__date">26.10.2018</span>Топ 1 в игре</div>
+                            <div class="doner-dude__score">98</div>
+                        </div>
+                    </li>
+                    <li class="doners-block__item">
+                        <div class="doner-dude">
+                            <div class="doner-dude__action"><span class="doner-dude__date">26.10.2018</span>Привел друга</div>
+                            <div class="doner-dude__score">87</div>
+                        </div>
+                    </li>
+                    <li class="doners-block__item">
+                        <div class="doner-dude">
+                            <div class="doner-dude__action"><span class="doner-dude__date">26.10.2018</span>Топ 1 в игре</div>
+                            <div class="doner-dude__score">67</div>
+                        </div>
+                    </li>
+                    <li class="doners-block__item">
+                        <div class="doner-dude">
+                            <div class="doner-dude__action"><span class="doner-dude__date">26.10.2018</span>Привел друга</div>
+                            <div class="doner-dude__score">45</div>
+                        </div>
+                    </li>
+                </ul><a class="doners-block__btn btn btn_default" href="#">ПОКАЗАТЬ БОЛЬШЕ</a></section>
         </main>
+        <footer class="footer">
+            <div class="footer__contacts"><a class="footer__contact" href="tel:+70007788"><b>Viber:</b> +7 000 77 88</a><a class="footer__contact" href="tel:+70007788"><b>Контактный телефон:</b> +7 000 77 88</a></div>
+            <div class="footer__socials">
+                <a class="footer__social" href="#">
+                    <svg class="svg">
+                        <use xlink:href="#svg-ico-vk"></use>
+                    </svg>
+                </a>
+                <a class="footer__social" href="#">
+                    <svg class="svg">
+                        <use xlink:href="#svg-ico-fb"></use>
+                    </svg>
+                </a>
+            </div>
+            <div class="footer__copyright">&copy;2017 LAY’S INS. All rights resserved</div>
+        </footer>
     </div>
     <div class="dialog dialog_centered" id="copy-link">
         <div class="dialog__container">

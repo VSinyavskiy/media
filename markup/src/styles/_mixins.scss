@@ -29,7 +29,7 @@
 }
 
 @mixin placeholder-styling {
-  color: rgba(#c7c7c7, 1) !important;
+  color: rgba($color-gray-6, 1) !important;
   opacity: 1;
 }
 

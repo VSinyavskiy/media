@@ -149,6 +149,15 @@ p { margin: 0 0 1em 0; }
   // END .scene
 }
 
+.top-spacer {
+  height: 85px;
+
+  @media (min-width: 1200px) {
+    height: 125px;
+  }
+  // END .top-spacer
+}
+
 @import '~Styles/debug-menu';
 @import '~Styles/buttons';
 @import '~Styles/forms';
@@ -169,6 +178,10 @@ p { margin: 0 0 1em 0; }
 @import '~Styles/components/share-block';
 @import '~Styles/components/doner';
 @import '~Styles/components/user-top-block';
+@import '~Styles/components/register-block';
+@import '~Styles/components/login-block';
+@import '~Styles/components/links-block';
+@import '~Styles/components/dialog';
 
 .row {
   display: flex;

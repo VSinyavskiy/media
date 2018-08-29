@@ -21,10 +21,6 @@ export default class {
       });
     });
 
-    if (!PROD) console.log('FormControlls module loaded.');
-  }
-
-  get(el) {
-    this.scenes.get(el);
+    if (!PROD) console.log('FormControls module loaded.');
   }
 }

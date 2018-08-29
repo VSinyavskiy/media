@@ -1,0 +1,67 @@
+extends layouts/main.pug
+
+//- Don't forget that you can use block/append/prepend on blocks
+//- Pass your variables through this block.
+block variables
+  +setVariable('title', 'Register page')
+  //- 'route' corresponds to JS route module name in 'src/js/app/routes/', must be unique
+  //- +setVariable('route', 'main')
+
+//- Debug links. Add some.
+append debug_links
+  //- a(href='http://google.com') google, for example
+
+block header
+  include ~Templates/components/header_dark.pug
+
+block body
+  main.main
+    section.top-spacer
+    section.links-block
+      ul.links-block__list
+        li.links-block__item: a.links-block__link(href='#') Вход
+        li.links-block__item.links-block__item_active: a.links-block__link(href='#') Регистрация
+      .links-block__socials
+        a.links-block__social(href='#'): +svg-include('ico-vk')
+        a.links-block__social(href='#'): +svg-include('ico-fb')
+    section.register-block.form
+      label.form__label Ваше имя
+      .form__item.form__item_required
+        input.form__control(type='text', name='', placeholder='Введите ваше имя')
+      label.form__label Фамилия
+      .form__item
+        input.form__control(type='text', name='', placeholder='Введите вашу фамилию')
+      label.form__label Номер телефона
+      .form__item.form__item_required
+        input.form__control.mask.mask_tel(
+          type='text',
+          name='',
+          placeholder='+7 ______ ___ ___'
+        )
+      label.form__label Повторите номер телефона
+      .form__item.form__item_required
+        input.form__control.mask.mask_tel(
+          type='text',
+          name='',
+          placeholder='+7 ______ ___ ___'
+        )
+      label.form__label Город
+      .form__item.form__item_required
+        input.form__control(type='text', name='', placeholder='Введите ваш город')
+      label.form__label Email
+      .form__item.form__item_required.form__item_error
+        input.form__control(type='text', name='', placeholder='Введите ваш email')
+      label.form__label Пароль
+      .form__item.form__item_required
+        input.form__control(type='password', name='')
+      label.form__label Повторите пароль
+      .form__item.form__item_required
+        input.form__control(type='password', name='')
+      .form__buttons
+        button.btn.btn_default.btn_block(type='submit') Регистрация
+
+
+block footer
+  include ~Templates/components/footer.pug
+
+//- Use block/append/prepend 'scripts' to override/add scripts

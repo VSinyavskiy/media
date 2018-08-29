@@ -1,4 +1,26 @@
+.copy-icon {
+  $self: &;
+
+  &__default {
+    display: block;
+  }
+  &__success {
+    display: none;
+  }
+
+  &_success {
+    #{ $self }__default {
+      display: none;
+    }
+    #{ $self }__success {
+      display: block;
+    }
+  }
+  // END .copy-icon
+}
+
 .form {
+  $self: &;
   $font-size: 14px;
 
   input, textarea {
@@ -31,7 +53,7 @@
       em(20px, $font-size)
     );
     border: solid 1px $color-gray-5;
-    border-radius: rem(5px);
+    border-radius: 0;
     background: $color-white;
     font-family: $font-default;
     font-size: rem($font-size);
@@ -39,13 +61,88 @@
     color: $color-gray-3;
     vertical-align: middle;
 
-    &:focus {
+    &-icon {
+      display: block;
+      position: absolute;
+      top: 50%;
+      right: em(20px, 20px);
+      transform: translateY(-50%);
+      width: 1em;
+      height: 1em;
+      font-size: 20px;
+      color: $color-red;
+
+      svg {
+        display: block;
+        width: 1em;
+        height: 1em;
+      }
+    }
+
+    &_bold {
+      font-weight: $bold;
+    }
+    &:focus, &_focused {
       border-color: $color-yellow;
     }
   }
 
   &__item {
     margin: 0 0 rem($font-size) 0;
+
+    &_w-icon {
+      position: relative;
+
+      #{ $self }__control {
+        padding-right: em(60px, $font-size);
+      }
+    }
+
+    &_required {
+      position: relative;
+
+      #{ $self }__control {
+        padding-right: em(40px, $font-size);
+      }
+      &::after {
+        content: '*';
+        pointer-events: none;
+        position: absolute;
+        right: 20px;
+        top: 50%;
+        margin: em(4px, 20px) 0 0 0;
+        font-size: 20px;
+        line-height: 1;
+        color: $color-gray-6;
+        transform: translateY(-50%);
+      }
+    }
+
+    &_error {
+      position: relative;
+
+      #{ $self }__control {
+        padding-right: em(40px, $font-size);
+        border-color: $color-red;
+      }
+      &::after {
+        content: '!';
+        pointer-events: none;
+        position: absolute;
+        right: 20px;
+        top: 50%;
+        margin: 0;
+        font-weight: $bold;
+        font-size: 20px;
+        line-height: 1;
+        color: $color-red;
+        transform: translateY(-50%);
+      }
+    }
+  }
+
+  &__buttons {
+    margin-top: 45px;
   }
   // END .form
 }
