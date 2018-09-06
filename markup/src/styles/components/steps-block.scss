@@ -1,4 +1,5 @@
 .step {
+  $self: &;
   display: flex;
   flex-direction: column;
   position: relative;
@@ -58,6 +59,16 @@
     width: 55%;
     // max-width: 170px;
     max-width: 310px;
+
+    &_number {
+      max-width: 100px;
+
+      #{ $self }__number {
+        position: relative;
+        width: 100%;
+        margin: 0 auto;
+      }
+    }
   }
   &__desc {
     position: relative;
@@ -132,6 +143,49 @@
   background-color: $color-white;
   text-align: center;
 
+  &__bg-piece {
+    $baseW: 375px;
+    $baseH: 694px;
+    position: absolute;
+    width: 100%;
+
+    &_1 {
+      // _doner
+      left: (-20px / $baseW) * 100%;
+      top: (-20px / $baseH) * 100%;
+      @include bg-piece-size($baseW, 84px, 143px);
+      transform: scaleX(-1) rotate(96deg);
+    }
+    &_2 {
+      // _doner
+      left: (310px / $baseW) * 100%;
+      top: (-20px / $baseH) * 100%;
+      @include bg-piece-size($baseW, 84px, 143px);
+      transform: rotate(96deg);
+    }
+    &_3 {
+      // _garlic
+      left: (-30px / $baseW) * 100%;
+      top: (630px / $baseH) * 100%;
+      @include bg-piece-size($baseW, 98px, 111px);
+      transform: rotate(-20deg);
+    }
+    &_4 {
+      // _tomato
+      left: (310px / $baseW) * 100%;
+      top: (620px / $baseH) * 100%;
+      @include bg-piece-size($baseW, 111px, 110px);
+      transform: rotate(-20deg);
+    }
+  }
+  &__bg {
+    position: absolute;
+    display: block;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+  }
   &__item {
     flex-shrink: 0;
     flex-grow: 0;
@@ -149,13 +203,77 @@
   }
   &__btn {}
 
+  &_w-bg {
+    position: relative;
+    z-index: 10;
+    padding-top: 100px;
+  }
+
   @media (min-width: 600px) and (max-width: 1199px) {
+    &__bg-piece {
+      $baseW: 600px;
+      $baseH: 530px;
+
+      &_1 {
+        // _doner
+        left: (0px / $baseW) * 100%;
+        top: (-20px / $baseH) * 100%;
+        @include bg-piece-size($baseW, 84px, 143px);
+      }
+      &_2 {
+        // _doner
+        left: (530px / $baseW) * 100%;
+        top: (-20px / $baseH) * 100%;
+        @include bg-piece-size($baseW, 84px, 143px);
+      }
+      &_3 {
+        // _garlic
+        left: (-30px / $baseW) * 100%;
+        top: (460px / $baseH) * 100%;
+        @include bg-piece-size($baseW, 98px, 111px);
+      }
+      &_4 {
+        // _tomato
+        left: (530px / $baseW) * 100%;
+        top: (450px / $baseH) * 100%;
+        @include bg-piece-size($baseW, 111px, 110px);
+      }
+    }
     &__item:nth-child(2n) {
       flex-direction: row-reverse;
     }
   }
 
   @media (min-width: 1200px) {
+    &__bg-piece {
+      $baseW: 1366px;
+      $baseH: 389px;
+
+      &_1 {
+        // _doner
+        left: (20px / $baseW) * 100%;
+        top: (-230px / $baseH) * 100%;
+        @include bg-piece-size($baseW, 232px, 396px);
+      }
+      &_2 {
+        // _doner
+        left: (1130px / $baseW) * 100%;
+        top: (-230px / $baseH) * 100%;
+        @include bg-piece-size($baseW, 232px, 396px);
+      }
+      &_3 {
+        // _garlic
+        left: (-30px / $baseW) * 100%;
+        top: (290px / $baseH) * 100%;
+        @include bg-piece-size($baseW, 174px, 196px);
+      }
+      &_4 {
+        // _tomato
+        left: (1260px / $baseW) * 100%;
+        top: (280px / $baseH) * 100%;
+        @include bg-piece-size($baseW, 168px, 167px);
+      }
+    }
     &__item {
       width: calc(100% / 3 - 60px);
     }

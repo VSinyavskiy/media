@@ -127,12 +127,20 @@ p { margin: 0 0 1em 0; }
     @include bg-piece-size($baseW, 208px, 143px);
     max-width: 208px;
     background-image: url('~Images/pepper.png');
+    filter: drop-shadow(0 10px 8px rgba($color-black, 0.15));
   }
   &_onion-slices {
     // 239x327
     @include bg-piece-size($baseW, 239px, 327px);
     max-width: 239px;
     background-image: url('~Images/onion-slices.png');
+  }
+  &_doner {
+    // 232x397
+    @include bg-piece-size($baseW, 232px, 397px);
+    max-width: 232px;
+    background-image: url('~Images/doner.png');
+    filter: drop-shadow(0 10px 8px rgba($color-black, 0.15));
   }
 }
 
@@ -181,6 +189,8 @@ p { margin: 0 0 1em 0; }
 @import '~Styles/components/register-block';
 @import '~Styles/components/login-block';
 @import '~Styles/components/links-block';
+@import '~Styles/components/ninja-top-block';
+@import '~Styles/components/results-block';
 @import '~Styles/components/dialog';
 
 .row {

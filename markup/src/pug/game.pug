@@ -1,0 +1,84 @@
+extends layouts/main.pug
+
+//- Don't forget that you can use block/append/prepend on blocks
+//- Pass your variables through this block.
+block variables
+  +setVariable('title', 'Game page')
+  //- 'route' corresponds to JS route module name in 'src/js/app/routes/', must be unique
+  //- +setVariable('route', 'main')
+
+//- Debug links. Add some.
+append debug_links
+  //- a(href='http://google.com') google, for example
+
+block header
+  include ~Templates/components/header.pug
+
+block body
+  main.main
+    section.ninja-top-block
+      .ninja-top-block__bg
+        .scene__layer(data-depth='0.6')
+          .ninja-top-block__bg-piece.ninja-top-block__bg-piece_1.bg-piece.bg-piece_potato-chip
+        .scene__layer(data-depth='0.8')
+          .ninja-top-block__bg-piece.ninja-top-block__bg-piece_2.bg-piece.bg-piece_potato-chip
+      p.ninja-top-block__desc Игра весит 40mb
+      a.ninja-top-block__btn.btn.btn_default(href='#') ИГРАТЬ
+
+    section.steps-block.steps-block_w-bg
+      .steps-block__bg
+        .steps-block__bg-piece.steps-block__bg-piece_1.bg-piece.bg-piece_doner
+        .steps-block__bg-piece.steps-block__bg-piece_2.bg-piece.bg-piece_doner
+        .steps-block__bg-piece.steps-block__bg-piece_3.bg-piece.bg-piece_garlic
+        .steps-block__bg-piece.steps-block__bg-piece_4.bg-piece.bg-piece_tomato
+      ul.steps-block__list
+        li.steps-block__item.step
+          .step__bg
+            .step__img.step__img_number
+              //- img.step__visual.img(src=require('Images/step-1.png'))
+              img.step__number(src=require('Images/number-1.png'))
+          .step__desc Играй в игру, зарабатывай баллы и попадай в топ 3 игрового рейтинга
+        li.steps-block__item.step
+          .step__bg
+            .step__img.step__img_number
+              //- img.step__visual.img(src=require('Images/step-2.png'))
+              img.step__number.step__number_right(src=require('Images/number-2.png'))
+          .step__desc Держись в рейтенге лучших до конца дня и получай баллы к твоему доннеру
+        li.steps-block__item.step
+          .step__bg
+            .step__img.step__img_number
+              //- img.step__visual.img(src=require('Images/step-3.png'))
+              img.step__number(src=require('Images/number-3.png'))
+          .step__desc Чем больше донер – тем больше призов. Дерзай
+
+    section.results-block
+      .results-block__bg
+        .results-block__bg-piece.results-block__bg-piece_1.bg-piece.bg-piece_pepper
+        .results-block__bg-piece.results-block__bg-piece_2.bg-piece.bg-piece_onion-rings
+        .results-block__bg-piece.results-block__bg-piece_3.bg-piece.bg-piece_potato-chip
+        .results-block__bg-piece.results-block__bg-piece_4.bg-piece.bg-piece_paprica
+      .results-block__title Лучшие результаты за день
+      ul.results-block__list
+        li.results-block__item.result
+          .result__place: span 1
+          .result__name Name Surname
+          .result__score 220
+        li.results-block__item.result
+          .result__place: span 2
+          .result__name Name Surname
+          .result__score 210
+        li.results-block__item.result
+          .result__place: span 3
+          .result__name Name Surname
+          .result__score 208
+        li.results-block__item.result.result_looser
+          .result__place: span 3
+          .result__name Name Surname
+          .result__score 208
+      p.results-block__desc Чего же ждешь, бей рекорд и зарабатывай баллы к твоему донеру
+      a.results-block__btn.btn.btn_default(href='#') ИГРАТЬ
+
+block footer
+  include ~Templates/components/footer.pug
+
+//- Use block/append/prepend 'scripts' to override/add scripts

@@ -1,0 +1,222 @@
+.result {
+  $self: &;
+  display: flex;
+  align-items: center;
+
+  &__place {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 46px;
+    height: 44px;
+    margin: 0 15px 0 0;
+    background-image: url('~Images/star.png');
+    background-position: 0 0;
+    background-size: 100% auto;
+    background-repeat: no-repeat;
+    text-align: center;
+    font-weight: $bold;
+    font-size: 20px;
+    line-height: 1;
+    color: $color-white;
+
+    span {
+      position: relative;
+      top: 2px;
+    }
+  }
+  &__name {
+    flex-grow: 1;
+    position: relative;
+    margin: 0 15px 0 0;
+    font-weight: $medium;
+    line-height: 1.3;
+  }
+  &__score {
+    flex-grow: 0;
+    position: relative;
+    font-weight: $black;
+    font-size: 20px;
+    line-height: 1;
+    color: $color-gray-1;
+    text-align: right;
+  }
+
+  &_looser {
+    position: relative;
+    background-image: none;
+
+    &::before {
+      box-sizing: border-box;
+      content: '';
+      display: block;
+      position: absolute;
+      left: -3px;
+      top: 0;
+      width: calc(100% + 6px);
+      height: 100%;
+      background-color: $color-violet;
+      border: solid 3px $color-violet-dark;
+      border-radius: em(25px);
+    }
+
+    #{ $self }__place {
+      position: relative;
+      margin-right: 25px;
+
+      &::before {
+        box-sizing: border-box;
+        content: '';
+        display: block;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        width: em(57px, 20px);
+        height: em(57px, 20px);
+        background-color: $color-violet;
+        border: solid 3px $color-violet-dark;
+        border-radius: 50%;
+        transform: translate(-50%, -50%);
+      }
+
+      span {
+        top: 0;
+      }
+    }
+    #{ $self }__name {
+      color: $color-white;
+    }
+    #{ $self }__score {
+      margin: 0 15px 0 0;
+      color: $color-white;
+    }
+  }
+
+  @media (min-width: 1200px) {
+    &__place {
+      font-size: 24px;
+    }
+    &__name {
+      font-size: 20px;
+    }
+    &__score {
+      font-size: 24px;
+    }
+  }
+  // END .result
+}
+
+.results-block {
+  $self: &;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: hidden;
+  position: relative;
+  padding: 40px 20px;
+  background-color: $color-yellow;
+
+  &__bg-piece {
+    $baseW: 1366px;
+    $baseH: 620px;
+    overflow: hidden;
+    position: absolute;
+    width: 100%;
+
+    &_1 {
+      // _pepper
+      left: (70px / $baseW) * 100%;
+      top: (190px / $baseH) * 100%;
+      @include bg-piece-size($baseW, 172px, 118px);
+      transform: rotate(-27deg);
+    }
+    &_2 {
+      // _onion-rings
+      left: (1170px / $baseW) * 100%;
+      top: (190px / $baseH) * 100%;
+      @include bg-piece-size($baseW, 250px, 171px);
+      transform: rotate(20deg);
+    }
+    &_3 {
+      // _potato-chip
+      left: (0px / $baseW) * 100%;
+      top: (460px / $baseH) * 100%;
+      @include bg-piece-size($baseW, 154px, 117px);
+      transform: rotate(80deg);
+    }
+    &_4 {
+      // _paprica
+      left: (1210px / $baseW) * 100%;
+      top: (430px / $baseH) * 100%;
+      @include bg-piece-size($baseW, 145px, 178px);
+      transform: rotate(17deg);
+    }
+  }
+  &__bg {
+    display: none;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+  }
+  &__title {
+    margin: 0 0 30px 0;
+    font-weight: $bold;
+    font-size: 30px;
+    text-align: center;
+    color: $color-black;
+  }
+  &__item {
+    margin: 0;
+    padding: 20px 0;
+    border-top: solid 1px $color-yellow-light;
+
+    &:first-child {
+      border-top: none;
+    }
+    &:last-child {
+      margin: 10px 0;
+      padding: 0;
+      border-top: none;
+    }
+  }
+  &__list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 510px;
+    margin: 0 auto;
+    padding: 0;
+  }
+  &__desc {
+    margin: 30px 0 0 0;
+    line-height: 1.3;
+    color: $color-gray-1;
+    text-align: center;
+  }
+  &__btn {
+    width: 200px;
+    margin-top: 15px;
+  }
+
+  @media (min-width: 800px) {
+    &__list {
+      border-top: none;
+    }
+  }
+
+  @media (min-width: 1200px) {
+    &__bg {
+      display: block;
+    }
+    &__title {
+      font-size: 42px;
+    }
+    &__item {
+      padding: 25px 0;
+    }
+  }
+  // END .results-block
+}

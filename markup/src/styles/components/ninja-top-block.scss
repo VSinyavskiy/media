@@ -1,0 +1,66 @@
+.ninja-top-block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  box-sizing: border-box;
+  position: relative;
+  height: 580px;
+  padding: 30px;
+  background-image: url('~Images/doner-ninja-tab.png');
+  background-position: 50% 50%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-color: $color-violet;
+
+  &__bg-piece {
+    $baseW: 1366px;
+    $baseH: 650px;
+    position: absolute;
+    width: 100%;
+
+    &_1 {
+      // _potato-chip
+      left: (30px / $baseW) * 100%;
+      top: (280px / $baseH) * 100%;
+      @include bg-piece-size($baseW, 175px, 133px);
+      transform: scaleX(-1) rotate(-350deg);
+    }
+    &_2 {
+      // _potato-chip
+      left: (1180px / $baseW) * 100%;
+      top: (280px / $baseH) * 100%;
+      @include bg-piece-size($baseW, 175px, 133px);
+      transform: rotate(50deg);
+    }
+  }
+  &__bg {
+    // overflow: hidden;
+    display: none;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+  }
+  &__desc {
+    font-size: 12px;
+    color: $color-white;
+  }
+  &__btn {
+    width: 200px;
+  }
+
+  @media (min-width: 800px) {
+    // height: 650px;
+    height: 100vh;
+    background-image: url('~Images/doner-ninja-desktop.png');
+
+    &__bg {
+      display: block;
+    }
+  }
+  @media (min-width: 1200px) {
+  }
+  // END .ninja-top-block
+}
