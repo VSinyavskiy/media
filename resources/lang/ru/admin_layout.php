@@ -2,10 +2,10 @@
 
 return [
     'global' => [
-        'page_title' => 'SLOBODA',
-        'page_description' => 'SLOBODA',
-        'project_name' => 'SLOBODA',
-        'project_name_short' => 'S',
+        'page_title' => 'LAYS DONER',
+        'page_description' => 'LAYS DONER',
+        'project_name' => 'LAYS DONER',
+        'project_name_short' => 'LD',
         'dashboard_title' => 'Dashboard',
         'go_to_list' => 'Перейти к списку',
         'go_to_page' => 'Перейти на страницу',

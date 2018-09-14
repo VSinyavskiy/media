@@ -52,7 +52,6 @@ mix.combine([
     .copy('vendor/almasaeed2010/adminlte/bower_components/Ionicons/fonts/*.*','public/assets/fonts/')
     .copy('vendor/almasaeed2010/adminlte/bower_components/bootstrap/fonts/*.*','public/assets/fonts/')
     .copy('vendor/almasaeed2010/adminlte/dist/img','public/assets/img')
-    .copy('resources/assets/colorbox/images','public/assets/css/images')
     .copy('vendor/almasaeed2010/adminlte/plugins','public/assets/plugins')
     .copy('vendor/datatables/i18n/i18n', 'public/assets/datatables/i18n')
     .copy('vendor/almasaeed2010/adminlte/plugins/iCheck/square/blue.png', 'public/assets/css');

@@ -1,4 +1,4 @@
-@extends('auth.layout')
+@extends('auth_admin.layout')
 
 @section('content')
 <div class="login-box">
@@ -36,7 +36,7 @@
       </div>
     {{ Form::close() }}
 
-    <a href="{{ route('password.request') }}">{{ __('admin_layout.login.restore') }}</a><br>
+    {{--<a href="{{ route('password.request') }}">{{ __('admin_layout.login.restore') }}</a><br>--}}
   </div>
 </div>
 @endsection

@@ -29,20 +29,20 @@
 
           <li class="dropdown user user-menu">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-            <img src="{{ Auth::guard()->user()->avatar->getUrl() }}" class="user-image" alt="User Image">
-            <span class="hidden-xs">{{ Auth::guard()->user()->name }}</span>
+            <img src="{{ Auth::guard('admin')->user()->avatar->getUrl() }}" class="user-image" alt="User Image">
+            <span class="hidden-xs">{{ Auth::guard('admin')->user()->name }}</span>
           </a>
           <ul class="dropdown-menu">
             <li class="user-header">
-              <img src="{{ Auth::guard()->user()->avatar->getUrl() }}" class="img-circle" alt="{{ Auth::guard()->user()->name }}">
+              <img src="{{ Auth::guard('admin')->user()->avatar->getUrl() }}" class="img-circle" alt="{{ Auth::guard('admin')->user()->name }}">
               <p>
-                {{ Auth::guard()->user()->name }}
-                <small>{{ Auth::guard()->user()->email }}</small>
+                {{ Auth::guard('admin')->user()->name }}
+                <small>{{ Auth::guard('admin')->user()->email }}</small>
               </p>
             </li>
             <li class="user-footer">
               <div class="pull-right">
-                <a href="{{ route('logout') }}" class="btn btn-default btn-flat">{{ __('admin_layout.global.logout') }}</a>
+                <a href="{{ route('admin.logout') }}" class="btn btn-default btn-flat">{{ __('admin_layout.global.logout') }}</a>
               </div>
             </li>
           </ul>

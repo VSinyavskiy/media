@@ -17,7 +17,25 @@ Route::group([
 ], function() {	
 
     Route::group([
-        'namespace' => 'Auth',
+        'namespace' => 'Auth\Admin',
+        'prefix'    => 'admin',
+        'as'        => 'admin.'
+    ], function () {
+
+        // Auth
+        Route::get('auth',                   'LoginController@login')->name('login');
+        Route::post('auth',                  'LoginController@loginPost')->name('login.post');
+        Route::get('logout',                 'LoginController@logout')->name('logout');
+
+        // // Passwords Resets
+        // Route::post('password/email',        'ForgotPasswordController@sendResetLinkEmail')->name('password.email');
+        // Route::get('password/reset',         'ForgotPasswordController@showLinkRequestForm')->name('password.request');
+        // Route::post('password/reset',        'ResetPasswordController@reset')->name('password.resetPost');
+        // Route::get('password/reset/{token}', 'ResetPasswordController@showResetForm')->name('password.reset');
+    });
+
+    Route::group([
+        'namespace' => 'Auth\App',
     ], function () {
 
         // // Auth
@@ -35,7 +53,7 @@ Route::group([
     // Admin routes
     Route::group([
         'namespace'  => 'Admin',
-        'middleware' => ['auth'],
+        'middleware' => ['auth:admin'],
         'prefix'     => 'admin',
         'as'         => 'admin.'
     ], function () {
