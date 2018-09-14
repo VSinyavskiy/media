@@ -6,7 +6,8 @@
 /public/media/*
 /public/sitemap.xml
 /public/mix-manifest.json
-
+/storage/*.key
+/storage/*
 /vendor
 /.idea
 /.vagrant
