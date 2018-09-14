@@ -1,0 +1,9 @@
+.tab-error {
+    border-top-color: #dd4d71 !important;
+}
+.block-error {
+    border-bottom-width: 2px;
+    border-bottom-style: solid;
+    border-bottom-color: #dd4b6f;
+}
+
