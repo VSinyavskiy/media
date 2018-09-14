@@ -1,0 +1,27 @@
+# Laravel
+/node_modules
+/public/hot
+/public/storage
+/public/assets/*
+/public/media/*
+/public/sitemap.xml
+/public/mix-manifest.json
+
+/vendor
+/.idea
+/.vagrant
+/.discovery
+Homestead.json
+Homestead.yaml
+npm-debug.log
+.env
+.well-known
+
+# Ignore Mac OS X thumbnails
+.DS_Store
+
+# Not ingore keep file
+!.gitkeep
+
+# PHPStorm
+.idea
