@@ -24,7 +24,7 @@
     line-height: 25px;
     color: $color-red;
     text-align: center;
-    transform: translate(-10%, -50%);
+    transform: translate(0%, -50%);
   }
   &__avatar {
     flex-grow: 0;
@@ -99,6 +99,9 @@
     &__note {
       font-size: 14px;
     }
+    &__prize {
+      font-size: 95px;
+    }
   }
   // END .doner-dude
 }
@@ -108,15 +111,16 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  // overflow: hidden;
+  overflow: hidden;
   position: relative;
   padding: 40px 20px;
   background-color: $color-white;
 
   &__bg-piece {
-    $baseW: 1366px;
-    $baseH: 595px;
+    $baseW: 375px;
+    $baseH: 617px;
     $transform: translate(-50%, -50%);
+    display: none;
     overflow: hidden;
     position: absolute;
     width: 100%;
@@ -124,49 +128,22 @@
 
     &_1 {
       // _potato-chip
-      left: 5%;
-      top: 10%;
-      @include bg-piece-size($baseW, 224px, 170px);
-      transform: $transform scaleX(-1) rotate(15deg);
+      display: block;
+      left: (20px / $baseW) * 100%;
+      top: (60px / $baseH) * 100%;
+      @include bg-piece-size($baseW, 75px, 57px);
+      transform: $transform scaleX(-1) rotate(-5deg);
     }
     &_2 {
       // _onion-rings
-      right: -10%;
-      top: 15%;
-      @include bg-piece-size($baseW, 248px, 169px);
-      transform: $transform rotate(15deg);
-    }
-    &_3 {
-      // _tomato
-      left: 10%;
-      top: 50%;
-      @include bg-piece-size($baseW, 164px, 163px);
-      transform: $transform rotate(-19deg);
-    }
-    &_4 {
-      // _paprica
-      right: 0%;
-      top: 50%;
-      @include bg-piece-size($baseW, 144px, 177px);
-      transform: $transform rotate(17deg);
-    }
-    &_5 {
-      // _garlic
-      left: 5%;
-      top: 95%;
-      @include bg-piece-size($baseW, 194px, 219px);
-      transform: $transform rotate(-10deg);
-    }
-    &_6 {
-      // _potato-chip
-      right: -10%;
-      top: 88%;
-      @include bg-piece-size($baseW, 207px, 157px);
-      transform: $transform scaleX(-1) rotate(80deg);
+      display: block;
+      left: (370px / $baseW) * 100%;
+      top: (50px / $baseH) * 100%;
+      @include bg-piece-size($baseW, 96px, 66px);
+      transform: $transform rotate(-35deg);
     }
   }
   &__bg {
-    display: none;
     position: absolute;
     left: 0;
     top: 0;
@@ -242,10 +219,58 @@
     }
   }
 
-  @media (min-width: 1200px) {
-    &__bg {
+  @media (min-width: 800px) {
+    &__bg-piece {
+      $baseW: 1366px;
+      $baseH: 595px;
+      $transform: translate(-50%, -50%);
       display: block;
+
+      &_1 {
+        // _potato-chip
+        left: 5%;
+        top: 10%;
+        @include bg-piece-size($baseW, 224px, 170px);
+        transform: $transform scaleX(-1) rotate(15deg);
+      }
+      &_2 {
+        // _onion-rings
+        right: -10%;
+        top: 15%;
+        @include bg-piece-size($baseW, 248px, 169px);
+        transform: $transform rotate(15deg);
+      }
+      &_3 {
+        // _tomato
+        left: 10%;
+        top: 50%;
+        @include bg-piece-size($baseW, 164px, 163px);
+        transform: $transform rotate(-19deg);
+      }
+      &_4 {
+        // _paprica
+        right: 0%;
+        top: 50%;
+        @include bg-piece-size($baseW, 144px, 177px);
+        transform: $transform rotate(17deg);
+      }
+      &_5 {
+        // _garlic
+        left: 5%;
+        top: 95%;
+        @include bg-piece-size($baseW, 194px, 219px);
+        transform: $transform rotate(-10deg);
+      }
+      &_6 {
+        // _potato-chip
+        right: -10%;
+        top: 88%;
+        @include bg-piece-size($baseW, 207px, 157px);
+        transform: $transform scaleX(-1) rotate(80deg);
+      }
     }
+  }
+  @media (min-width: 1200px) {
     &__title {
       font-size: 24px;
 

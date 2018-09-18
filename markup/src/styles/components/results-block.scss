@@ -123,12 +123,18 @@
     position: absolute;
     width: 100%;
 
+    // &_1 {
+    //   // _pepper
+    //   left: (70px / $baseW) * 100%;
+    //   top: (190px / $baseH) * 100%;
+    //   @include bg-piece-size($baseW, 172px, 118px);
+    //   transform: rotate(-27deg);
+    // }
     &_1 {
-      // _pepper
-      left: (70px / $baseW) * 100%;
+      // _pepper-v2
+      left: (50px / $baseW) * 100%;
       top: (190px / $baseH) * 100%;
-      @include bg-piece-size($baseW, 172px, 118px);
-      transform: rotate(-27deg);
+      @include bg-piece-size($baseW, 137px, 157px);
     }
     &_2 {
       // _onion-rings

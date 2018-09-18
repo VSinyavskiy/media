@@ -63,9 +63,11 @@
   }
 
   &__copyright {
-    margin: 0 auto;
+    overflow: hidden;
+    margin: 0;
     font-size: 11px;
     color: $color-white;
+    text-align: center;
   }
 
   @media (min-width: 600px) {

@@ -129,6 +129,12 @@ p { margin: 0 0 1em 0; }
     background-image: url('~Images/pepper.png');
     filter: drop-shadow(0 10px 8px rgba($color-black, 0.15));
   }
+  &_pepper-v2 {
+    // 209x143
+    @include bg-piece-size($baseW, 153px, 175px);
+    max-width: 153px;
+    background-image: url('~Images/pepper-v2.png');
+  }
   &_onion-slices {
     // 239x327
     @include bg-piece-size($baseW, 239px, 327px);
