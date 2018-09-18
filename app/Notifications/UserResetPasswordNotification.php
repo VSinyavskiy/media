@@ -7,6 +7,8 @@ use Illuminate\Notifications\Notification;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 
+use Illuminate\Support\Facades\Crypt;
+
 class UserResetPasswordNotification extends Notification
 {
     use Queueable;
@@ -44,10 +46,10 @@ class UserResetPasswordNotification extends Notification
     {  
         return (new MailMessage)
                     ->from('noreply@' . $_SERVER['HTTP_HOST'], env('APP_NAME'))
-                    ->subject('Password recovery')
-                    ->greeting('Hello!')
-                    ->line('You received this email because there was an attempt to recover your password for your email. Click on the button to restore!')
-                    ->action('Reset password', route('password.reset', [$this->token, 'email' => $notifiable->email]))
+                    ->subject('Восстановление пароля')
+                    ->greeting('Здравствуйте!')
+                    ->line('Вы получили это письмо потому что была попытка восстановления пароля для Вашего email. Нажмите на кнопку для продолжения!')
+                    ->action('Восстановить пароль', route('password.reset', [$this->token, 'email' => Crypt::encryptString($notifiable->email)]))
                     ->line('If you have not tried to recover a password, contact the administrator!');
     }
 

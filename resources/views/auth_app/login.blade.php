@@ -31,9 +31,16 @@
       </div>
 
       <div class="login-block__footer">
-        <a class="login-block__link" href="{{ route('password.request') }}">Забыли пароль?</a>
+        <a class="login-block__link" href="#" data-dialog="#reset-password">Забыли пароль?</a>
       </div>
     {{ Form::close() }}
 
   </section>
+@endsection
+
+@section('modals')
+  @include('auth_app.modals._reset_password')
+  @include('auth_app.modals._reset_password_success')
+  @include('auth_app.modals._reset_password_second_step')
+  @include('auth_app.modals._reset_password_second_step_success')
 @endsection

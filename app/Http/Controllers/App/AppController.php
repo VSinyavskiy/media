@@ -18,6 +18,8 @@ class AppController extends Controller
 
     public function user()
     {
-        return view('app.user');
+        $user = auth()->guard('web')->user();
+
+        return view('app.user', compact('user'));
     }
 }

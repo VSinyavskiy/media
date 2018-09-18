@@ -35,6 +35,11 @@ function getBooleanSearchJson()
     return makeJsonParams(getBooleanSearchList());
 }
 
+function isUserAuthorize()
+{
+    return auth()->guard('web')->user() && auth()->guard('web')->user()->role == \App\Models\User::ROLE_USER;
+}
+
 function pluralize($n, $form1, $form2, $form5)
 {
     $n = abs($n) % 100;
