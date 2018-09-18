@@ -11,6 +11,7 @@ use Spatie\MediaLibrary\HasMedia\Interfaces\HasMedia;
 
 use Illuminate\Notifications\Notifiable;
 use App\Notifications\UserResetPasswordNotification;
+use App\Notifications\UserRegisterNotification;
 
 class User extends Authenticatable implements HasMedia
 {
@@ -20,6 +21,8 @@ class User extends Authenticatable implements HasMedia
     const ROLE_ADMIN = 2;
 
     const DEFAULT_AVATAR_PATH = 'assets/images/default_avatar.png';
+
+    const DEFAULT_PASSWORD_LENGTH = 8;
 
     /**
      * The attributes that are mass assignable.
@@ -36,7 +39,7 @@ class User extends Authenticatable implements HasMedia
      * @var array
      */
     protected $hidden = [
-        'password', 'remember_token',
+        'mail_token', 'password', 'remember_token',
     ];
 
     public static function boot()
@@ -47,12 +50,21 @@ class User extends Authenticatable implements HasMedia
             $model->addMedia(resource_path(self::DEFAULT_AVATAR_PATH))
                      ->preservingOriginal()
                      ->toMediaCollection('avatar');
+
+            $model->sendRegisterNotification();
         });
     }
 
     public function sendPasswordResetNotification($token)
     {
         $this->notify(new UserResetPasswordNotification($token));
+    }
+
+    public function sendRegisterNotification()
+    {
+        if (is_null($this->is_mail_confirmed) && is_null($this->role)) {
+            $this->notify(new UserRegisterNotification());
+        }
     }
 
     public function socials()
@@ -63,6 +75,11 @@ class User extends Authenticatable implements HasMedia
     public function setPasswordAttribute($value)
     {
         $this->attributes['password'] = $value ? bcrypt($value) : $this->password;
+    }
+
+    public function setMailTokenAttribute($value)
+    {
+        $this->attributes['mail_token'] = md5($value . microtime());
     }
 
     public function registerMediaConversions(Media $media = null)
@@ -77,5 +94,27 @@ class User extends Authenticatable implements HasMedia
     public function getAvatarAttribute()
     {
         return $this->getFirstMedia('avatar') ?? false;
+    }
+
+    public function setAvatarFromUrl($url)
+    {
+        $this->clearMediaCollection('avatar');
+        return $this->addMediaFromUrl($url)
+                        ->usingFileName('avatar.jpg')
+                        ->toMediaCollection('avatar');
+    }
+
+    public function saveSocial($socialType, $socialId)
+    {
+        return UserSocial::firstOrCreate([
+            'user_id'     => $this->id,
+            'social_type' => $socialType,
+            'social_id'   => $socialId,
+        ]);
+    }
+
+    public static function generatePassword()
+    {
+        return str_random(self::DEFAULT_PASSWORD_LENGTH);
     }
 }

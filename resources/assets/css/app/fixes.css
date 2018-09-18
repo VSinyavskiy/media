@@ -1,0 +1,6 @@
+.hidden {
+	display: none;
+}
+
+.help-block { font-size: 12px; }
+.error { color: #e42313; }

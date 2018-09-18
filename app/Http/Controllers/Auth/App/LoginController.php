@@ -1,9 +1,14 @@
 <?php
 
-namespace App\Http\Controllers\Auth;
+namespace App\Http\Controllers\Auth\App;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Support\Facades\Auth;
+
+use Illuminate\Http\Request;
+
+use App\Models\User;
 
 class LoginController extends Controller
 {
@@ -25,7 +30,7 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/user';
 
     /**
      * Create a new controller instance.
@@ -34,6 +39,35 @@ class LoginController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('guest')->except('logout');
+        $this->middleware('guest:web')->only(['login', 'loginPost']);
+        $this->middleware('auth:web')->only(['logout']);
+    }
+
+    public function login()
+    {
+        return view('auth_app.login');
+    }
+
+    public function loginPost(Request $request)
+    {
+        $this->validate($request, [
+            'phone'    => 'required',
+            'password' => 'required',
+        ]);
+
+        if (Auth::guard('web')->attempt(['phone' => $request->phone, 'password' => $request->password, 'role' => User::ROLE_USER, 'is_mail_confirmed' => true])) {
+            return redirect()->intended(route('user'));
+        } 
+
+        return redirect()->back()->withInput($request->only('email', 'is_remember'))->withErrors([
+            'password' => __('app.login.error'),
+        ]);
+    }
+
+    public function logout()
+    {
+        auth()->guard('web')->logout();
+
+        return redirect()->route('home');
     }
 }

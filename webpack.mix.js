@@ -62,14 +62,14 @@ mix.combine([
 		'resources/assets/css/app/fixes.css',
 	], 'public/assets/css/app.css')
 	.babel([
-        // 'vendor/almasaeed2010/adminlte/bower_components/jquery/dist/jquery.min.js',
+        'vendor/almasaeed2010/adminlte/bower_components/jquery/dist/jquery.min.js',
         'markup/build/assets/js/common.js',
 		'markup/build/assets/js/vendor.js',
-		'markup/build/assets/js/app.js',
+		'markup/build/assets/js/application.js',
 
 		'resources/assets/js/common/namespace.js',
 		'resources/assets/js/app/common.js',
-	], 'public/assets/js/application.js')
+	], 'public/assets/js/app.js')
 	.copy('markup/build/assets/img', 'public/assets/img')
 	.copy('resources/assets/images', 'public/assets/img')
 	.copy('markup/build/assets/fonts', 'public/assets/fonts');

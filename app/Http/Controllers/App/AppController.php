@@ -6,9 +6,18 @@ use App\Http\Controllers\Controller;
 
 class AppController extends Controller
 {
+	public function age()
+    {
+        return view('app.age_gate');
+    }
+
     public function index()
     {
-        // return view('app.index');
-        return view('welcome');
+        return view('app.index');
+    }
+
+    public function user()
+    {
+        return view('app.index');
     }
 }
