@@ -34,7 +34,7 @@
                 </div>
                 <div class="doner__score">30</div>
             </div>
-            <div class="doner__desc"><b>Размер твоего донера</b><a class="doner__link" href="#">История получения баллов</a></div>
+            <div class="doner__desc"><b>Размер твоего донера</b><a class="doner__link" href="{{ route('history') }}">История получения баллов</a></div>
         </div>
         <div class="user-top-block__counter">Ты позвал ХХ друзей</div><a class="user-top-block__btn btn btn_default" href="#" data-dialog="#copy-link">ПОЗВАТЬ ЕЩЕ</a></section>
     <section class="share-block">

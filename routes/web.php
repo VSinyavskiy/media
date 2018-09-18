@@ -58,6 +58,7 @@ Route::group([
         'prefix'     => 'admin',
         'as'         => 'admin.'
     ], function () {
+        
         // Dashboard
         Route::get('/',                        'DashboardController@index')->name('dashboard');      
     });
@@ -67,11 +68,22 @@ Route::group([
         'namespace'  => 'App',
         'middleware' => ['age'],
     ], function () {
+
+        // Age Gate
     	Route::get('age',       'AppController@age')->name('age');
 
+        // Home
         Route::get('/',         'AppController@index')->name('home');
 
-        Route::get('user',         'AppController@user')->name('user')->middleware('auth:web');
+        // Game
+        Route::get('game',      'AppController@game')->name('game');
+
+        // User
+        Route::get('user',      'AppController@user')->name('user')->middleware('auth:web');
+        Route::get('history',   'AppController@history')->name('history')->middleware('auth:web');
+
+        // Winners
+        Route::get('winners',   'AppController@winners')->name('winners');
     });
     
 });

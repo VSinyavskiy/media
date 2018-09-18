@@ -12,10 +12,18 @@
     <div class="header__menu menu">
         <nav class="menu__nav">
             <ul class="menu__list">
-                <li class="menu__item {{ Route::is('home') ? 'menu__item_active' : '' }}"><a class="menu__link" href="{{ route('home') }}">Главная</a></li>
-                <li class="menu__item"><a class="menu__link" href="#">Игра</a></li>
-                <li class="menu__item {{ Route::is('user') ? 'menu__item_active' : '' }}"><a class="menu__link" href="{{ route('user') }}">Личный кабинет</a></li>
-                <li class="menu__item"><a class="menu__link" href="#">Победители</a></li>
+                <li class="menu__item {{ Route::is('home') ? 'menu__item_active' : '' }}">
+                    <a class="menu__link" href="{{ route('home') }}">Главная</a>
+                </li>
+                <li class="menu__item {{ Route::is('game') ? 'menu__item_active' : '' }}">
+                    <a class="menu__link" href="{{ route('game') }}">Игра</a>
+                </li>
+                <li class="menu__item {{ Route::is('user') || Route::is('history') ? 'menu__item_active' : '' }}">
+                    <a class="menu__link" href="{{ route('user') }}">Личный кабинет</a>
+                </li>
+                <li class="menu__item {{ Route::is('winners') ? 'menu__item_active' : '' }}">
+                    <a class="menu__link" href="{{ route('winners') }}">Победители</a>
+                </li>
                 <li class="menu__item"><a class="menu__link" href="#">Правила</a></li>
             </ul>
             <ul class="menu__lang lang">
