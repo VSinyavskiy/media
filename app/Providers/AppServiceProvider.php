@@ -2,6 +2,11 @@
 
 namespace App\Providers;
 
+use App\Game\Contracts\GameCalculatorInterface;
+use App\Game\Contracts\GamesStorageInterface;
+use App\Game\Contracts\ReceiveGamePointsInterface;
+use App\Game\GameCalculator;
+use App\Models\GameData;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Schema;
 
@@ -24,6 +29,20 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        $this->app->bind(ReceiveGamePointsInterface::class, function($app) {
+            /**
+             * TODO: bind model or class, which implements ReceiveGamePointsInterface
+             * and it starts receiving points from the game
+             */
+            return new \App\Game\GamePointsReceiverStub();
+        });
+
+        $this->app->singleton(GamesStorageInterface::class, function($app) {
+            return new GameData();
+        });
+
+        $this->app->singleton(GameCalculatorInterface::class, function($app) {
+           return new GameCalculator();
+        });
     }
 }

@@ -68,7 +68,6 @@ Route::group([
         'namespace'  => 'App',
         'middleware' => ['age'],
     ], function () {
-
         // Age Gate
     	Route::get('age',       'AppController@age')->name('age');
 
@@ -76,7 +75,9 @@ Route::group([
         Route::get('/',         'AppController@index')->name('home');
 
         // Game
-        Route::get('game',      'AppController@game')->name('game');
+        Route::get('/game',          'GameController@game')->name('game');
+        Route::get('/game_results',  'GameController@checkAuth')->name('game.check_auth');
+        Route::post('/game_results', 'GameController@results')->name('game.results');
 
         // User
         Route::get('user',      'AppController@user')->name('user')->middleware('auth:web');
