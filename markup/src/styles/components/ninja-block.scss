@@ -18,14 +18,14 @@
     &_1 {
       // _potato-chip
       left: (10px / $baseW) * 100%;
-      top: (10px / $baseH) * 100%;
+      top: (30px / $baseH) * 100%;
       @include bg-piece-size($baseW, 82px * 1.25, 62px * 1.25);
       transform: scaleX(-1) rotate(16deg);
     }
     &_2 {
       // _garlic
-      left: (290px / $baseW) * 100%;
-      top: (90px / $baseH) * 100%;
+      left: (310px / $baseW) * 100%;
+      top: (50px / $baseH) * 100%;
       @include bg-piece-size($baseW, 62px, 70px);
       transform: rotate(-110deg);
     }
@@ -39,7 +39,7 @@
     &_4 {
       // _potato-chip
       left: (300px / $baseW) * 100%;
-      top: (270px / $baseH) * 100%;
+      top: (300px / $baseH) * 100%;
       @include bg-piece-size($baseW, 54px * 1.75, 41px * 1.75);
       transform: scaleX(-1) rotate(80deg);
     }
@@ -52,7 +52,7 @@
     width: 100%;
     height: 100%;
     background-image: url('~Images/doner-ninja.png');
-    background-position: 50% 30%;
+    background-position: 50% 40%;
     background-size: cover;
     background-repeat: no-repeat;
     background-color: transparent;
@@ -112,6 +112,7 @@
       background-position: 50% 50%;
     }
     &__desc {
+      margin: 0 0 30px 0;
       font-size: 20px;
 
       strong, b {

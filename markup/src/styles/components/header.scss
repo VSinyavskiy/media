@@ -170,6 +170,7 @@
     @include shadow-1;
     font-size: 44px;
     color: $color-red;
+    text-decoration: none;
 
     &::after {
       content: attr(data-title);
@@ -188,6 +189,7 @@
     &>.svg {
       width: em(20px, 44px);
       height: em(20px, 44px);
+      pointer-events: none;
     }
 
     &_close {

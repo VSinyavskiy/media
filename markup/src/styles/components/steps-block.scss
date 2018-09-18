@@ -2,6 +2,7 @@
   $self: &;
   display: flex;
   flex-direction: column;
+  align-items: center;
   position: relative;
   z-index: 5;
 
@@ -72,6 +73,7 @@
   }
   &__desc {
     position: relative;
+    width: 100%;
     font-weight: $bold;
     font-size: 16px;
     color: $color-dark;
@@ -145,35 +147,35 @@
 
   &__bg-piece {
     $baseW: 375px;
-    $baseH: 694px;
+    $baseH: 524px;
     position: absolute;
     width: 100%;
 
     &_1 {
       // _doner
       left: (-20px / $baseW) * 100%;
-      top: (-20px / $baseH) * 100%;
+      top: (-50px / $baseH) * 100%;
       @include bg-piece-size($baseW, 84px, 143px);
       transform: scaleX(-1) rotate(96deg);
     }
     &_2 {
       // _doner
       left: (310px / $baseW) * 100%;
-      top: (-20px / $baseH) * 100%;
+      top: (-50px / $baseH) * 100%;
       @include bg-piece-size($baseW, 84px, 143px);
       transform: rotate(96deg);
     }
     &_3 {
       // _garlic
       left: (-30px / $baseW) * 100%;
-      top: (630px / $baseH) * 100%;
+      top: (460px / $baseH) * 100%;
       @include bg-piece-size($baseW, 98px, 111px);
       transform: rotate(-20deg);
     }
     &_4 {
       // _tomato
       left: (310px / $baseW) * 100%;
-      top: (620px / $baseH) * 100%;
+      top: (450px / $baseH) * 100%;
       @include bg-piece-size($baseW, 111px, 110px);
       transform: rotate(-20deg);
     }
@@ -206,36 +208,36 @@
   &_w-bg {
     position: relative;
     z-index: 10;
-    padding-top: 100px;
+    padding-top: 65px;
   }
 
   @media (min-width: 600px) and (max-width: 1199px) {
     &__bg-piece {
       $baseW: 600px;
-      $baseH: 530px;
+      $baseH: 495px;
 
       &_1 {
         // _doner
         left: (0px / $baseW) * 100%;
-        top: (-20px / $baseH) * 100%;
+        top: (-80px / $baseH) * 100%;
         @include bg-piece-size($baseW, 84px, 143px);
       }
       &_2 {
         // _doner
         left: (530px / $baseW) * 100%;
-        top: (-20px / $baseH) * 100%;
+        top: (-80px / $baseH) * 100%;
         @include bg-piece-size($baseW, 84px, 143px);
       }
       &_3 {
         // _garlic
         left: (-30px / $baseW) * 100%;
-        top: (460px / $baseH) * 100%;
+        top: (440px / $baseH) * 100%;
         @include bg-piece-size($baseW, 98px, 111px);
       }
       &_4 {
         // _tomato
         left: (530px / $baseW) * 100%;
-        top: (450px / $baseH) * 100%;
+        top: (430px / $baseH) * 100%;
         @include bg-piece-size($baseW, 111px, 110px);
       }
     }
@@ -280,6 +282,10 @@
     &__list {
       flex-direction: row;
       max-width: 1240px;
+    }
+
+    &_w-bg {
+      padding-top: 100px;
     }
   }
   // END .steps-block
