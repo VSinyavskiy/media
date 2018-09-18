@@ -4,6 +4,9 @@ namespace App\Http\Requests\App\Auth;
 
 use Illuminate\Foundation\Http\FormRequest;
 
+use App\Models\User;
+use App\Rules\UniqueCombination;
+
 class SocialRegisterRequest extends FormRequest
 {
     /**
@@ -26,10 +29,16 @@ class SocialRegisterRequest extends FormRequest
         return [
             'first_name'            => 'required|max:191',
             'last_name'             => 'required|max:191',
-            'phone'                 => 'required|confirmed|max:191',
+            'phone'                 => ['required', 'confirmed', 'max:191', new UniqueCombination(
+                                        User::class, [
+                                            'email' => $this->request->get('email'),
+                                        ])],
             'phone_confirmation'    => 'max:191',
             'city'                  => 'required|max:191',
-            'email'                 => 'required|email|max:191',
+            'email'                 => ['required', 'email', 'max:191', new UniqueCombination(
+                                        User::class, [
+                                            'phone' => $this->request->get('phone'),
+                                        ])],
         ];
     }
 }

@@ -65,7 +65,7 @@ class RegisterController extends Controller
         $user->mail_token = $request->email;
         $user->save();
 
-        return redirect()->route('home', ['#open-confirm-email']);
+        return redirect()->route('home', ['#open-registration-confirm-email']);
     }
 
     public function registerFromSocial()
@@ -79,25 +79,18 @@ class RegisterController extends Controller
 
     protected function createFromSocial(SocialRegisterRequest $request, User $user)
     {
-        $userByPhone = User::where('phone', $request->phone)->first();
-        $userByEmail = User::where('email', $request->email)->first();
+        $siteUser = User::where([
+                    'phone' => $request->phone,
+                    'email' => $request->email,
+                ])->first();
 
-        if ((isset($userByPhone) && ! isset($userByEmail)) ||
-            (! isset($userByPhone) && isset($userByEmail)) ||
-            (isset($userByPhone) && isset($userByEmail) && $userByPhone->id !== $userByEmail->id)) {
-            return redirect()->route('register.social')->withErrors([
-                'phone' => 'lol',
-                'email' => 'kek',
-            ])->withInput();
-        } 
-
-        if (! isset($userByPhone) && ! isset($userByEmail)) {
+        if (! isset($siteUser)) {
             $user->fill($request->all());
             $user->password          = User::generatePassword();
             $user->is_mail_confirmed = true;
             $user->save();
         } else {
-            $user = $userByEmail;
+            $user = $siteUser;
         }
 
         $social = session('social');

@@ -28,7 +28,7 @@
         if(prefix == hash.substring(0, prefix.length)) {
             var modalId = hash.substring(prefix.length);
 
-            $('#' + modalId).show();
+            $('#' + modalId).addClass('dialog_isOpen');
 
             ns.clearUrlHash();
         }

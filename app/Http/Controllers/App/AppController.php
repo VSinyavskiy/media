@@ -18,6 +18,6 @@ class AppController extends Controller
 
     public function user()
     {
-        return view('app.index');
+        return view('app.user');
     }
 }

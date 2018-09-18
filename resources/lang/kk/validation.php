@@ -147,5 +147,6 @@ return [
         'image'                   => 'Кескін',
         'result_text_under_image' => 'Кескін астындағы нәтиже мәтіні',
         'short_text'              => 'Қысқа мәтін',
+        'email' => 'Email',
     ],
 ];

@@ -51,8 +51,8 @@
         @endif
 
     </div>
-    
-    @include('app.modals._invite')
+
+    @yield('modals')
 
     <script src="{{ mix('assets/js/app.js') }}"></script>
 

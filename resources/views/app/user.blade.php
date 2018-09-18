@@ -179,6 +179,5 @@
 @section('share_description')@endsection
 
 @section('modals')
-    @include('app.modals._auth_social_error')
-    @include('app.modals._registration_confirm_email')
+    @include('app.modals._registration_confirmed_email')
 @endsection
