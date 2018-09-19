@@ -1,0 +1,46 @@
+.close-btn {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 44px;
+  text-decoration: none;
+
+  &__icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 1em;
+    height: 1em;
+    margin: 0;
+    border-radius: 50%;
+    background-color: $color-white;
+    @include shadow-1;
+    color: $color-red;
+
+    &>.svg {
+      width: em(20px, 44px);
+      height: em(20px, 44px);
+      pointer-events: none;
+    }
+  }
+  &__text {
+    flex-basis: 100%;
+    display: none;
+    font-weight: $medium;
+    font-size: 16px;
+    line-height: 1;
+    color: $color-dark;
+    white-space: nowrap;
+  }
+
+  @media (min-width: 800px) {
+    &__icon {
+      margin: 0 0 10px 0;
+    }
+    &__text {
+      display: block;
+    }
+  }
+  // END .close-btn
+}

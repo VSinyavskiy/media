@@ -21,7 +21,7 @@
 
 .form {
   $self: &;
-  $font-size: 14px;
+  $font-size: 16px;
 
   input, textarea {
     // &[placeholder] { @include placeholder-styling; }
@@ -57,8 +57,8 @@
     background: $color-white;
     font-family: $font-default;
     font-size: rem($font-size);
-    line-height: em(20px, $font-size);
-    color: $color-gray-3;
+    line-height: (20px / $font-size);
+    color: $color-dark;
     vertical-align: middle;
 
     &-icon {
@@ -72,10 +72,11 @@
       font-size: 20px;
       color: $color-red;
 
-      svg {
+      .svg {
         display: block;
         width: 1em;
         height: 1em;
+        pointer-events: none;
       }
     }
 
