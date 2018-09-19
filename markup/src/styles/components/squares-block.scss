@@ -31,6 +31,7 @@
     text-align: center;
   }
   &__btn {
+    display: block;
     position: absolute;
     left: 50%;
     bottom: 20px;
@@ -61,7 +62,7 @@
 
   &_yellow {
     #{ $self }__bg {
-      background-color: $color-yellow;
+      background-image: url('~Images/doner-square-3.png');
     }
     #{ $self }__text {
       background-color: $color-yellow;
@@ -114,8 +115,16 @@
       font-size: 24px;
     }
     &__btn {
+      display: none;
       bottom: 40px;
       font-size: 30px;
+    }
+
+    &:hover {
+      #{ $self }__bg {
+        transform: scale(1.3);
+        opacity: 0;
+      }
     }
   }
   // END .square

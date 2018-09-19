@@ -83,6 +83,7 @@
     &>.svg {
       width: em(20px, 44px);
       height: em(20px, 44px);
+      pointer-events: none;
     }
   }
 
@@ -194,18 +195,21 @@
 
     &_close {
       display: none;
+      position: fixed;
     }
   }
 
   &__menu {
     display: none;
-    position: absolute;
+    overflow-x: hidden;
+    overflow-y: auto;
+    position: fixed;
     z-index: 40;
     left: 0;
     top: 0;
     width: 100vw;
     max-width: 375px;
-    height: 100vh;
+    height: 100%;
   }
 
   &__logo {

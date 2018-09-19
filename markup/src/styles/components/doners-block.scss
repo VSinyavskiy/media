@@ -207,6 +207,10 @@
   &__btn {
     margin-top: 30px;
   }
+  &__back-btn {
+    margin: 0 0 20px 0;
+    font-size: 44px;
+  }
 
   @media (min-width: 800px) {
     &__list {
@@ -216,6 +220,13 @@
       &:last-child {
         border-bottom: none;
       }
+    }
+    &__back-btn {
+      position: absolute;
+      left: calc(50% + 310px;);
+      top: 25px;
+      margin: 0;
+      font-size: 58px;
     }
   }
 
@@ -280,6 +291,10 @@
     }
     &__item {
       padding: 25px 0;
+    }
+    &__back-btn {
+      left: calc(50% + 350px);
+      top: 35px;
     }
     // &__list {
     //   &_wo-borders {

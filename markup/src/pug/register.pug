@@ -18,12 +18,14 @@ block body
   main.main
     section.top-spacer
     section.links-block
+      +close-btn('index.html', 'Закрыть', 'links-block__back-btn')
       ul.links-block__list
         li.links-block__item: a.links-block__link(href='#') Вход
         li.links-block__item.links-block__item_active: a.links-block__link(href='#') Регистрация
       .links-block__socials
         a.links-block__social(href='#'): +svg-include('ico-vk')
         a.links-block__social(href='#'): +svg-include('ico-fb')
+        a.links-block__social(href='#'): +svg-include('ico-instagram')
     section.register-block.form
       label.form__label Ваше имя
       .form__item.form__item_required

@@ -97,6 +97,19 @@
     &__desc {
       width: 50%;
     }
+
+    .steps-block_w-bg & {
+      flex-direction: column;
+      align-items: center;
+
+      &__bg {
+        margin: 0 0 15px 0;
+      }
+      &__desc {
+        width: auto;
+        max-width: 350px;
+      }
+    }
   }
 
   @media (min-width: 1200px) {
@@ -145,6 +158,7 @@
 }
 
 .steps-block {
+  $self: &;
   padding: 40px 0;
   background-color: $color-white;
   text-align: center;
@@ -247,6 +261,12 @@
     }
     &__item:nth-child(2n) {
       flex-direction: row-reverse;
+    }
+
+    &_w-bg {
+      #{ $self }__item:nth-child(2n) {
+        flex-direction: column;
+      }
     }
   }
 

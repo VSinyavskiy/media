@@ -4,7 +4,7 @@ export default class {
   constructor() {
     document.addEventListener('DOMContentLoaded', () => {
       on('click', '.header__button', this.menuToggle);
-      on('click', '.dialog__btn', this.squareToggle);
+      on('click', '.square__btn', this.squareToggle);
       on('click', '[data-dialog]', this.openDialog);
       on('click', '[data-dialog-dismiss]', this.closeDialog);
     });

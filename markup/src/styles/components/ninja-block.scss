@@ -17,7 +17,7 @@
 
     &_1 {
       // _potato-chip
-      left: (10px / $baseW) * 100%;
+      left: (-30px / $baseW) * 100%;
       top: (30px / $baseH) * 100%;
       @include bg-piece-size($baseW, 82px * 1.25, 62px * 1.25);
       transform: scaleX(-1) rotate(16deg);

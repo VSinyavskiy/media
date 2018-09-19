@@ -39,6 +39,7 @@
     &>.svg {
       width: em(20px, 44px);
       height: em(20px, 44px);
+      pointer-events: none;
     }
   }
   &__title {

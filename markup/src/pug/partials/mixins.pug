@@ -3,3 +3,13 @@ mixin setVariable(variable, value)
 
 mixin svg-include(svgId)
   svg.svg: use(xlink:href=`#svg-${svgId}`)
+
+mixin scroll-down(text, className)
+  - className = className || '';
+  .scroll-down(class=className) #{text}
+
+mixin close-btn(link, text, className)
+  - className = className || '';
+  a.close-btn(class=className, href=link)
+    .close-btn__icon: +svg-include('ico-close')
+    .close-btn__text #{text}
