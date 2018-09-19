@@ -15,9 +15,9 @@ class GameData extends Model implements GamesStorageInterface, GameResultInterfa
      * @param int $userId
      * @param int $score
      * @param array $gameData
-     * @return int|null
+     * @return GameResultInterface|null
      */
-    public static function saveGameResult(int $userId, int $score, array $gameData): ?int
+    public static function saveGameResult(int $userId, int $score, array $gameData): ?GameResultInterface
     {
         $model                  = new self;
         $model->user_id         = $userId;
@@ -28,7 +28,7 @@ class GameData extends Model implements GamesStorageInterface, GameResultInterfa
         $isUserBestRecalculated = self::recalculateTodaysBestForUser($userId);
 
         if($isModelSaved && $isUserBestRecalculated) {
-            return $model->id;
+            return $model;
         }
 
         return null;
@@ -138,5 +138,14 @@ class GameData extends Model implements GamesStorageInterface, GameResultInterfa
     public function user()
     {
         return $this->belongsTo(User::class);
+    }
+
+    /**
+     * @param int $userId
+     * @return int
+     */
+    public static function getUserPlayedGamesCount(int $userId): int
+    {
+        return self::where('user_id', $userId)->count();
     }
 }

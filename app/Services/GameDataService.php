@@ -6,6 +6,7 @@ namespace App\Services;
 
 use App\Game\Contracts\GameCalculatorInterface;
 use App\Game\Contracts\GamesStorageInterface;
+use App\Game\Contracts\ReceiveGamePointsInterface;
 use Illuminate\Contracts\Auth\Guard as AuthGuardInterface;
 use Illuminate\Http\JsonResponse;
 
@@ -15,6 +16,8 @@ use Illuminate\Http\JsonResponse;
  */
 class GameDataService
 {
+    const FIRST_PLAY_BONUS_POINTS_NUMBER = 1;
+
     /**
      * @var AuthGuardInterface
      */
@@ -31,17 +34,23 @@ class GameDataService
     protected $storage;
 
     /**
+     * @var ReceiveGamePointsInterface
+     */
+    protected $bonusReceiver;
+
+    /**
      * GameDataService constructor.
      *
      * @param AuthGuardInterface $auth
      * @param GameCalculatorInterface $calculator
      * @param GamesStorageInterface $storage
      */
-    public function __construct(AuthGuardInterface $auth, GameCalculatorInterface $calculator, GamesStorageInterface $storage)
+    public function __construct(AuthGuardInterface $auth, GameCalculatorInterface $calculator, GamesStorageInterface $storage, ReceiveGamePointsInterface $bonusReceiver)
     {
-        $this->auth       = $auth;
-        $this->calculator = $calculator;
-        $this->storage    = $storage;
+        $this->auth          = $auth;
+        $this->calculator    = $calculator;
+        $this->storage       = $storage;
+        $this->bonusReceiver = $bonusReceiver;
     }
 
     /**
@@ -81,17 +90,22 @@ class GameDataService
         }
 
         // save game record
-        $resultId = $this->storage::saveGameResult($this->auth->id(), $this->calculator->getScore(), $gameData);
+        $resultRecord = $this->storage::saveGameResult($this->auth->id(), $this->calculator->getScore(), $gameData);
         // check saving error
-        if(is_null($resultId)) {
+        if(is_null($resultRecord)) {
             return response()->json([
                 'result' => 'error',
                 'errors' => ['Game result not saved'],
             ]);
         }
 
+        // send first play bonus points
+        if($this->storage::getUserPlayedGamesCount($this->auth->id()) == 1) {
+            $this->bonusReceiver->receiveGameFirstPlayPoints($this->auth->id(), self::FIRST_PLAY_BONUS_POINTS_NUMBER, $resultRecord->getPlayedOn());
+        }
+
         // get top and make valid struct for the game
-        $results = $this->storage::getTopResults(new \DateTime(), 4, $resultId);
+        $results = $this->storage::getTopResults(new \DateTime(), 4, $resultRecord->getResultId());
         $top     = [];
 
         foreach($results as $result) {
@@ -99,7 +113,7 @@ class GameDataService
                 'name'   => $result->getPlayerName(),
                 'score'  => $result->getPlayerScore(),
                 'place'  => $result->getPlayerRank(),
-                'its_my' => $result->getResultId() == $resultId,
+                'its_my' => $result->getResultId() == $resultRecord->getResultId(),
                 'its_me' => $result->getPlayerId() == $this->auth->id(),
             ];
         }
