@@ -13,6 +13,26 @@
   background-repeat: no-repeat;
   background-color: $color-violet;
 
+  &__game {
+    display: none;
+    position: fixed;
+    z-index: 100;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+
+    iframe {
+      border: none;
+      width: 100%;
+      height: 100%;
+    }
+
+    // &-btn {}
+    &_active {
+      display: block;
+    }
+  }
   &__bg-piece {
     $baseW: 1366px;
     $baseH: 650px;

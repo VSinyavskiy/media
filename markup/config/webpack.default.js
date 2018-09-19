@@ -17,6 +17,8 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const HtmlWebpackHarddiskPlugin = require('html-webpack-harddisk-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const ImageminPlugin = require('imagemin-webpack-plugin').default;
+const CopyWebpackPlugin = require('copy-webpack-plugin');
+// const WriteFilePlugin = require('write-file-webpack-plugin');
 
 module.exports = function({
   env = 'development',
@@ -209,6 +211,11 @@ module.exports = function({
         names: ['common'],
       }),
       new ExtractTextPlugin({ filename: 'css/[name].css', allChunks: true }), // .[contenthash:4]
+      new CopyWebpackPlugin([
+        { from: 'src/game', to: 'game' },
+      ], {
+        cache: true,
+      }),
     ],
     watchOptions: {
       ignored: RegExp(`node_modules|src(\\|/)vendor|${OUTPUT_DIR}`),
@@ -254,6 +261,17 @@ module.exports = function({
     );
   }
   config.plugins.push(new HtmlWebpackHarddiskPlugin());
+
+  // if (DEV_SERVER) {
+  //   config = webpackMerge(config, {
+  //     plugins: [
+  //       new WriteFilePlugin({
+  //         test: /game(\\|\/)/,
+  //         useHashIndex: true,
+  //       }),
+  //     ],
+  //   });
+  // }
 
   if (!DEV_SERVER) {
     config = webpackMerge(config, {
