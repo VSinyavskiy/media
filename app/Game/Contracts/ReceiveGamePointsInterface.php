@@ -11,7 +11,7 @@ namespace App\Game\Contracts;
 interface ReceiveGamePointsInterface
 {
     /**
-     * Receive bonus points from the game
+     * Receive bonus points from the game (TOP players of the day)
      *
      * @param int $userId
      * @param int $points
@@ -19,5 +19,15 @@ interface ReceiveGamePointsInterface
      * @param \DateTime $playedOn
      * @return bool
      */
-    public function receiveGamePoints(int $userId, int $points, int $rank, \DateTime $playedOn): bool;
+    public function receiveGameTopPoints(int $userId, int $points, int $rank, \DateTime $playedOn): bool;
+
+    /**
+     * Receive bonus points from the game (user's first play)
+     *
+     * @param int $userId
+     * @param int $points
+     * @param \DateTime $playedOn
+     * @return bool
+     */
+    public function receiveGameFirstPlayPoints(int $userId, int $points, \DateTime $playedOn): bool;
 }

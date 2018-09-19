@@ -58,7 +58,7 @@ class ProcessGameBonusPoints extends Command
 
         $this->info(date('Y-m-d H:i:s') . ' | Trying to send bonus points for: ' . $date->format('Y-m-d') . ' ...');
         foreach($topResults as $result) {
-            $isDone = $this->receiver->receiveGamePoints(
+            $isDone = $this->receiver->receiveGameTopPoints(
                 $result->getPlayerId(),
                 self::BONUS_POINTS_NUMBER,
                 $result->getPlayerRank(),
