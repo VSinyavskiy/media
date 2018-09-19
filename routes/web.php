@@ -72,7 +72,7 @@ Route::group([
     	Route::get('age',       'AppController@age')->name('age');
 
         // Home
-        Route::get('/',         'AppController@index')->name('home');
+        Route::get('/',         'AppController@index')->name('home')->middleware('invite');
 
         // Game
         Route::get('/game',          'GameController@game')->name('game');
@@ -80,11 +80,10 @@ Route::group([
         Route::post('/game_results', 'GameController@results')->name('game.results');
 
         // User
-        Route::get('user',      'AppController@user')->name('user')->middleware('auth:web');
-        Route::get('history',   'AppController@history')->name('history')->middleware('auth:web');
-
-        // Winners
-        Route::get('winners',   'AppController@winners')->name('winners');
+        Route::get('user',          'UsersController@user')->name('user')->middleware('auth:web');
+        Route::get('history',       'UsersController@history')->name('history')->middleware('auth:web');
+        Route::get('winners',       'UsersController@winners')->name('winners');       
     });
-    
+
+    Route::get('invite/{user}', 'App\UsersController@invite')->name('invite');
 });

@@ -15,6 +15,8 @@ use App\Models\UserSocial;
 use App\Http\Requests\App\Auth\RegisterRequest;
 use App\Http\Requests\App\Auth\SocialRegisterRequest;
 
+use Cookie;
+
 class RegisterController extends Controller
 {
     /*
@@ -65,7 +67,7 @@ class RegisterController extends Controller
         $user->mail_token = $request->email;
         $user->save();
 
-        return redirect()->route('home', ['#open-registration-confirm-email']);
+        return redirect()->route('home', ['#open-registration-confirm-email'])->withCookie(Cookie::forget('invited'));
     }
 
     public function registerFromSocial()
@@ -102,13 +104,14 @@ class RegisterController extends Controller
 
         auth()->guard('web')->login($user);
 
-        return redirect()->route('user');
+        return redirect()->route('user')->withCookie(Cookie::forget('invited'));
     }
 
     public function confirm($token)
     {
         $user = User::where('mail_token', $token)->first();
         $user->is_mail_confirmed = true;
+        $user->mail_token        = null;
         $user->save();
 
         auth()->guard('web')->login($user);

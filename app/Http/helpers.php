@@ -1,5 +1,7 @@
 <?php
 
+use Carbon\Carbon;
+
 /**
  * Creates JSON params for html
  */
@@ -49,4 +51,14 @@ function pluralize($n, $form1, $form2, $form5)
     else if ($n1 == 1) return $form1;
 
     return $form5;
+}
+
+function getNowTimestamp()
+{
+    return Carbon::now(config('app.timezone'));
+}
+
+function getTimestampFromDateTime($dateTime) // \DateTime
+{
+    return Carbon::parse($dateTime, config('app.timezone'));
 }

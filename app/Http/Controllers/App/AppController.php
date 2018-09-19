@@ -15,26 +15,4 @@ class AppController extends Controller
     {
         return view('app.index');
     }
-
-    public function user()
-    {
-        $user = auth()->guard('web')->user();
-
-        return view('app.user', compact('user'));
-    }
-
-    public function history()
-    {
-        return view('app.history');
-    }
-
-    public function winners()
-    {
-        return view('app.winners');
-    }
-
-    public function game()
-    {
-        return view('app.game');
-    }
 }

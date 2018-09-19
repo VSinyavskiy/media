@@ -7,9 +7,9 @@
         </a>
         <div class="dialog__title">Пригласить друга</div>
         <div class="dialog__body form">
-            <p>Скопируй ссылку и отправляй другу.<br>За каждого друга +1 к твоему донеру</p>
-            <div class="form__item form__item_w-icon"><input class="form__control form__control_focused form__control_bold" type="text" name="copy-to-clipboard" value="Lays.kz/ashdgausjhcvb" readonly="readonly">
-                <a class="form__control-icon copy-icon" href="#" data-copy-to-clipboard="Lays.kz/ashdgausjhcvb" data-copy-to-clipboard-success="Ссылка скопирована">
+            <p>Скопируй ссылку и отправляй другу.<br>За каждого друга +{{ \App\Models\UserPointsLog::COUNT_POINT_FOR_FRIEND_INVITE }} к твоему донеру</p>
+            <div class="form__item form__item_w-icon"><input class="form__control form__control_focused form__control_bold" type="text" name="copy-to-clipboard" value="{{ route('invite', $user) }}" readonly="readonly">
+                <a class="form__control-icon copy-icon" href="#" data-copy-to-clipboard="{{ route('invite', $user) }}" data-copy-to-clipboard-success="Ссылка скопирована">
                     <div class="copy-icon__default">
                         <svg class="svg">
                             <use xlink:href="#svg-ico-copy"></use>

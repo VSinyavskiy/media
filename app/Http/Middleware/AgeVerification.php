@@ -6,6 +6,8 @@ use Closure;
 use Cookie;
 use Route;
 
+use App\Models\User;
+
 class AgeVerification
 {
     /**
@@ -30,7 +32,11 @@ class AgeVerification
         }
 
         if (! Route::is('age') && ! Cookie::get('age_verified')) {
-            return redirect()->route('age');
+            if (Cookie::has('invited')) {
+                return redirect()->route('age')->withCookie(Cookie::make('first_after_invite', true, User::FIRST_AFTER_INVITE_COOCKIE_LIVE_MINUTES));
+            } else {
+                return redirect()->route('age');
+            }
         }
 
         if (Route::is('age') && Cookie::get('age_verified')) {

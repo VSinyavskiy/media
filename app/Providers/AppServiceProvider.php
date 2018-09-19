@@ -10,6 +10,8 @@ use App\Models\GameData;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Schema;
 
+use App\Models\UserPointsLog;
+
 class AppServiceProvider extends ServiceProvider
 {
     /**
@@ -30,11 +32,7 @@ class AppServiceProvider extends ServiceProvider
     public function register()
     {
         $this->app->bind(ReceiveGamePointsInterface::class, function($app) {
-            /**
-             * TODO: bind model or class, which implements ReceiveGamePointsInterface
-             * and it starts receiving points from the game
-             */
-            return new \App\Game\GamePointsReceiverStub();
+            return new UserPointsLog();
         });
 
         $this->app->singleton(GamesStorageInterface::class, function($app) {

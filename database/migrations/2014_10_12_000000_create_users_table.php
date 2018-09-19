@@ -23,9 +23,11 @@ class CreateUsersTable extends Migration
             $table->string('phone')->unique();
             $table->string('city')->nullable();
             $table->string('email')->unique();
-            $table->string('mail_token')->nullable()->unique();
+            $table->string('mail_token')->nullable()->index();
             $table->string('password');
             $table->boolean('is_mail_confirmed')->default(0);
+            $table->dateTime('10th_friend_invited_at')->nullable();
+            $table->integer('total_points')->default(0);
             $table->rememberToken();
             $table->timestamps();
         });

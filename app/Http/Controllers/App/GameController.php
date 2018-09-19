@@ -29,9 +29,7 @@ class GameController extends Controller
 
     public function game()
     {
-        // TODO: remove admin auth, make checking auth with redirect and final view
-        \Auth::loginUsingId(1);
-        return view('app.game.test');
+        return view('app.game');
     }
 
     /**

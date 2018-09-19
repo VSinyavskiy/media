@@ -13,6 +13,8 @@ use Illuminate\Notifications\Notifiable;
 use App\Notifications\UserResetPasswordNotification;
 use App\Notifications\UserRegisterNotification;
 
+use Cookie;
+
 class User extends Authenticatable implements HasMedia
 {
     use Notifiable, HasMediaTrait;
@@ -24,13 +26,22 @@ class User extends Authenticatable implements HasMedia
 
     const DEFAULT_PASSWORD_LENGTH = 8;
 
+    const FIRST_AFTER_INVITE_COOCKIE_LIVE_MINUTES = 2;
+
+    const COUNT_TOP     = 5;
+    const COUNT_HISTORY = 5;
+
+    const GAME_ACTION_END_TIMESTAMP = '30.10.2018 23:59:59';
+
+    private $position;
+
     /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
     protected $fillable = [
-        'first_name', 'last_name', 'phone', 'city', 'email', 'is_mail_confirmed',
+        'first_name', 'last_name', 'phone', 'city', 'email', 'is_mail_confirmed', 'total_points', '10th_friend_invited_at',
     ];
 
     /**
@@ -40,6 +51,15 @@ class User extends Authenticatable implements HasMedia
      */
     protected $hidden = [
         'mail_token', 'password', 'remember_token',
+    ];
+
+    /**
+     * The attributes that should be mutated to dates.
+     *
+     * @var array
+     */
+    protected $dates = [
+        'created_at', 'updated_at', '10th_friend_invited_at',
     ];
 
     public static function boot()
@@ -52,7 +72,29 @@ class User extends Authenticatable implements HasMedia
                      ->toMediaCollection('avatar');
 
             $model->sendRegisterNotification();
+
+            $model->checkIsInvite();
         });
+    }
+
+    public function scopeUsers($query)
+    {
+        $query->where('role', self::ROLE_USER);
+    }
+
+    public function scopeWhileGameAction($query)
+    {
+        $query->where('updated_at', '<=', getTimestampFromDateTime(self::GAME_ACTION_END_TIMESTAMP));
+    }
+
+    public function scopeConfirmed($query)
+    {
+        $query->where('is_mail_confirmed', true);
+    }
+
+    public function scopeTopTotalPoints($query)
+    {
+        $query->orderBy('total_points', 'DESC');
     }
 
     public function sendPasswordResetNotification($token)
@@ -72,6 +114,26 @@ class User extends Authenticatable implements HasMedia
         return $this->hasMany(UserSocial::class);
     }
 
+    public function points()
+    {
+        return $this->hasMany(UserPointsLog::class);
+    }
+
+    public function getInvitedCountAttribute()
+    {
+        return $this->points()->friendInviteEvent()->count();
+    }
+
+    public function getPositionAttribute()
+    {
+        return $this->position;
+    }
+
+    public function setPosition($position)
+    {
+        return $this->position = $position;
+    }
+
     public function setPasswordAttribute($value)
     {
         $this->attributes['password'] = $value ? bcrypt($value) : $this->password;
@@ -79,7 +141,21 @@ class User extends Authenticatable implements HasMedia
 
     public function setMailTokenAttribute($value)
     {
-        $this->attributes['mail_token'] = md5($value . microtime());
+        $this->attributes['mail_token'] = ! is_null($value) ? md5($value . microtime()) : $value;
+    }
+
+    public function updateTotalPoints($points)
+    {
+        $this->update([
+            'total_points' => $this->total_points + $points
+        ]);
+    }
+
+    public function updateTenthFriendInvitedAT($dateTime)
+    {
+        $this->update([
+            '10th_friend_invited_at' => getTimestampFromDateTime($dateTime)->format('Y-m-d H:i:s')
+        ]);
     }
 
     public function registerMediaConversions(Media $media = null)
@@ -104,6 +180,17 @@ class User extends Authenticatable implements HasMedia
                         ->toMediaCollection('avatar');
     }
 
+    public function checkIsInvite()
+    {
+        $userId = Cookie::get('invited');
+
+        if (isset($userId)) {
+            $userPointsLog = new UserPointsLog();
+
+            return $userPointsLog->receiveFriendInvitePoints($userId, UserPointsLog::COUNT_POINT_FOR_FRIEND_INVITE);
+        }
+    }
+
     public function saveSocial($socialType, $socialId)
     {
         return UserSocial::firstOrCreate([
@@ -111,6 +198,18 @@ class User extends Authenticatable implements HasMedia
             'social_type' => $socialType,
             'social_id'   => $socialId,
         ]);
+    }
+
+    public function calculatePosition()
+    {
+        $userId   = $this->id;
+
+        $users    = self::users()->confirmed()->whileGameAction()->topTotalPoints()->get();
+        $position = $users->search(function ($user, $key) use ($userId) {
+            return $user->id == $userId;
+        });
+
+        return $position + 1; //since it will be a zero-indexed collection
     }
 
     public static function generatePassword()

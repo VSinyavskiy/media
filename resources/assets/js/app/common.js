@@ -11,6 +11,7 @@
     ns.init = function() {
         $(document).on('click',  '.show-no-text',    ns.clickShowNoText);
         $(document).on('submit', '.ajax-form',       ns.submitForm);
+        $(document).on('click',  '.ajax-more',       ns.getMoreInfo);
         
         ns.initModalOpen();
     };
@@ -72,6 +73,32 @@
                 }
 
                 $btn.removeAttr('disabled');
+            }
+        });
+    };
+
+    ns.getMoreInfo = function(e) {
+        e.preventDefault();
+
+        var $btn     = $(e.currentTarget),
+            page     = $btn.attr('href').split('page=')[1],
+            lastPage = $btn.data('last-page');
+
+        $.ajax({
+            url : '?page=' + page,
+            dataType: 'json',
+            success: function(data) {
+                if (data.result) {
+                    $('.doners-block__list').append(data.result);
+                }
+
+                if (data.currentPage == lastPage) {
+                    $btn.remove();
+                } else {
+                    var link = $btn.attr('href').split('page=')[0];
+
+                    $btn.attr('href', link + 'page=' + (parseInt(page) + 1));
+                }
             }
         });
     };

@@ -78,3 +78,7 @@
 @section('share_title')@endsection
 
 @section('share_description')@endsection
+
+@section('modals')
+    @include('app.modals._invite_success')
+@endsection

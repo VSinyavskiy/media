@@ -21,7 +21,7 @@
             <div class="scene__layer" data-depth="0.8">
                 <div class="user-top-block__bg-piece user-top-block__bg-piece_6 bg-piece bg-piece_potato-chip"></div>
             </div>
-        </div><img class="user-top-block__title" src="assets/img/text-personal-donery.png" alt="personal donery">
+        </div><img class="user-top-block__title" src="{{ asset('assets/img/text-personal-donery.png') }}" alt="personal donery">
         <div class="user-top-block__doner doner">
             <div class="doner__name">{{ $user->first_name }} {{ $user->last_name }}</div>
             <div class="doner__info">
@@ -32,11 +32,13 @@
                         </svg>
                     </a>
                 </div>
-                <div class="doner__score">30</div>
+                <div class="doner__score">{{ $user->total_points }}</div>
             </div>
             <div class="doner__desc"><b>Размер твоего донера</b><a class="doner__link" href="{{ route('history') }}">История получения баллов</a></div>
         </div>
-        <div class="user-top-block__counter">Ты позвал ХХ друзей</div><a class="user-top-block__btn btn btn_default" href="#" data-dialog="#copy-link">ПОЗВАТЬ ЕЩЕ</a></section>
+        <div class="user-top-block__counter">Ты позвал {{ $user->invited_count }} {{ pluralize($user->invited_count, 'друга', 'друзей', 'друзей') }}</div>
+        <a class="user-top-block__btn btn btn_default" href="#" data-dialog="#copy-link">ПОЗВАТЬ ЕЩЕ</a>
+    </section>
     <section class="share-block">
         <div class="share-block__socials">
             <a class="share-block__social" href="#">
@@ -74,51 +76,19 @@
         </div>
         <div class="doners-block__title">САМЫЕ ДЛИННЫЕ<strong>ДОООООНЕРЫ</strong></div>
         <ul class="doners-block__list">
-            <li class="doners-block__item">
-                <div class="doner-dude">
-                    <div class="doner-dude__avatar"><img class="doner-dude__img" src="https://via.placeholder.com/50x50">
-                        <div class="doner-dude__place">1</div>
+
+            @foreach ($topDonerUsers as $key => $topDonerUser)
+                <li class="doners-block__item">
+                    <div class="doner-dude">
+                        <div class="doner-dude__avatar"><img class="doner-dude__img" src="{{ $topDonerUser->avatar->getUrl() }}">
+                            <div class="doner-dude__place">{{ $topDonerUser->position ?? $key + 1 }}</div>
+                        </div>
+                        <div class="doner-dude__name">{{ $topDonerUser->first_name }} {{ $topDonerUser->last_name }}<span class="doner-dude__note">your moto here</span></div>
+                        <div class="doner-dude__score">{{ $topDonerUser->total_points }}</div>
                     </div>
-                    <div class="doner-dude__name">Name Surname<span class="doner-dude__note">your moto here</span></div>
-                    <div class="doner-dude__score">120</div>
-                </div>
-            </li>
-            <li class="doners-block__item">
-                <div class="doner-dude">
-                    <div class="doner-dude__avatar"><img class="doner-dude__img" src="https://via.placeholder.com/50x50">
-                        <div class="doner-dude__place">2</div>
-                    </div>
-                    <div class="doner-dude__name">Name Surname<span class="doner-dude__note">your moto here</span></div>
-                    <div class="doner-dude__score">98</div>
-                </div>
-            </li>
-            <li class="doners-block__item">
-                <div class="doner-dude">
-                    <div class="doner-dude__avatar"><img class="doner-dude__img" src="https://via.placeholder.com/50x50">
-                        <div class="doner-dude__place">3</div>
-                    </div>
-                    <div class="doner-dude__name">Name Surname<span class="doner-dude__note">your moto here</span></div>
-                    <div class="doner-dude__score">87</div>
-                </div>
-            </li>
-            <li class="doners-block__item">
-                <div class="doner-dude">
-                    <div class="doner-dude__avatar"><img class="doner-dude__img" src="https://via.placeholder.com/50x50">
-                        <div class="doner-dude__place">4</div>
-                    </div>
-                    <div class="doner-dude__name">Name Surname<span class="doner-dude__note">your moto here</span></div>
-                    <div class="doner-dude__score">67</div>
-                </div>
-            </li>
-            <li class="doners-block__item doners-block__item_highlighted">
-                <div class="doner-dude">
-                    <div class="doner-dude__avatar"><img class="doner-dude__img" src="https://via.placeholder.com/50x50">
-                        <div class="doner-dude__place">35</div>
-                    </div>
-                    <div class="doner-dude__name">Name Surname<span class="doner-dude__note">your moto here</span></div>
-                    <div class="doner-dude__score">45</div>
-                </div>
-            </li>
+                </li>
+            @endforeach
+
         </ul>
     </section>
 @endsection
