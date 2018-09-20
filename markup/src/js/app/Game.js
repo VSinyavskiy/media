@@ -38,7 +38,7 @@ export default class {
   }
 
   openGame(event) {
-    event.preventDefault();
+    if (event) event.preventDefault();
     const $game = document.querySelector(`.${this.gameClass}`);
 
     if (!$game) return;
@@ -48,7 +48,7 @@ export default class {
   }
 
   closeGame(event) {
-    event.preventDefault();
+    if (event) event.preventDefault();
     const $game = document.querySelector(`.${this.gameClass}`);
 
     if (!$game) return;
