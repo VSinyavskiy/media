@@ -1,3 +1,7 @@
+/*
+  eslint-disable
+  dot-notation
+*/
 import './polyfills';
 import Main from './Main';
 import Sliders from './Sliders';
@@ -12,3 +16,10 @@ new CopyCode();
 export const sliders = new Sliders();
 export const parallax = new Parallax();
 export const game = new Game();
+
+window['namespaces'] = window['namespaces'] || {};
+window['namespaces']['app.markup'] = {
+  sliders,
+  parallax,
+  game,
+};
