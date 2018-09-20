@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
 
-    <title>Lays DonerNinja</title>
+    <title>Lays Doner Ninja</title>
 
     <!--http://www.html5rocks.com/en/mobile/mobifying/-->
     <meta name="viewport"
@@ -56,12 +56,13 @@
     window.SiteIntegration = {
         api_url: '{{ route('game.results') }}',
 
-        eventStartPlayingClick: function() { console.log('eventStartPlayingClick'); },
-        eventGoPlayClick: function() { console.log('eventGoPlayClick'); },
-        eventRulesClick: function() { console.log('eventRulesClick'); },
-        eventGameEnded: function() { console.log('eventGameEnded'); },
-        eventReplayAfterFinish: function() { console.log('eventReplayAfterFinish'); },
-        eventShareClick: function() { console.log('eventShareClick'); }
+        eventGameAuthError: function(error) { window.parent.namespace('app.game-events').onGameAuthError(); },
+        eventStartPlayingClick: function() { window.parent.namespace('app.game-events').onStartPlayingClick(); },
+        eventGoPlayClick: function() { window.parent.namespace('app.game-events').onGoPlayClick(); },
+        eventRulesClick: function() { window.parent.namespace('app.game-events').onRulesClick(); },
+        eventGameEnded: function() { window.parent.namespace('app.game-events').onGameEnded(); },
+        eventReplayAfterFinish: function() { window.parent.namespace('app.game-events').onReplayAfterFinish(); },
+        eventShareClick: function() { window.parent.namespace('app.game-events').onShareClick(); }
     }
 </script>
 <script src="{{ asset('game_build/src/settings.js') }}" charset="utf-8"></script>

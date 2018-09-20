@@ -148,4 +148,17 @@ class GameData extends Model implements GamesStorageInterface, GameResultInterfa
     {
         return self::where('user_id', $userId)->count();
     }
+
+    /**
+     * @param \DateTime $date
+     * @param int $userId
+     * @return GameResultInterface|null
+     */
+    public static function getUserBestResult(\DateTime $date, int $userId): ?GameResultInterface
+    {
+        return self::whereDate('created_at', $date->format('Y-m-d'))
+                    ->where('user_id', $userId)
+                    ->where('is_users_best_today', true)
+                    ->first();
+    }
 }

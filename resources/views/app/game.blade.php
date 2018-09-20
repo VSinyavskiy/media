@@ -1,7 +1,16 @@
 @extends('app.layout')
 
 @section('content')
-	<section class="ninja-top-block">
+    <section class="ninja-top-block">
+        <div class="ninja-top-block__game" id="main">
+            <a class="close-btn ninja-top-block__game-stop" href="#">
+                <div class="close-btn__icon">
+                    <svg class="svg">
+                        <use xlink:href="#svg-ico-close"></use>
+                    </svg>
+                </div>
+                <div class="close-btn__text"></div>
+            </a><iframe width="1440" height="1760" data-src="{{ route('game.iframe') }}"></iframe></div>
         <div class="ninja-top-block__bg">
             <div class="scene__layer" data-depth="0.6">
                 <div class="ninja-top-block__bg-piece ninja-top-block__bg-piece_1 bg-piece bg-piece_potato-chip"></div>
@@ -10,7 +19,8 @@
                 <div class="ninja-top-block__bg-piece ninja-top-block__bg-piece_2 bg-piece bg-piece_potato-chip"></div>
             </div>
         </div>
-        <p class="ninja-top-block__desc">Игра весит 40mb</p><a class="ninja-top-block__btn btn btn_default" href="#">ИГРАТЬ</a>
+        <p class="ninja-top-block__desc">Игра весит 5mb</p><a class="ninja-top-block__btn ninja-top-block__game-start btn btn_default" href="#">ИГРАТЬ</a>
+        <div class="scroll-down ninja-top-block__scroll-down">Что нужно делать?</div>
     </section>
     <section class="steps-block steps-block_w-bg">
         <div class="steps-block__bg">
@@ -40,39 +50,72 @@
             </li>
         </ul>
     </section>
+
     <section class="results-block">
         <div class="results-block__bg">
-            <div class="results-block__bg-piece results-block__bg-piece_1 bg-piece bg-piece_pepper"></div>
+            <div class="results-block__bg-piece results-block__bg-piece_1 bg-piece bg-piece_pepper-v2"></div>
             <div class="results-block__bg-piece results-block__bg-piece_2 bg-piece bg-piece_onion-rings"></div>
             <div class="results-block__bg-piece results-block__bg-piece_3 bg-piece bg-piece_potato-chip"></div>
             <div class="results-block__bg-piece results-block__bg-piece_4 bg-piece bg-piece_paprica"></div>
         </div>
         <div class="results-block__title">Лучшие результаты за день</div>
+        @if(count($results) > 0)
         <ul class="results-block__list">
-            <li class="results-block__item result">
-                <div class="result__place"><span>1</span></div>
-                <div class="result__name">Name Surname</div>
-                <div class="result__score">220</div>
+            @foreach($results as $result)
+            <li class="results-block__item result {{ \Auth::id() == $result->getPlayerId() ? 'result_looser' : '' }}">
+                <div class="result__place"><span>{{ $result->getPlayerRank() }}</span></div>
+                <div class="result__name">{{ $result->getPlayerName() }}</div>
+                <div class="result__score">{{ $result->getPlayerScore() }}</div>
             </li>
-            <li class="results-block__item result">
-                <div class="result__place"><span>2</span></div>
-                <div class="result__name">Name Surname</div>
-                <div class="result__score">210</div>
-            </li>
-            <li class="results-block__item result">
-                <div class="result__place"><span>3</span></div>
-                <div class="result__name">Name Surname</div>
-                <div class="result__score">208</div>
-            </li>
-            <li class="results-block__item result result_looser">
-                <div class="result__place"><span>3</span></div>
-                <div class="result__name">Name Surname</div>
-                <div class="result__score">208</div>
-            </li>
+            @endforeach
         </ul>
-        <p class="results-block__desc">Чего же ждешь, бей рекорд и зарабатывай баллы к твоему донеру</p>
-        <a class="results-block__btn btn btn_default" href="#">ИГРАТЬ</a>
-    </section>
+        @else
+            <p>Турнирная таблица пока еще пуста. Будь первым сегодня!</p>
+        @endif
+
+        <p class="results-block__desc">Чего же ждешь, бей рекорд и зарабатывай баллы к твоему донеру</p><a class="results-block__btn btn btn_default ninja-top-block__game-start" href="#">ИГРАТЬ</a></section>
+@endsection
+
+@section('custom-js')
+    <script type="text/javascript">
+        (function ($, undefined) {
+            /**
+             * Namespace
+             * @var object
+             */
+            var ns = namespace('app.game-events');
+
+            ns.onGameAuthError = function() {
+                namespace('app.markup').game.closeGame();
+                console.log('TODO: implement onGameAuthError');
+            };
+
+            ns.onStartPlayingClick = function() {
+                console.log('TODO: implement onStartPlayingClick');
+            };
+
+            ns.onGoPlayClick = function() {
+                console.log('TODO: implement onGoPlayClick');
+            };
+
+            ns.onRulesClick = function() {
+                console.log('TODO: implement onRulesClick');
+            };
+
+            ns.onGameEnded = function() {
+                console.log('TODO: implement onGameEnded');
+            };
+
+            ns.onReplayAfterFinish = function() {
+                console.log('TODO: implement onReplayAfterFinish');
+            };
+
+            ns.onShareClick = function() {
+                console.log('TODO: implement onShareClick');
+            };
+
+        })(jQuery);
+    </script>
 @endsection
 
 @section('share_title')@endsection

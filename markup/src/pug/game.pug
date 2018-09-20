@@ -17,14 +17,16 @@ block header
 block body
   main.main
     section.ninja-top-block
-      #main.ninja-top-block__game: iframe(src='assets/game/index.html')
+      #main.ninja-top-block__game
+        +close-btn('#', '', 'ninja-top-block__game-stop')
+        iframe(width='1440', height='1760', data-src='assets/game/index.html')
       .ninja-top-block__bg
         .scene__layer(data-depth='0.6')
           .ninja-top-block__bg-piece.ninja-top-block__bg-piece_1.bg-piece.bg-piece_potato-chip
         .scene__layer(data-depth='0.8')
           .ninja-top-block__bg-piece.ninja-top-block__bg-piece_2.bg-piece.bg-piece_potato-chip
       p.ninja-top-block__desc Игра весит 5mb
-      a.ninja-top-block__btn.ninja-top-block__game-btn.btn.btn_default(href='#') ИГРАТЬ
+      a.ninja-top-block__btn.ninja-top-block__game-start.btn.btn_default(href='#') ИГРАТЬ
       +scroll-down('Что нужно делать?', 'ninja-top-block__scroll-down')
 
     section.steps-block.steps-block_w-bg

@@ -29,7 +29,14 @@ class GameController extends Controller
 
     public function game()
     {
-        return view('app.game');
+        $results = $this->service->getTodayResultsWithUserBest(5);
+
+        return view('app.game', compact('results'));
+    }
+
+    public function iframe()
+    {
+        return view('app.game.iframe');
     }
 
     /**

@@ -67,14 +67,16 @@ block body
       .prizes-block__slider.slider.slider_prizes
         .slider__track(data-glide-el='track')
           ul.slider__slides
-            li.slider__slide.slide.slide_prize: img(src=require('Images/gift-card.png'))
+            li.slider__slide.slide.slide_prize
+              .slide__img: img(src=require('Images/gift-card.png'))
+              .slide__desc Среди топ-100 тех, кто привел больше всего друзей, мы разыграем три сертификата в магазин электроники
         .slider__arrows(data-glide-el='controls')
           button.slider__arrow.slider__arrow_left(data-glide-dir='<')
             +svg-include('ico-chevron-left')
           button.slider__arrow.slider__arrow_right(data-glide-dir='>')
             +svg-include('ico-chevron-right')
-      .prizes-block__desc Среди топ-100 тех, кто привел больше всего друзей, мы разыграем три сертификата в магазин электроники
-      a.prizes-block__btn.btn.btn_default(href='#') ПОДРОБНЕЕ
+      //- .prizes-block__desc Среди топ-100 тех, кто привел больше всего друзей, мы разыграем три сертификата в магазин электроники
+      //- a.prizes-block__btn.btn.btn_default(href='#') ПОДРОБНЕЕ
 
     .row
       .row__col

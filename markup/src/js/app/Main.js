@@ -5,7 +5,6 @@ export default class {
     document.addEventListener('DOMContentLoaded', () => {
       on('click', '.header__button', this.menuToggle);
       on('click', '.square__btn', this.squareToggle);
-      on('click', '.ninja-top-block__game-btn', this.openGame);
       on('click', '[data-dialog]', this.openDialog);
       on('click', '[data-dialog-dismiss]', this.closeDialog);
     });
@@ -26,18 +25,6 @@ export default class {
       $square = $square.parentElement;
     }
     $square.classList.toggle('square_active');
-  }
-
-  openGame(event) {
-    event.preventDefault();
-    let $game = document.querySelector('.ninja-top-block__game');
-
-    if (!$game) return;
-    $game.classList.add('ninja-top-block__game_active');
-  }
-
-  closeGame(event) {
-    event.preventDefault();
   }
 
   openDialog(event) {

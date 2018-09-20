@@ -56,12 +56,16 @@
         <div class="prizes-block__slider slider slider_prizes">
             <div class="slider__track" data-glide-el="track">
                 <ul class="slider__slides">
-                    <li class="slider__slide slide slide_prize"><img src="{{ asset('assets/img/gift-card.png') }}"></li>
+                    <li class="slider__slide slide slide_prize">
+                        <div class="slide__img"><img src="assets/img/gift-card.png"></div>
+                        <div class="slide__desc">Среди топ-100 тех, кто привел больше всего друзей, мы разыграем три сертификата в магазин электроники</div>
+                    </li>
                 </ul>
             </div>
             <div class="slider__arrows" data-glide-el="controls"><button class="slider__arrow slider__arrow_left" data-glide-dir="&lt;"><svg class="svg"><use xlink:href="#svg-ico-chevron-left"></use></svg></button><button class="slider__arrow slider__arrow_right" data-glide-dir="&gt;"><svg class="svg"><use xlink:href="#svg-ico-chevron-right"></use></svg></button></div>
         </div>
-        <div class="prizes-block__desc">Среди топ-100 тех, кто привел больше всего друзей, мы разыграем три сертификата в магазин электроники</div><a class="prizes-block__btn btn btn_default" href="#">ПОДРОБНЕЕ</a></section>
+        {{-- <div class="prizes-block__desc">Среди топ-100 тех, кто привел больше всего друзей, мы разыграем три сертификата в магазин электроники</div> --}}
+        {{-- <a class="prizes-block__btn btn btn_default" href="#">ПОДРОБНЕЕ</a></section> --}}
     <div class="row">
         <div class="row__col">
             <section class="ninja-block row__block">
@@ -76,21 +80,27 @@
         <div class="row__col">
             <section class="doners-block row__block">
                 <div class="doners-block__title">САМЫЕ ДЛИННЫЕ<strong>ДОООООНЕРЫ</strong></div>
-                <ul class="doners-block__list">
 
-                    @foreach ($topDonerUsers as $key => $user)
-                        <li class="doners-block__item">
-                            <div class="doner-dude">
-                                <div class="doner-dude__avatar"><img class="doner-dude__img" src="{{ $user->avatar->getUrl() }}">
-                                    <div class="doner-dude__place">{{ $key + 1 }}</div>
+                @if($topDonerUsers->count())
+                    <ul class="doners-block__list">
+
+                        @foreach ($topDonerUsers as $key => $user)
+                            <li class="doners-block__item">
+                                <div class="doner-dude">
+                                    <div class="doner-dude__avatar"><img class="doner-dude__img" src="{{ $user->avatar->getUrl() }}">
+                                        <div class="doner-dude__place">{{ $key + 1 }}</div>
+                                    </div>
+                                    <div class="doner-dude__name">{{ $user->first_name }} {{ $user->last_name }}<span class="doner-dude__note">Донер как солнце</span></div>
+                                    <div class="doner-dude__score">{{ $user->total_points }}</div>
                                 </div>
-                                <div class="doner-dude__name">{{ $user->first_name }} {{ $user->last_name }}<span class="doner-dude__note">Донер как солнце</span></div>
-                                <div class="doner-dude__score">{{ $user->total_points }}</div>
-                            </div>
-                        </li>
-                    @endforeach
+                            </li>
+                        @endforeach
 
-                </ul>
+                    </ul>
+                @else
+                    <p>Турнирная таблица пока еще пуста. Будь первым сегодня!</p>
+                @endif
+
             </section>
         </div>
     </div>
