@@ -26,10 +26,16 @@ interface GamesStorageInterface
      */
     public static function getTopResults(\DateTime $date, int $count, ?int $withResultId = null): array;
 
-
     /**
      * @param int $userId
      * @return int
      */
     public static function getUserPlayedGamesCount(int $userId): int;
+
+    /**
+     * @param \DateTime $date
+     * @param int $userId
+     * @return GameResultInterface|null
+     */
+    public static function getUserBestResult(\DateTime $date, int $userId): ?GameResultInterface;
 }
