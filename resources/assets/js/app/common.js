@@ -82,10 +82,11 @@
 
         var $btn     = $(e.currentTarget),
             page     = $btn.attr('href').split('page=')[1],
+            totalPointsWithoutShowed = $btn.attr('href').split('points=')[1],
             lastPage = $btn.data('last-page');
 
         $.ajax({
-            url : '?page=' + page,
+            url : '?page=' + page + '&points=' + totalPointsWithoutShowed,
             dataType: 'json',
             success: function(data) {
                 if (data.result) {
@@ -97,7 +98,7 @@
                 } else {
                     var link = $btn.attr('href').split('page=')[0];
 
-                    $btn.attr('href', link + 'page=' + (parseInt(page) + 1));
+                    $btn.attr('href', link + 'page=' + (parseInt(page) + 1) + '&points=' + data.totalPointsWithoutShowed);
                 }
             }
         });

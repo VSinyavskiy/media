@@ -46,7 +46,7 @@ class UserPointsLog extends Model implements ReceiveGamePointsInterface
         });
     }
 
-    public function scopeByScoringAT($query)
+    public function scopeSortByScoringAT($query)
     {
         $query->orderBy('scoring_at', 'DESC');
     }

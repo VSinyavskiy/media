@@ -83,7 +83,7 @@
                         <div class="doner-dude__avatar"><img class="doner-dude__img" src="{{ $topDonerUser->avatar->getUrl() }}">
                             <div class="doner-dude__place">{{ $topDonerUser->position ?? $key + 1 }}</div>
                         </div>
-                        <div class="doner-dude__name">{{ $topDonerUser->first_name }} {{ $topDonerUser->last_name }}<span class="doner-dude__note">your moto here</span></div>
+                        <div class="doner-dude__name">{{ $topDonerUser->first_name }} {{ $topDonerUser->last_name }}<span class="doner-dude__note">Донер как солнце</span></div>
                         <div class="doner-dude__score">{{ $topDonerUser->total_points }}</div>
                     </div>
                 </li>

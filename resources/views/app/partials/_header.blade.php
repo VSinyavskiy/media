@@ -45,7 +45,7 @@
 
             @if (isUserAuthorize())
                 @if (auth()->guard('web')->user()->avatar)
-                    <img src="{{ auth()->guard('web')->user()->avatar->getUrl() }}"/>
+                    <img src="{{ auth()->guard('web')->user()->avatar->getUrl() }}" width="70px" />
                 @else
                     <svg class="svg">
                         <use xlink:href="#svg-ico-person"></use>

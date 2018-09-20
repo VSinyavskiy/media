@@ -21,7 +21,11 @@ class UsersController extends Controller
     {
         $user = auth()->guard('web')->user();
 
-        $topDonerUsers = User::users()->confirmed()->whileGameAction()->topTotalPoints()->limit(User::COUNT_TOP)->get();
+        $topDonerUsers = User::users()->confirmed()
+                                        ->whileGameAction()
+                                        ->sortByTopTotalPoints()
+                                        ->limit(User::COUNT_TOP)
+                                        ->get();
 
         if (! $topDonerUsers->contains('id', $user->id)) {
             $user->setPosition($user->calculatePosition());
@@ -37,19 +41,23 @@ class UsersController extends Controller
     {
         $user   = auth()->guard('web')->user();
 
-        $points = $user->points()->byScoringAT()->paginate(User::COUNT_HISTORY);
+        $points = $user->points()->sortByScoringAT()->paginate(User::COUNT_HISTORY); 
+
+        $leftTotalPoints          = $request->points ?? $user->total_points;
+        $totalPointsWithoutShowed = $leftTotalPoints - $points->sum('points');
 
         $currentPage = $points->currentPage();
         if ($request->ajax()) {
             return [
-                'result'      => view('app.users._history_paginate', compact('points'))->render(),
+                'result'      => view('app.users._history_paginate', compact('points', 'leftTotalPoints'))->render(),
+                'totalPointsWithoutShowed' => $totalPointsWithoutShowed,
                 'currentPage' => $currentPage,
             ];
         }
 
         $lastPage = $points->lastPage();
 
-        return view('app.users.history', compact('points', 'currentPage', 'lastPage'));
+        return view('app.users.history', compact('points', 'leftTotalPoints', 'totalPointsWithoutShowed', 'currentPage', 'lastPage'));
     }
 
     public function winners()
