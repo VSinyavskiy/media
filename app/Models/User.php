@@ -122,6 +122,11 @@ class User extends Authenticatable implements HasMedia
         return $this->points()->friendInviteEvent()->count();
     }
 
+    public function getSortedPointsDescAttribute()
+    {
+        return $this->points()->sortByScoringAT()->get();
+    }
+
     public function getPositionAttribute()
     {
         return $this->position;
@@ -153,6 +158,13 @@ class User extends Authenticatable implements HasMedia
     {
         $this->update([
             '10th_friend_invited_at' => getTimestampFromDateTime($dateTime)->format('Y-m-d H:i:s')
+        ]);
+    }
+
+    public function updateConfirmed($confirmedStatus)
+    {
+        $this->update([
+            'is_mail_confirmed' => $confirmedStatus
         ]);
     }
 

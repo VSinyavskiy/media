@@ -60,7 +60,15 @@ Route::group([
     ], function () {
         
         // Dashboard
-        Route::get('/',                        'DashboardController@index')->name('dashboard');      
+        Route::get('/',               'DashboardController@index')->name('dashboard');
+
+        // Users
+        Route::get('users/data',      'UsersController@data')->name('users.data');
+        Route::resource('users',      'UsersController')->names([
+            'index'   => 'users.index',
+            'show'    => 'users.show',
+            'update'  => 'users.update',
+        ]);   
     });
 
     // App routes
