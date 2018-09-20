@@ -15,12 +15,14 @@ class AppController extends Controller
 
     public function index()
     {
+    	$user = auth()->guard('web')->user();
+    	
     	$topDonerUsers = User::users()->confirmed()
     									->whileGameAction()
     									->sortByTopTotalPoints()
     									->limit(User::COUNT_TOP)
     									->get();
 
-        return view('app.index', compact('topDonerUsers'));
+        return view('app.index', compact('user', 'topDonerUsers'));
     }
 }

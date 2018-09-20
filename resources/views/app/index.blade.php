@@ -27,7 +27,9 @@
             <div class="scene__layer" data-depth="0.1">
                 <div class="top-block__bg-piece top-block__bg-piece_8 bg-piece bg-piece_pepper"></div>
             </div>
-        </div><a class="top-block__btn btn btn_default" href="#" data-dialog="#{{ isUserAuthorize() ? 'copy-link'  : 'auth-need' }}">ПОЗВАТЬ ДРУЗЕЙ</a></section>
+        </div><a class="top-block__btn btn btn_default prevent-default" href="#" data-dialog="#{{ isUserAuthorize() ? 'copy-link'  : 'auth-need' }}">ПОЗВАТЬ ДРУЗЕЙ</a>
+        <div class="scroll-down top-block__scroll-down">Что нужно делать?</div>
+    </section>
     <section class="steps-block">
         <ul class="steps-block__list">
             <li class="steps-block__item step">
@@ -51,21 +53,20 @@
                 </div>
                 <div class="step__desc">Лидируй в рейтинге донеров и получай призы!</div>
             </li>
-        </ul><a class="steps-block__btn btn btn_default" href="#" data-dialog="#{{ isUserAuthorize() ? 'copy-link'  : 'auth-need' }}">ПОЗВАТЬ ДРУЗЕЙ</a></section>
+        </ul><a class="steps-block__btn btn btn_default prevent-default" href="#" data-dialog="#{{ isUserAuthorize() ? 'copy-link'  : 'auth-need' }}">ПОЗВАТЬ ДРУЗЕЙ</a></section>
     <section class="prizes-block"><img class="prizes-block__title" src="{{ asset('assets/img/text-presents.png') }}" alt="prizes">
         <div class="prizes-block__slider slider slider_prizes">
             <div class="slider__track" data-glide-el="track">
                 <ul class="slider__slides">
                     <li class="slider__slide slide slide_prize">
-                        <div class="slide__img"><img src="assets/img/gift-card.png"></div>
+                        <div class="slide__img"><img src="{{ asset('assets/img/gift-card.png') }}"></div>
                         <div class="slide__desc">Среди топ-100 тех, кто привел больше всего друзей, мы разыграем три сертификата в магазин электроники</div>
                     </li>
                 </ul>
             </div>
             <div class="slider__arrows" data-glide-el="controls"><button class="slider__arrow slider__arrow_left" data-glide-dir="&lt;"><svg class="svg"><use xlink:href="#svg-ico-chevron-left"></use></svg></button><button class="slider__arrow slider__arrow_right" data-glide-dir="&gt;"><svg class="svg"><use xlink:href="#svg-ico-chevron-right"></use></svg></button></div>
         </div>
-        {{-- <div class="prizes-block__desc">Среди топ-100 тех, кто привел больше всего друзей, мы разыграем три сертификата в магазин электроники</div> --}}
-        {{-- <a class="prizes-block__btn btn btn_default" href="#">ПОДРОБНЕЕ</a></section> --}}
+    </section>
     <div class="row">
         <div class="row__col">
             <section class="ninja-block row__block">
@@ -84,14 +85,14 @@
                 @if($topDonerUsers->count())
                     <ul class="doners-block__list">
 
-                        @foreach ($topDonerUsers as $key => $user)
+                        @foreach ($topDonerUsers as $key => $topDonerUser)
                             <li class="doners-block__item">
                                 <div class="doner-dude">
-                                    <div class="doner-dude__avatar"><img class="doner-dude__img" src="{{ $user->avatar->getUrl() }}">
+                                    <div class="doner-dude__avatar"><img class="doner-dude__img" src="{{ $topDonerUser->avatar->getUrl() }}">
                                         <div class="doner-dude__place">{{ $key + 1 }}</div>
                                     </div>
-                                    <div class="doner-dude__name">{{ $user->first_name }} {{ $user->last_name }}<span class="doner-dude__note">Донер как солнце</span></div>
-                                    <div class="doner-dude__score">{{ $user->total_points }}</div>
+                                    <div class="doner-dude__name">{{ $topDonerUser->first_name }} {{ $topDonerUser->last_name }}<span class="doner-dude__note">Донер как солнце</span></div>
+                                    <div class="doner-dude__score">{{ $topDonerUser->total_points }}</div>
                                 </div>
                             </li>
                         @endforeach
@@ -114,7 +115,7 @@
                         <div class="friends-block__bg-piece friends-block__bg-piece_3 bg-piece bg-piece_potato-chip"></div>
                         <div class="friends-block__bg-piece friends-block__bg-piece_4 bg-piece bg-piece_onion-slices"></div>
                     </div>
-                    <div class="friends-block__desc">Окажись в числе самых длинных!<strong>Больше друзей – длиннее дооооонер!</strong></div><a class="friends-block__btn btn btn_default" href="#" data-dialog="#{{ isUserAuthorize() ? 'copy-link'  : 'auth-need' }}">ПОЗВАТЬ ДРУЗЕЙ</a></div>
+                    <div class="friends-block__desc">Окажись в числе самых длинных!<strong>Больше друзей – длиннее дооооонер!</strong></div><a class="friends-block__btn btn btn_default prevent-default" href="#" data-dialog="#{{ isUserAuthorize() ? 'copy-link'  : 'auth-need' }}">ПОЗВАТЬ ДРУЗЕЙ</a></div>
             </section>
             <section class="social-block row__block row__block_half">
                 <div class="social-block__desc"><strong>Подпишись на нас в соцсетях</strong>и участвуй в розыгрышах дополнительных подарков!</div>
@@ -129,15 +130,19 @@
                             <use xlink:href="#svg-ico-fb"></use>
                         </svg>
                     </a>
+                    <a class="social-block__social" href="#">
+                        <svg class="svg">
+                            <use xlink:href="#svg-ico-instagram"></use>
+                        </svg>
+                    </a>
                 </div>
             </section>
         </div>
         <div class="row__col">
             <section class="squares-block row__block"><img class="squares-block__bg" src="{{ asset('assets/img/text-new-lays-doner-whats-it-like.png') }}">
-                <div class="squares-block__square squares-block__square_1 square square_yellow square_active">
+                <div class="squares-block__square squares-block__square_1 square square_yellow">
                     <div class="square__bg"></div>
-                    <div class="square__text"><span>Такой же насыщенный вкус</span></div>
-                </div>
+                    <div class="square__text"><span>Такой же насыщенный вкус</span></div><a class="square__btn" href="#"></a></div>
                 <div class="squares-block__square squares-block__square_2 square square_red">
                     <div class="square__bg"></div>
                     <div class="square__text"><span>С привкусом нежного соуса и специй</span></div><a class="square__btn" href="#"></a></div>
@@ -157,7 +162,11 @@
 @section('share_description')@endsection
 
 @section('modals')
-    @include('app.modals._invite')
+
+    @if (isUserAuthorize())
+        @include('app.modals._invite')
+    @endif
+
     @include('auth_app.modals._auth_need')
     @include('auth_app.modals._auth_social_error')
     @include('auth_app.modals._registration_confirm_email')

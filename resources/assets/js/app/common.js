@@ -12,7 +12,8 @@
         $(document).on('click',  '.show-no-text',    ns.clickShowNoText);
         $(document).on('submit', '.ajax-form',       ns.submitForm);
         $(document).on('click',  '.ajax-more',       ns.getMoreInfo);
-        
+        $(document).on('click',  '.prevent-default', ns.preventDefault);
+
         ns.initModalOpen();
     };
 
@@ -102,6 +103,10 @@
                 }
             }
         });
+    };
+
+    ns.preventDefault = function(e) {
+        e.preventDefault();
     };
 
     ns.initModalOpen = function() {

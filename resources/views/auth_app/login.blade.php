@@ -31,7 +31,7 @@
       </div>
 
       <div class="login-block__footer">
-        <a class="login-block__link" href="#" data-dialog="#reset-password">Забыли пароль?</a>
+        <a class="login-block__link prevent-default" href="#" data-dialog="#reset-password">Забыли пароль?</a>
       </div>
     {{ Form::close() }}
 
