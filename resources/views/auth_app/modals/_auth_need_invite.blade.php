@@ -1,4 +1,4 @@
-<div class="dialog dialog_centered" id="auth-need">
+<div class="dialog dialog_centered" id="auth-need-invite">
     <div class="dialog__container">
         <a class="dialog__close prevent-default" href="#" data-dialog-dismiss>
             <svg class="svg">
@@ -7,7 +7,7 @@
         </a>
         <div class="dialog__title">Необходима авторизация</div>
         <div class="dialog__body form">
-            <p>Чтобы пригласить друга сначала нужно авторизоваться</p>
+            <p>Чтобы пригласить друга сначала нужно авторизоваться!</p>
 
             <div class="form__buttons">
                 <a class="btn btn_default btn_block" href="{{ route('login') }}">Авторизоваться</a>

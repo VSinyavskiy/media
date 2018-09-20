@@ -27,7 +27,7 @@
             <div class="scene__layer" data-depth="0.1">
                 <div class="top-block__bg-piece top-block__bg-piece_8 bg-piece bg-piece_pepper"></div>
             </div>
-        </div><a class="top-block__btn btn btn_default prevent-default" href="#" data-dialog="#{{ isUserAuthorize() ? 'copy-link'  : 'auth-need' }}">ПОЗВАТЬ ДРУЗЕЙ</a>
+        </div><a class="top-block__btn btn btn_default prevent-default" href="#" data-dialog="#{{ isUserAuthorize() ? 'copy-link'  : 'auth-need-invite' }}">ПОЗВАТЬ ДРУЗЕЙ</a>
         <div class="scroll-down top-block__scroll-down">Что нужно делать?</div>
     </section>
     <section class="steps-block">
@@ -53,7 +53,7 @@
                 </div>
                 <div class="step__desc">Лидируй в рейтинге донеров и получай призы!</div>
             </li>
-        </ul><a class="steps-block__btn btn btn_default prevent-default" href="#" data-dialog="#{{ isUserAuthorize() ? 'copy-link'  : 'auth-need' }}">ПОЗВАТЬ ДРУЗЕЙ</a></section>
+        </ul><a class="steps-block__btn btn btn_default prevent-default" href="#" data-dialog="#{{ isUserAuthorize() ? 'copy-link'  : 'auth-need-invite' }}">ПОЗВАТЬ ДРУЗЕЙ</a></section>
     <section class="prizes-block"><img class="prizes-block__title" src="{{ asset('assets/img/text-presents.png') }}" alt="prizes">
         <div class="prizes-block__slider slider slider_prizes">
             <div class="slider__track" data-glide-el="track">
@@ -115,7 +115,7 @@
                         <div class="friends-block__bg-piece friends-block__bg-piece_3 bg-piece bg-piece_potato-chip"></div>
                         <div class="friends-block__bg-piece friends-block__bg-piece_4 bg-piece bg-piece_onion-slices"></div>
                     </div>
-                    <div class="friends-block__desc">Окажись в числе самых длинных!<strong>Больше друзей – длиннее дооооонер!</strong></div><a class="friends-block__btn btn btn_default prevent-default" href="#" data-dialog="#{{ isUserAuthorize() ? 'copy-link'  : 'auth-need' }}">ПОЗВАТЬ ДРУЗЕЙ</a></div>
+                    <div class="friends-block__desc">Окажись в числе самых длинных!<strong>Больше друзей – длиннее дооооонер!</strong></div><a class="friends-block__btn btn btn_default prevent-default" href="#" data-dialog="#{{ isUserAuthorize() ? 'copy-link'  : 'auth-need-invite' }}">ПОЗВАТЬ ДРУЗЕЙ</a></div>
             </section>
             <section class="social-block row__block row__block_half">
                 <div class="social-block__desc"><strong>Подпишись на нас в соцсетях</strong>и участвуй в розыгрышах дополнительных подарков!</div>
@@ -167,7 +167,7 @@
         @include('app.modals._invite')
     @endif
 
-    @include('auth_app.modals._auth_need')
+    @include('auth_app.modals._auth_need_invite')
     @include('auth_app.modals._auth_social_error')
     @include('auth_app.modals._registration_confirm_email')
 @endsection

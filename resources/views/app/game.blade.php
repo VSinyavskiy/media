@@ -19,7 +19,7 @@
                 <div class="ninja-top-block__bg-piece ninja-top-block__bg-piece_2 bg-piece bg-piece_potato-chip"></div>
             </div>
         </div>
-        <p class="ninja-top-block__desc">Игра весит 5mb</p><a class="ninja-top-block__btn ninja-top-block__game-start btn btn_default" href="#">ИГРАТЬ</a>
+        <p class="ninja-top-block__desc">Игра весит 5mb</p><a class="ninja-top-block__btn {{ isUserAuthorize() ? 'ninja-top-block__game-start'  : 'prevent-default' }} btn btn_default" href="#" {{ isUserAuthorize() ? '' : 'data-dialog=#auth-need-game' }}>ИГРАТЬ</a>
         <div class="scroll-down ninja-top-block__scroll-down">Что нужно делать?</div>
     </section>
     <section class="steps-block steps-block_w-bg">
@@ -73,7 +73,7 @@
             <p>Турнирная таблица пока еще пуста. Будь первым сегодня!</p>
         @endif
 
-        <p class="results-block__desc">Чего же ждешь, бей рекорд и зарабатывай баллы к твоему донеру</p><a class="results-block__btn btn btn_default ninja-top-block__game-start" href="#">ИГРАТЬ</a></section>
+        <p class="results-block__desc">Чего же ждешь, бей рекорд и зарабатывай баллы к твоему донеру</p><a class="results-block__btn btn btn_default {{ isUserAuthorize() ? 'ninja-top-block__game-start'  : 'prevent-default' }}" href="#" {{ isUserAuthorize() ? '' : 'data-dialog=#auth-need-game' }}>ИГРАТЬ</a></section>
 @endsection
 
 @section('custom-js')
@@ -123,5 +123,6 @@
 @section('share_description')@endsection
 
 @section('modals')
+    @include('auth_app.modals._auth_need_game')
     @include('app.modals._invite_success')
 @endsection
