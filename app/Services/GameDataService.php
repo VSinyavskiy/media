@@ -5,6 +5,7 @@ namespace App\Services;
 
 
 use App\Game\Contracts\GameCalculatorInterface;
+use App\Game\Contracts\GameResultInterface;
 use App\Game\Contracts\GamesStorageInterface;
 use App\Game\Contracts\ReceiveGamePointsInterface;
 use Illuminate\Contracts\Auth\Guard as AuthGuardInterface;
@@ -101,7 +102,9 @@ class GameDataService
 
         // send first play bonus points
         if($this->storage::getUserPlayedGamesCount($this->auth->id()) == 1) {
-            $this->bonusReceiver->receiveGameFirstPlayPoints($this->auth->id(), self::FIRST_PLAY_BONUS_POINTS_NUMBER, $resultRecord->getPlayedOn());
+            try {
+                $this->bonusReceiver->receiveGameFirstPlayPoints($this->auth->id(), self::FIRST_PLAY_BONUS_POINTS_NUMBER, $resultRecord->getPlayedOn());
+            } catch(\Exception $e) {}
         }
 
         // get top and make valid struct for the game
@@ -129,5 +132,24 @@ class GameDataService
             ],
             'top' => $top,
         ]);
+    }
+
+    /**
+     *
+     *
+     * @param int $amount
+     * @return array|GameResultInterface[]
+     */
+    public function getTodayResultsWithUserBest(int $amount): array
+    {
+        $date     = new \DateTime();
+        $resultId = null;
+
+        if($this->auth->check()) {
+            $result = $this->storage::getUserBestResult($date, $this->auth->id());
+            $resultId = is_null($result) ? null : $result->getResultId();
+        }
+
+        return $this->storage::getTopResults($date, $amount, $resultId);
     }
 }
