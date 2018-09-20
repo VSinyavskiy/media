@@ -1,4 +1,27 @@
 .slide {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  &__img {
+    box-sizing: border-box;
+    margin-bottom: 20px;
+    padding: 0;
+
+    img {
+      display: block;
+      max-width: 100%;
+      margin: 0 auto;
+    }
+  }
+  &__desc {
+    align-self: stretch;
+    width: 100%;
+    margin: 0;
+    line-height: 1.4;
+    text-align: center;
+  }
+
   &_prize {
     // height: 145px;
 
@@ -6,6 +29,12 @@
       display: block;
       max-width: 100%;
       margin: 0 auto;
+    }
+  }
+
+  @media (min-width: 800px) {
+    &__desc {
+      font-size: 20px;
     }
   }
   // END .slide
