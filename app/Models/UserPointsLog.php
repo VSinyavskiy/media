@@ -79,9 +79,9 @@ class UserPointsLog extends Model implements ReceiveGamePointsInterface
     public function getEventTypesList()
     {
         return [
-            self::FRIEND_INVITE     => 'Пригласил друга +' . self::COUNT_POINT_FOR_FRIEND_INVITE . ' баллов', //__('') 
-            self::FIRST_TIME_GAMING => 'Впервые сыграл +' . \App\Services\GameDataService::FIRST_PLAY_BONUS_POINTS_NUMBER . ' баллов', //__('')
-            self::GAMING            => 'В списке лидеров за день +' . \App\Console\Commands\ProcessGameBonusPoints::BONUS_POINTS_NUMBER . ' баллов', //__('')
+            self::FRIEND_INVITE     => 'Пригласил друга', //__('') 
+            self::FIRST_TIME_GAMING => 'Впервые сыграл', //__('')
+            self::GAMING            => 'В списке лидеров за день', //__('')
         ];
     }
 

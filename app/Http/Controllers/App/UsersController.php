@@ -42,21 +42,17 @@ class UsersController extends Controller
 
         $points = $user->points()->sortByScoringAT()->paginate(User::COUNT_HISTORY); 
 
-        $leftTotalPoints          = $request->points ?? $user->total_points;
-        $totalPointsWithoutShowed = $leftTotalPoints - $points->sum('points');
-
         $currentPage = $points->currentPage();
         if ($request->ajax()) {
             return [
                 'result'      => view('app.users._history_paginate', compact('points', 'leftTotalPoints'))->render(),
-                'totalPointsWithoutShowed' => $totalPointsWithoutShowed,
                 'currentPage' => $currentPage,
             ];
         }
 
         $lastPage = $points->lastPage();
 
-        return view('app.users.history', compact('points', 'leftTotalPoints', 'totalPointsWithoutShowed', 'currentPage', 'lastPage'));
+        return view('app.users.history', compact('points', 'currentPage', 'lastPage'));
     }
 
     public function winners()
