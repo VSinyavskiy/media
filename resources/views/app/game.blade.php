@@ -32,19 +32,19 @@
         <ul class="steps-block__list">
             <li class="steps-block__item step">
                 <div class="step__bg">
-                    <div class="step__img step__img_number"><img class="step__number" src="assets/img/number-1.png"></div>
+                    <div class="step__img step__img_number"><img class="step__number" src="{{ asset('assets/img/number-1.png') }}"></div>
                 </div>
                 <div class="step__desc">Играй в игру, зарабатывай баллы и попадай в топ 3 игрового рейтинга</div>
             </li>
             <li class="steps-block__item step">
                 <div class="step__bg">
-                    <div class="step__img step__img_number"><img class="step__number step__number_right" src="assets/img/number-2.png"></div>
+                    <div class="step__img step__img_number"><img class="step__number step__number_right" src="{{ asset('assets/img/number-2.png') }}"></div>
                 </div>
                 <div class="step__desc">Держись в рейтенге лучших до конца дня и получай баллы к твоему доннеру</div>
             </li>
             <li class="steps-block__item step">
                 <div class="step__bg">
-                    <div class="step__img step__img_number"><img class="step__number" src="assets/img/number-3.png"></div>
+                    <div class="step__img step__img_number"><img class="step__number" src="{{ asset('assets/img/number-3.png') }}"></div>
                 </div>
                 <div class="step__desc">Чем больше донер – тем больше призов. Дерзай</div>
             </li>
