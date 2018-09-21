@@ -30,7 +30,6 @@ class UsersController extends Controller
         if (! $topDonerUsers->contains('id', $user->id)) {
             $user->setPosition($user->calculatePosition());
 
-            $topDonerUsers->pop();
             $topDonerUsers->push($user);
         }
 
