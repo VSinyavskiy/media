@@ -40,23 +40,20 @@
         </nav>
     </div><a class="header__logo logo" href="{{ ! Route::is('home') ? route('home') : '' }}"><img class="logo__img" src="{{ asset('assets/img/logo.png') }}" alt="logo"></a>
     <a class="header__user user" href="{{ route('user') }}">
-        <div class="user__name">Личный кабинет</div>
-        <div class="user__avatar">
 
-            @if (isUserAuthorize())
-                @if (auth()->guard('web')->user()->avatar)
-                    <img src="{{ auth()->guard('web')->user()->avatar->getUrl() }}" width="70px" />
-                @else
-                    <svg class="svg">
-                        <use xlink:href="#svg-ico-person"></use>
-                    </svg>
-                @endif
-            @else
+        @if (isUserAuthorize())
+            <div class="user__name">{{ auth()->guard('web')->user()->first_name }} {{ auth()->guard('web')->user()->last_name }}</div>
+            <div class="user__avatar">
+                <img src="{{ auth()->guard('web')->user()->avatar->getUrl() }}" width="70px" />
+            </div>
+        @else
+            <div class="user__name">Личный кабинет</div>
+            <div class="user__avatar">
                 <svg class="svg">
                     <use xlink:href="#svg-ico-person"></use>
                 </svg>
-            @endif
+            </div>
+        @endif
 
-        </div>
     </a>
 </header>
