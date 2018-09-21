@@ -98,7 +98,7 @@
                 } else {
                     var link = $btn.attr('href').split('page=')[0];
 
-                    $btn.attr('href', link + 'page=' + (parseInt(page) + 1);
+                    $btn.attr('href', link + 'page=' + (parseInt(page) + 1));
                 }
             }
         });
