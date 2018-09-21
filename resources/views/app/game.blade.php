@@ -76,48 +76,6 @@
         <p class="results-block__desc">Чего же ждешь, бей рекорд и зарабатывай баллы к твоему донеру</p><a class="results-block__btn btn btn_default {{ isUserAuthorize() ? 'ninja-top-block__game-start'  : 'prevent-default' }}" href="#" {{ isUserAuthorize() ? '' : 'data-dialog=#auth-need-game' }}>ИГРАТЬ</a></section>
 @endsection
 
-@section('custom-js')
-    <script type="text/javascript">
-        (function ($, undefined) {
-            /**
-             * Namespace
-             * @var object
-             */
-            var ns = namespace('app.game-events');
-
-            ns.onGameAuthError = function() {
-                namespace('app.markup').game.closeGame();
-                console.log('TODO: implement onGameAuthError');
-            };
-
-            ns.onStartPlayingClick = function() {
-                console.log('TODO: implement onStartPlayingClick');
-            };
-
-            ns.onGoPlayClick = function() {
-                console.log('TODO: implement onGoPlayClick');
-            };
-
-            ns.onRulesClick = function() {
-                console.log('TODO: implement onRulesClick');
-            };
-
-            ns.onGameEnded = function() {
-                console.log('TODO: implement onGameEnded');
-            };
-
-            ns.onReplayAfterFinish = function() {
-                console.log('TODO: implement onReplayAfterFinish');
-            };
-
-            ns.onShareClick = function() {
-                console.log('TODO: implement onShareClick');
-            };
-
-        })(jQuery);
-    </script>
-@endsection
-
 @section('share_title')@endsection
 
 @section('share_description')@endsection

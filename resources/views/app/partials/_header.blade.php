@@ -49,9 +49,7 @@
         @else
             <div class="user__name">Личный кабинет</div>
             <div class="user__avatar">
-                <svg class="svg">
-                    <use xlink:href="#svg-ico-person"></use>
-                </svg>
+                <img src="{{ asset('assets/img/default_avatar.png') }}" width="70px" />
             </div>
         @endif
 
