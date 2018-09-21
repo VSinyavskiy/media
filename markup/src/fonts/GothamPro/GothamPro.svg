@@ -2,7 +2,7 @@
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd" >
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1">
 <metadata>
-Created by FontForge 20170731 at Wed Dec 12 22:22:29 2007
+Created by FontForge 20170731 at Fri Sep 21 12:54:23 2018
  By Aleksey,,,
 Copyright (c) 2000 The Hoefler Type Foundry, Inc., dba Hoefler &#38; Frere-Jones. All Rights Reserved.
 </metadata>
@@ -20,7 +20,7 @@ Copyright (c) 2000 The Hoefler Type Foundry, Inc., dba Hoefler &#38; Frere-Jones
     cap-height="700"
     bbox="-68 -196 1158 907"
     underline-thickness="20"
-    underline-position="-173"
+    underline-position="-193"
     unicode-range="U+0020-FB04"
   />
 <missing-glyph 
@@ -719,6 +719,38 @@ d="M276 -129v129h-190v517h77v-449h296v449h77v-517h-184v-129h-76z" />
 d="M99 0v700h366v156h68l13 -228h-368v-628h-79z" />
     <glyph glyph-name="afii10098" unicode="&#x491;" horiz-adv-x="463" 
 d="M86 0v517h275v129h64l12 -197h-274v-449h-77z" />
+    <glyph glyph-name="uni0492" unicode="&#x492;" horiz-adv-x="608" 
+d="M214 636v-283h302v-56h-301v-297h-73v297h-107v56h107v347h445v-64h-373z" />
+    <glyph glyph-name="uni0493" unicode="&#x493;" horiz-adv-x="502" 
+d="M187 463v-204h230v-52h-230v-207h-71v207h-70v52h70v267h372v-63h-301z" />
+    <glyph glyph-name="uni049A" unicode="&#x49a;" horiz-adv-x="748" 
+d="M734 64v-221h-69v157h-68v64h137zM99 0v700h79v-418l402 418h102l-300 -306l313 -394h-99l-269 339l-149 -151v-188h-79z" />
+    <glyph glyph-name="uni049B" unicode="&#x49b;" horiz-adv-x="581" 
+d="M618 61v-177h-65v116h-67v61h132zM86 0v517h77v-298l283 298h95l-216 -224l222 -293h-91l-184 237l-109 -112v-125h-77z" />
+    <glyph glyph-name="uni04A2" unicode="&#x4a2;" horiz-adv-x="845" 
+d="M815 64v-221h-69v157h-114v64h183zM103 0v700h79v-311h404v311h79v-700h-79v315h-404v-315h-79z" />
+    <glyph glyph-name="uni04A3" unicode="&#x4a3;" horiz-adv-x="694" 
+d="M659 62v-177h-67v115h-89v62h156zM86 0v517h77v-223h298v223h77v-517h-77v226h-298v-226h-77z" />
+    <glyph glyph-name="uni04AE" unicode="&#x4ae;" horiz-adv-x="652" 
+d="M363 242v-242h-74v242l-280 458h79l240 -393l240 393h74z" />
+    <glyph glyph-name="uni04AF" unicode="&#x4af;" horiz-adv-x="559" 
+d="M315 -3v-191h-71v191l-234 529h75l196 -448l199 448h70z" />
+    <glyph glyph-name="uni04B0" unicode="&#x4b0;" horiz-adv-x="652" 
+d="M165 272h422v-52h-422v52zM363 242v-242h-74v242l-280 458h79l240 -393l240 393h74z" />
+    <glyph glyph-name="uni04B1" unicode="&#x4b1;" horiz-adv-x="559" 
+d="M108 31h413v-52h-413v52zM315 -3v-191h-71v191l-234 529h75l196 -448l199 448h70z" />
+    <glyph glyph-name="uni04D8" unicode="&#x4d8;" horiz-adv-x="824" 
+d="M581 663q84 -43 134.5 -123.5t50.5 -187.5q0 -105 -49 -186.5t-132.5 -126.5t-182.5 -45t-181 44.5t-130 125.5t-48 184q0 18 3 36h644q-8 77 -49.5 135t-105.5 89.5t-138 31.5q-60 0 -118 -21.5t-110 -65.5l-53 48q62 53 135 79t148 26q98 0 182 -43zM542.5 93.5
+q64.5 34.5 104 96t44.5 139.5h-573q4 -79 43 -140.5t102 -95.5t139 -34t140.5 34.5z" />
+    <glyph glyph-name="uni04D9" unicode="&#x4d9;" horiz-adv-x="617" 
+d="M434.5 496.5q62.5 -34.5 97.5 -95.5t35 -138t-33.5 -138t-92 -95t-131.5 -34t-131 34t-91 94.5t-33 138.5l1 22h440q-6 82 -63 132.5t-144 50.5q-49 0 -90 -17.5t-71 -51.5l-40 46q35 42 87.5 64t115.5 22q81 0 143.5 -34.5zM437.5 105.5q51.5 48.5 58.5 126.5h-373
+q7 -78 58.5 -126.5t128.5 -48.5q76 0 127.5 48.5z" />
+    <glyph glyph-name="uni04E8" unicode="&#x4e8;" horiz-adv-x="851" 
+d="M613 660q84 -46 132 -127.5t48 -182.5t-48 -182.5t-132 -127.5t-188 -46t-188 46.5t-132 127.5t-48 182t48 182t132 127.5t188 46.5t188 -46zM283 607q-64 -33 -104 -92.5t-47 -134.5h586q-7 75 -47 134.5t-104 92.5t-142 33t-142 -33zM567.5 93.5q64.5 33.5 104 93
+t46.5 134.5h-586q7 -75 46.5 -134.5t104 -93t142.5 -33.5t142.5 33.5z" />
+    <glyph glyph-name="uni04E9" unicode="&#x4e9;" horiz-adv-x="646" 
+d="M463 496q62 -34 97.5 -95t35.5 -138t-35.5 -138t-97.5 -95.5t-140 -34.5t-140.5 34.5t-97.5 95.5t-35 138t35 138t97.5 95t140.5 34t140 -34zM183.5 422.5q-56.5 -50.5 -64.5 -133.5h408q-9 83 -65 133.5t-139 50.5t-139.5 -50.5zM462.5 104q56.5 51 64.5 134h-408
+q8 -83 64.5 -134t139.5 -51t139.5 51z" />
     <glyph glyph-name="endash" unicode="&#x2013;" horiz-adv-x="528" 
 d="M65 262v77h398v-77h-398z" />
     <glyph glyph-name="emdash" unicode="&#x2014;" horiz-adv-x="898" 

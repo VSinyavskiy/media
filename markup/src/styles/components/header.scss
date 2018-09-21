@@ -72,8 +72,11 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    box-sizing: border-box;
+    overflow: hidden;
     width: 1em;
     height: 1em;
+    border: solid 2px $color-white;
     border-radius: 50%;
     background-color: $color-white;
     @include shadow-1;
@@ -84,6 +87,11 @@
       width: em(20px, 44px);
       height: em(20px, 44px);
       pointer-events: none;
+    }
+    &>img {
+      display: block;
+      width: 100%;
+      // border-radius: 50%;
     }
   }
 
