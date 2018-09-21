@@ -91,7 +91,7 @@ class UserPointsLog extends Model implements ReceiveGamePointsInterface
             return false;
         }
 
-        $countUserFriendInvites = self::where('user_id', $this->id)
+        $countUserFriendInvites = self::where('user_id', $this->user_id)
                                         ->friendInviteEvent()
                                         ->count();
 
