@@ -30,7 +30,6 @@ class UsersController extends Controller
         if (! $topDonerUsers->contains('id', $user->id)) {
             $user->setPosition($user->calculatePosition());
 
-            $topDonerUsers->pop();
             $topDonerUsers->push($user);
         }
 
@@ -41,23 +40,19 @@ class UsersController extends Controller
     {
         $user   = auth()->guard('web')->user();
 
-        $points = $user->points()->paginate(User::COUNT_HISTORY); 
-
-        $leftTotalPoints          = $request->points ?? $user->total_points;
-        $totalPointsWithoutShowed = $leftTotalPoints - $points->sum('points');
+        $points = $user->points()->sortByScoringAT()->paginate(User::COUNT_HISTORY); 
 
         $currentPage = $points->currentPage();
         if ($request->ajax()) {
             return [
                 'result'      => view('app.users._history_paginate', compact('points', 'leftTotalPoints'))->render(),
-                'totalPointsWithoutShowed' => $totalPointsWithoutShowed,
                 'currentPage' => $currentPage,
             ];
         }
 
         $lastPage = $points->lastPage();
 
-        return view('app.users.history', compact('points', 'leftTotalPoints', 'totalPointsWithoutShowed', 'currentPage', 'lastPage'));
+        return view('app.users.history', compact('points', 'currentPage', 'lastPage'));
     }
 
     public function winners()

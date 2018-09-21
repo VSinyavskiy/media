@@ -79,9 +79,9 @@ class UserPointsLog extends Model implements ReceiveGamePointsInterface
     public function getEventTypesList()
     {
         return [
-            self::FRIEND_INVITE     => __(''),
-            self::FIRST_TIME_GAMING => __(''),
-            self::GAMING            => __(''),
+            self::FRIEND_INVITE     => 'Пригласил друга', //__('') 
+            self::FIRST_TIME_GAMING => 'Впервые сыграл', //__('')
+            self::GAMING            => 'В списке лидеров за день', //__('')
         ];
     }
 

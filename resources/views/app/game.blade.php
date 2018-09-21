@@ -19,7 +19,7 @@
                 <div class="ninja-top-block__bg-piece ninja-top-block__bg-piece_2 bg-piece bg-piece_potato-chip"></div>
             </div>
         </div>
-        <p class="ninja-top-block__desc">Игра весит 5mb</p><a class="ninja-top-block__btn {{ isUserAuthorize() ? 'ninja-top-block__game-start'  : 'prevent-default' }} btn btn_default" href="#" {{ isUserAuthorize() ? '' : 'data-dialog=#auth-need-game' }}>ИГРАТЬ</a>
+        <p class="ninja-top-block__desc">Игра весит 3.2Mb</p><a class="ninja-top-block__btn {{ isUserAuthorize() ? 'ninja-top-block__game-start'  : 'prevent-default' }} btn btn_default" href="#" {{ isUserAuthorize() ? '' : 'data-dialog=#auth-need-game' }}>ИГРАТЬ</a>
         <div class="scroll-down ninja-top-block__scroll-down">Что нужно делать?</div>
     </section>
     <section class="steps-block steps-block_w-bg">
@@ -32,19 +32,19 @@
         <ul class="steps-block__list">
             <li class="steps-block__item step">
                 <div class="step__bg">
-                    <div class="step__img step__img_number"><img class="step__number" src="assets/img/number-1.png"></div>
+                    <div class="step__img step__img_number"><img class="step__number" src="{{ asset('assets/img/number-1.png') }}"></div>
                 </div>
                 <div class="step__desc">Играй в игру, зарабатывай баллы и попадай в топ 3 игрового рейтинга</div>
             </li>
             <li class="steps-block__item step">
                 <div class="step__bg">
-                    <div class="step__img step__img_number"><img class="step__number step__number_right" src="assets/img/number-2.png"></div>
+                    <div class="step__img step__img_number"><img class="step__number step__number_right" src="{{ asset('assets/img/number-2.png') }}"></div>
                 </div>
                 <div class="step__desc">Держись в рейтенге лучших до конца дня и получай баллы к твоему доннеру</div>
             </li>
             <li class="steps-block__item step">
                 <div class="step__bg">
-                    <div class="step__img step__img_number"><img class="step__number" src="assets/img/number-3.png"></div>
+                    <div class="step__img step__img_number"><img class="step__number" src="{{ asset('assets/img/number-3.png') }}"></div>
                 </div>
                 <div class="step__desc">Чем больше донер – тем больше призов. Дерзай</div>
             </li>
@@ -74,48 +74,6 @@
         @endif
 
         <p class="results-block__desc">Чего же ждешь, бей рекорд и зарабатывай баллы к твоему донеру</p><a class="results-block__btn btn btn_default {{ isUserAuthorize() ? 'ninja-top-block__game-start'  : 'prevent-default' }}" href="#" {{ isUserAuthorize() ? '' : 'data-dialog=#auth-need-game' }}>ИГРАТЬ</a></section>
-@endsection
-
-@section('custom-js')
-    <script type="text/javascript">
-        (function ($, undefined) {
-            /**
-             * Namespace
-             * @var object
-             */
-            var ns = namespace('app.game-events');
-
-            ns.onGameAuthError = function() {
-                namespace('app.markup').game.closeGame();
-                console.log('TODO: implement onGameAuthError');
-            };
-
-            ns.onStartPlayingClick = function() {
-                console.log('TODO: implement onStartPlayingClick');
-            };
-
-            ns.onGoPlayClick = function() {
-                console.log('TODO: implement onGoPlayClick');
-            };
-
-            ns.onRulesClick = function() {
-                console.log('TODO: implement onRulesClick');
-            };
-
-            ns.onGameEnded = function() {
-                console.log('TODO: implement onGameEnded');
-            };
-
-            ns.onReplayAfterFinish = function() {
-                console.log('TODO: implement onReplayAfterFinish');
-            };
-
-            ns.onShareClick = function() {
-                console.log('TODO: implement onShareClick');
-            };
-
-        })(jQuery);
-    </script>
 @endsection
 
 @section('share_title')@endsection

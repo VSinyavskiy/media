@@ -121,8 +121,8 @@
 
             // init assets
             cc.AssetLibrary.init({
-                libraryPath: 'game_build/res/import',
-                rawAssetsBase: 'game_build/res/raw-',
+                libraryPath: '/game_build/res/import',
+                rawAssetsBase: '/game_build/res/raw-',
                 rawAssets: settings.rawAssets,
                 packedAssets: settings.packedAssets,
                 md5AssetsMap: settings.md5AssetsMap
@@ -155,10 +155,10 @@
         var jsList = settings.jsList;
 
         if (!false) {
-            var bundledScript = settings.debug ? 'game_build/src/project.dev.js' : 'game_build/src/project.js';
+            var bundledScript = settings.debug ? '/game_build/src/project.dev.js' : '/game_build/src/project.js';
             if (jsList) {
                 jsList = jsList.map(function (x) {
-                    return 'game_build/src/' + x;
+                    return '/game_build/src/' + x;
                 });
                 jsList.push(bundledScript);
             }
@@ -169,7 +169,7 @@
 
         // anysdk scripts
         if (cc.sys.isNative && cc.sys.isMobile) {
-            jsList = jsList.concat(['game_build/src/anysdk/jsb_anysdk.js', 'game_build/src/anysdk/jsb_anysdk_constants.js']);
+            jsList = jsList.concat(['/game_build/src/anysdk/jsb_anysdk.js', '/game_build/src/anysdk/jsb_anysdk_constants.js']);
         }
 
         var option = {
@@ -203,7 +203,7 @@
     }
 
     if (false) {
-        require(window._CCSettings.debug ? 'game_build/cocos2d-js.js' : 'game_build/cocos2d-js-min.js');
+        require(window._CCSettings.debug ? '/game_build/cocos2d-js.js' : '/game_build/cocos2d-js-min.js');
         require('./libs/weapp-adapter/engine/index.js');
         var prevPipe = cc.loader.md5Pipe || cc.loader.assetLoader;
         cc.loader.insertPipeAfter(prevPipe, wxDownloader);
@@ -212,8 +212,8 @@
     }
 
     if (window.jsb) {
-        require('game_build/src/settings.js');
-        require('game_build/src/jsb_polyfill.js');
+        require('/game_build/src/settings.js');
+        require('/game_build/src/jsb_polyfill.js');
         boot();
         return;
     }
@@ -224,7 +224,7 @@
 
         var cocos2d = document.createElement('script');
         cocos2d.async = true;
-        cocos2d.src = window._CCSettings.debug ? 'game_build/cocos2d-js.js' : 'game_build/cocos2d-js-min.js';
+        cocos2d.src = window._CCSettings.debug ? '/game_build/cocos2d-js.js' : '/game_build/cocos2d-js-min.js';
 
         var engineLoaded = function () {
             document.body.removeChild(cocos2d);

@@ -68,7 +68,8 @@ mix.combine([
 		'markup/build/assets/js/application.js',
 
 		'resources/assets/js/common/namespace.js',
-		'resources/assets/js/app/common.js',
+        'resources/assets/js/app/common.js',
+		'resources/assets/js/app/game_events.js',
 	], 'public/assets/js/app.js')
 	.copy('markup/build/assets/img', 'public/assets/img')
 	.copy('resources/assets/images', 'public/assets/img')
