@@ -183,6 +183,8 @@ class RegisterController extends Controller
 
         if (isset($siteUser)) {
             $url    = route('user');
+
+            $siteUser->saveSocial($userData['provider'], $userData['socialId']);
         } else {
             $url    = route('register.social');
             $params = [
@@ -209,8 +211,6 @@ class RegisterController extends Controller
     {
         if (! empty($userData['email'])) {
             $siteUser = User::where('email', $userData['email'])->first();
-
-            $siteUser->saveSocial($userData['provider'], $userData['socialId']);
         } else {
             $siteUser = User::whereHas('socials', function ($query) use ($userData) {
                             $query->where([
