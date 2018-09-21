@@ -3,6 +3,14 @@
 @section('content')
 	<section class="top-spacer"></section>
     <section class="doners-block">
+        <a class="close-btn doners-block__back-btn" href="{{ route('user') }}">
+            <div class="close-btn__icon">
+                <svg class="svg">
+                    <use xlink:href="#svg-ico-close"></use>
+                </svg>
+            </div>
+            <div class="close-btn__text">Закрыть</div>
+        </a>
         <div class="doners-block__title"><strong>ИСТОРИЯ ПОЛУЧЕНИЯ БАЛЛОВ</strong></div>
         <ul class="doners-block__list">
 
