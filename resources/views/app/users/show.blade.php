@@ -78,7 +78,7 @@
         <ul class="doners-block__list">
 
             @foreach ($topDonerUsers as $key => $topDonerUser)
-                <li class="doners-block__item">
+                <li class="doners-block__item {{ isset($topDonerUser->position) ? 'doners-block__item_highlighted' : '' }}">
                     <div class="doner-dude">
                         <div class="doner-dude__avatar"><img class="doner-dude__img" src="{{ $topDonerUser->avatar->getUrl() }}">
                             <div class="doner-dude__place">{{ $topDonerUser->position ?? $key + 1 }}</div>
