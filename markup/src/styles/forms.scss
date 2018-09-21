@@ -126,19 +126,19 @@
         padding-right: em(40px, $font-size);
         border-color: $color-red;
       }
-      &::after {
-        content: '!';
-        pointer-events: none;
-        position: absolute;
-        right: 20px;
-        top: 50%;
-        margin: 0;
-        font-weight: $bold;
-        font-size: 20px;
-        line-height: 1;
-        color: $color-red;
-        transform: translateY(-50%);
-      }
+      // &::after {
+      //   content: '!';
+      //   pointer-events: none;
+      //   position: absolute;
+      //   right: 20px;
+      //   top: 50%;
+      //   margin: 0;
+      //   font-weight: $bold;
+      //   font-size: 20px;
+      //   line-height: 1;
+      //   color: $color-red;
+      //   transform: translateY(-50%);
+      // }
     }
   }
 
