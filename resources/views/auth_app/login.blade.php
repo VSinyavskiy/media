@@ -3,7 +3,7 @@
 @section('content')
   <section class="top-spacer"></section>
   <section class="links-block">
-      <a class="close-btn links-block__back-btn" href="{{ url()->previous() }}">
+      <a class="close-btn links-block__back-btn" href="{{ route('home') }}">
           <div class="close-btn__icon">
               <svg class="svg">
                   <use xlink:href="#svg-ico-close"></use>
