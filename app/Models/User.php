@@ -117,6 +117,11 @@ class User extends Authenticatable implements HasMedia
         return $this->hasMany(UserPointsLog::class);
     }
 
+    public function winners()
+    {
+        return $this->hasMany(Winner::class);
+    }
+
     public function getInvitedCountAttribute()
     {
         return $this->points()->friendInviteEvent()->count();
