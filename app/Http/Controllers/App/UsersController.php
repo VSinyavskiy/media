@@ -41,7 +41,7 @@ class UsersController extends Controller
     {
         $user   = auth()->guard('web')->user();
 
-        $points = $user->points()->paginate(User::COUNT_HISTORY); 
+        $points = $user->points()->sortByScoringAT()->paginate(User::COUNT_HISTORY); 
 
         $leftTotalPoints          = $request->points ?? $user->total_points;
         $totalPointsWithoutShowed = $leftTotalPoints - $points->sum('points');
