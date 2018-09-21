@@ -11,7 +11,7 @@
         </ul>
 
         @if ($lastPage != $currentPage && $lastPage != 0)
-            <a class="doners-block__btn btn btn_default ajax-more" href="{{ route('history', ['page' =>  $currentPage + 1]) }}" data-last-page="{{ $lastPage }}">
+            <a class="doners-block__btn btn btn_default ajax-more" href="{{ route('history', ['page' =>  $currentPage + 1, 'points' => $totalPointsWithoutShowed]) }}" data-last-page="{{ $lastPage }}">
                 ПОКАЗАТЬ БОЛЬШЕ
             </a>
         @endif

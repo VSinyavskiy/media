@@ -46,7 +46,7 @@ class UserPointsLog extends Model implements ReceiveGamePointsInterface
         });
     }
 
-    public function scopeByScoringAT($query)
+    public function scopeSortByScoringAT($query)
     {
         $query->orderBy('scoring_at', 'DESC');
     }
@@ -91,7 +91,7 @@ class UserPointsLog extends Model implements ReceiveGamePointsInterface
             return false;
         }
 
-        $countUserFriendInvites = self::where('user_id', $this->id)
+        $countUserFriendInvites = self::where('user_id', $this->user_id)
                                         ->friendInviteEvent()
                                         ->count();
 

@@ -37,7 +37,7 @@
             <div class="doner__desc"><b>Размер твоего донера</b><a class="doner__link" href="{{ route('history') }}">История получения баллов</a></div>
         </div>
         <div class="user-top-block__counter">Ты позвал {{ $user->invited_count }} {{ pluralize($user->invited_count, 'друга', 'друзей', 'друзей') }}</div>
-        <a class="user-top-block__btn btn btn_default" href="#" data-dialog="#copy-link">ПОЗВАТЬ ЕЩЕ</a>
+        <a class="user-top-block__btn btn btn_default prevent-default" href="#" data-dialog="#copy-link">ПОЗВАТЬ ЕЩЕ</a>
     </section>
     <section class="share-block">
         <div class="share-block__socials">
@@ -83,7 +83,7 @@
                         <div class="doner-dude__avatar"><img class="doner-dude__img" src="{{ $topDonerUser->avatar->getUrl() }}">
                             <div class="doner-dude__place">{{ $topDonerUser->position ?? $key + 1 }}</div>
                         </div>
-                        <div class="doner-dude__name">{{ $topDonerUser->first_name }} {{ $topDonerUser->last_name }}<span class="doner-dude__note">your moto here</span></div>
+                        <div class="doner-dude__name">{{ $topDonerUser->first_name }} {{ $topDonerUser->last_name }}<span class="doner-dude__note">Донер как солнце</span></div>
                         <div class="doner-dude__score">{{ $topDonerUser->total_points }}</div>
                     </div>
                 </li>

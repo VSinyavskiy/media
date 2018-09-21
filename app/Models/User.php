@@ -72,8 +72,6 @@ class User extends Authenticatable implements HasMedia
                      ->toMediaCollection('avatar');
 
             $model->sendRegisterNotification();
-
-            $model->checkIsInvite();
         });
     }
 
@@ -92,7 +90,7 @@ class User extends Authenticatable implements HasMedia
         $query->where('is_mail_confirmed', true);
     }
 
-    public function scopeTopTotalPoints($query)
+    public function scopeSortByTopTotalPoints($query)
     {
         $query->orderBy('total_points', 'DESC');
     }
@@ -122,6 +120,11 @@ class User extends Authenticatable implements HasMedia
     public function getInvitedCountAttribute()
     {
         return $this->points()->friendInviteEvent()->count();
+    }
+
+    public function getSortedPointsDescAttribute()
+    {
+        return $this->points()->sortByScoringAT()->get();
     }
 
     public function getPositionAttribute()
@@ -158,6 +161,13 @@ class User extends Authenticatable implements HasMedia
         ]);
     }
 
+    public function updateConfirmed($confirmedStatus)
+    {
+        $this->update([
+            'is_mail_confirmed' => $confirmedStatus
+        ]);
+    }
+
     public function registerMediaConversions(Media $media = null)
     {
         $this->addMediaConversion('frontend')
@@ -180,17 +190,6 @@ class User extends Authenticatable implements HasMedia
                         ->toMediaCollection('avatar');
     }
 
-    public function checkIsInvite()
-    {
-        $userId = Cookie::get('invited');
-
-        if (isset($userId)) {
-            $userPointsLog = new UserPointsLog();
-
-            return $userPointsLog->receiveFriendInvitePoints($userId, UserPointsLog::COUNT_POINT_FOR_FRIEND_INVITE);
-        }
-    }
-
     public function saveSocial($socialType, $socialId)
     {
         return UserSocial::firstOrCreate([
@@ -204,7 +203,7 @@ class User extends Authenticatable implements HasMedia
     {
         $userId   = $this->id;
 
-        $users    = self::users()->confirmed()->whileGameAction()->topTotalPoints()->get();
+        $users    = self::users()->confirmed()->whileGameAction()->sortByTopTotalPoints()->get();
         $position = $users->search(function ($user, $key) use ($userId) {
             return $user->id == $userId;
         });
@@ -215,5 +214,16 @@ class User extends Authenticatable implements HasMedia
     public static function generatePassword()
     {
         return str_random(self::DEFAULT_PASSWORD_LENGTH);
+    }
+
+    public static function checkIsInvite()
+    {
+        $userId = Cookie::get('invited');
+
+        if (isset($userId)) {
+            $userPointsLog = new UserPointsLog();
+
+            return $userPointsLog->receiveFriendInvitePoints($userId, UserPointsLog::COUNT_POINT_FOR_FRIEND_INVITE);
+        }
     }
 }

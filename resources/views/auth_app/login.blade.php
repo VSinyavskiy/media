@@ -3,6 +3,14 @@
 @section('content')
   <section class="top-spacer"></section>
   <section class="links-block">
+      <a class="close-btn links-block__back-btn" href="{{ route('home') }}">
+          <div class="close-btn__icon">
+              <svg class="svg">
+                  <use xlink:href="#svg-ico-close"></use>
+              </svg>
+          </div>
+          <div class="close-btn__text">Закрыть</div>
+      </a>
       <ul class="links-block__list">
           <li class="links-block__item links-block__item_active"><a class="links-block__link" href="{{ route('login') }}">Вход</a></li>
           <li class="links-block__item"><a class="links-block__link" href="{{ route('register') }}">Регистрация</a></li>
@@ -31,7 +39,7 @@
       </div>
 
       <div class="login-block__footer">
-        <a class="login-block__link" href="#" data-dialog="#reset-password">Забыли пароль?</a>
+        <a class="login-block__link prevent-default" href="#" data-dialog="#reset-password">Забыли пароль?</a>
       </div>
     {{ Form::close() }}
 

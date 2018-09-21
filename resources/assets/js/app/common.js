@@ -12,7 +12,8 @@
         $(document).on('click',  '.show-no-text',    ns.clickShowNoText);
         $(document).on('submit', '.ajax-form',       ns.submitForm);
         $(document).on('click',  '.ajax-more',       ns.getMoreInfo);
-        
+        $(document).on('click',  '.prevent-default', ns.preventDefault);
+
         ns.initModalOpen();
     };
 
@@ -82,10 +83,11 @@
 
         var $btn     = $(e.currentTarget),
             page     = $btn.attr('href').split('page=')[1],
+            totalPointsWithoutShowed = $btn.attr('href').split('points=')[1],
             lastPage = $btn.data('last-page');
 
         $.ajax({
-            url : '?page=' + page,
+            url : '?page=' + page + '&points=' + totalPointsWithoutShowed,
             dataType: 'json',
             success: function(data) {
                 if (data.result) {
@@ -97,10 +99,14 @@
                 } else {
                     var link = $btn.attr('href').split('page=')[0];
 
-                    $btn.attr('href', link + 'page=' + (parseInt(page) + 1));
+                    $btn.attr('href', link + 'page=' + (parseInt(page) + 1) + '&points=' + data.totalPointsWithoutShowed);
                 }
             }
         });
+    };
+
+    ns.preventDefault = function(e) {
+        e.preventDefault();
     };
 
     ns.initModalOpen = function() {

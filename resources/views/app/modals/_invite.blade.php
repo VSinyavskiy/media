@@ -1,6 +1,6 @@
 <div class="dialog dialog_centered" id="copy-link">
     <div class="dialog__container">
-        <a class="dialog__close" href="#" data-dialog-dismiss>
+        <a class="dialog__close prevent-default" href="#" data-dialog-dismiss>
             <svg class="svg">
                 <use xlink:href="#svg-ico-close"></use>
             </svg>

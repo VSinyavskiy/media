@@ -67,7 +67,7 @@ class RegisterController extends Controller
         $user->mail_token = $request->email;
         $user->save();
 
-        return redirect()->route('home', ['#open-registration-confirm-email'])->withCookie(Cookie::forget('invited'));
+        return redirect()->route('home', ['#open-registration-confirm-email']);
     }
 
     public function registerFromSocial()
@@ -91,6 +91,8 @@ class RegisterController extends Controller
             $user->password          = User::generatePassword();
             $user->is_mail_confirmed = true;
             $user->save();
+
+            User::checkIsInvite();
         } else {
             $user = $siteUser;
         }
@@ -114,9 +116,11 @@ class RegisterController extends Controller
         $user->mail_token        = null;
         $user->save();
 
+        User::checkIsInvite();
+
         auth()->guard('web')->login($user);
 
-        return redirect()->route('user');
+        return redirect()->route('user')->withCookie(Cookie::forget('invited'));
     }
 
     /**
@@ -179,6 +183,8 @@ class RegisterController extends Controller
 
         if (isset($siteUser)) {
             $url    = route('user');
+
+            $siteUser->saveSocial($userData['provider'], $userData['socialId']);
         } else {
             $url    = route('register.social');
             $params = [
@@ -205,8 +211,6 @@ class RegisterController extends Controller
     {
         if (! empty($userData['email'])) {
             $siteUser = User::where('email', $userData['email'])->first();
-
-            $siteUser->saveSocial($userData['provider'], $userData['socialId']);
         } else {
             $siteUser = User::whereHas('socials', function ($query) use ($userData) {
                             $query->where([
