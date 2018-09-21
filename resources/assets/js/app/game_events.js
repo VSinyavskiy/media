@@ -9,13 +9,6 @@
      * Initializes namespace
      */
     ns.init = function() {
-        ns.onGameAuthError();
-        ns.onStartPlayingClick();
-        ns.onGoPlayClick();
-        ns.onRulesClick();
-        ns.onGameEnded();
-        ns.onReplayAfterFinish();
-        ns.onShareClick();
     };
 
     ns.onGameAuthError = function() {
