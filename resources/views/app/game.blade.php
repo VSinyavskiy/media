@@ -19,7 +19,7 @@
                 <div class="ninja-top-block__bg-piece ninja-top-block__bg-piece_2 bg-piece bg-piece_potato-chip"></div>
             </div>
         </div>
-        <p class="ninja-top-block__desc">Игра весит 5mb</p><a class="ninja-top-block__btn {{ isUserAuthorize() ? 'ninja-top-block__game-start'  : 'prevent-default' }} btn btn_default" href="#" {{ isUserAuthorize() ? '' : 'data-dialog=#auth-need-game' }}>ИГРАТЬ</a>
+        <p class="ninja-top-block__desc">Игра весит 3.2Mb</p><a class="ninja-top-block__btn {{ isUserAuthorize() ? 'ninja-top-block__game-start'  : 'prevent-default' }} btn btn_default" href="#" {{ isUserAuthorize() ? '' : 'data-dialog=#auth-need-game' }}>ИГРАТЬ</a>
         <div class="scroll-down ninja-top-block__scroll-down">Что нужно делать?</div>
     </section>
     <section class="steps-block steps-block_w-bg">

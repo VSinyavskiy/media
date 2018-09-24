@@ -30,8 +30,11 @@
 
           <h3 class="profile-adminname text-center">{{ $user->first_name }} {{ $user->last_name }}</h3>
 
-          <p class="text-muted text-center">{{ $user->phone }}</p>
-          <p class="text-muted text-center">{{ $user->email }}</p>
+          <div class="text-center">
+            <p class="text-muted">{{ $user->phone }}</p>
+            <p class="text-muted">{{ $user->email }}</p>
+            <a class="btn btn-block btn-success add-block" href="#" data-append-block-id="winners_block" data-route="" data-num-block="1">{{ __('admin.users.add_winner') }}</a>
+          </div>
         </div>
         <!-- /.box-body -->
       </div>

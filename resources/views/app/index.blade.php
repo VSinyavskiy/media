@@ -81,27 +81,33 @@
         <div class="row__col">
             <section class="doners-block row__block">
                 <div class="doners-block__title">САМЫЕ ДЛИННЫЕ<strong>ДОООООНЕРЫ</strong></div>
+                <ul class="doners-block__list">
 
-                @if($topDonerUsers->count())
-                    <ul class="doners-block__list">
-
-                        @foreach ($topDonerUsers as $key => $topDonerUser)
-                            <li class="doners-block__item">
-                                <div class="doner-dude">
-                                    <div class="doner-dude__avatar"><img class="doner-dude__img" src="{{ $topDonerUser->avatar->getUrl() }}">
-                                        <div class="doner-dude__place">{{ $key + 1 }}</div>
-                                    </div>
-                                    <div class="doner-dude__name">{{ $topDonerUser->first_name }} {{ $topDonerUser->last_name }}<span class="doner-dude__note">Донер как солнце</span></div>
-                                    <div class="doner-dude__score">{{ $topDonerUser->total_points }}</div>
+                    @foreach ($topDonerUsers as $key => $topDonerUser)
+                        <li class="doners-block__item">
+                            <div class="doner-dude">
+                                <div class="doner-dude__avatar"><img class="doner-dude__img" src="{{ $topDonerUser->avatar->getUrl() }}">
+                                    <div class="doner-dude__place">{{ $key + 1 }}</div>
                                 </div>
-                            </li>
-                        @endforeach
+                                <div class="doner-dude__name">{{ $topDonerUser->first_name }} {{ $topDonerUser->last_name }}<span class="doner-dude__note">Донер как солнце</span></div>
+                                <div class="doner-dude__score">{{ $topDonerUser->total_points }}</div>
+                            </div>
+                        </li>
+                    @endforeach
 
-                    </ul>
-                @else
-                    <p>Турнирная таблица пока еще пуста. Будь первым сегодня!</p>
-                @endif
+                    @for ($i = $topDonerUsers->count(); $i <= \App\Models\User::COUNT_TOP - $topDonerUsers->count(); $i++)
+                        <li class="doners-block__item">
+                            <div class="doner-dude">
+                                <div class="doner-dude__avatar"><img class="doner-dude__img" src="{{ asset('assets/img/default_avatar.png') }}">
+                                    <div class="doner-dude__place">{{ $i + 1 }}</div>
+                                </div>
+                                <div class="doner-dude__name">TBD<span class="doner-dude__note">Донер как солнце</span></div>
+                                <div class="doner-dude__score">-</div>
+                            </div>
+                        </li>
+                    @endfor
 
+                </ul>
             </section>
         </div>
     </div>

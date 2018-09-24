@@ -22,7 +22,7 @@ class User extends Authenticatable implements HasMedia
     const ROLE_USER  = 1;
     const ROLE_ADMIN = 2;
 
-    const DEFAULT_AVATAR_PATH = 'assets/images/default_avatar.png';
+    const DEFAULT_AVATAR_PATH = 'assets/images/default_user_avatar.jpg';
 
     const DEFAULT_PASSWORD_LENGTH = 8;
 
@@ -117,6 +117,11 @@ class User extends Authenticatable implements HasMedia
         return $this->hasMany(UserPointsLog::class);
     }
 
+    public function winners()
+    {
+        return $this->hasMany(Winner::class);
+    }
+
     public function getInvitedCountAttribute()
     {
         return $this->points()->friendInviteEvent()->count();
@@ -173,7 +178,7 @@ class User extends Authenticatable implements HasMedia
         $this->addMediaConversion('frontend')
             ->setManipulations((new Manipulations())->fit(Manipulations::FIT_CROP, 160, 160))
             ->performOnCollections('avatar')
-            ->keepOriginalImageFormat()
+            ->format(Manipulations::FORMAT_JPG)
             ->nonQueued();
     }
 
