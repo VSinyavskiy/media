@@ -31,13 +31,7 @@ class GameController extends Controller
 
     public function game()
     {
-        $user = auth()->guard('web')->user();
-
         $results = $this->service->getTodayResultsWithUserBest(User::COUNT_TOP_GAMERS);
-
-        // if (isset($user) && ! $results->contains('user_id', $user->id)) {
-        //     #TODO: get user today user information by id
-        // }
 
         return view('app.game', compact('results'));
     }

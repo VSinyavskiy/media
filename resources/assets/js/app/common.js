@@ -14,6 +14,7 @@
         $(document).on('click',  '.ajax-more',       ns.getMoreInfo);
         $(document).on('click',  '.prevent-default', ns.preventDefault);
 
+        ns.phonePasteDisable();
         ns.initModalOpen();
     };
 
@@ -119,6 +120,12 @@
 
             ns.clearUrlHash();
         }
+    };
+
+    ns.phonePasteDisable = function() {
+        $('[name="phone"], [name="phone_confirmation"]').on("cut copy paste", function(e) {
+            e.preventDefault();
+        });
     };
 
     ns.setFormData = function($form) {

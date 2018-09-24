@@ -125,7 +125,7 @@ class GameData extends Model implements GamesStorageInterface, GameResultInterfa
         $this->rank = self::whereDate('created_at', $this->created_at->format('Y-m-d'))
                             ->where('is_users_best_today', true)
                             ->where('score', '>=', $this->score)
-                            ->where('created_at', '<=', $this->created_at)
+//                            ->where('created_at', '<=', $this->created_at)
                             ->count();
     }
 
