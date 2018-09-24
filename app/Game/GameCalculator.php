@@ -115,6 +115,7 @@ class GameCalculator implements GameCalculatorInterface
         $currentReceiptType  = [];
         $currentReceiptScore = 0;
         $lastGoodTime        = null;
+        $lastTime            = null;
 
         foreach($data as $record) {
             // receipt
@@ -154,6 +155,15 @@ class GameCalculator implements GameCalculatorInterface
                     $this->score += $currentReceiptScore * (self::RECEIPT_MULTIPLIERS[$currentReceiptType] ?? 0);
                     $this->solvedReceipts[$currentReceiptType]++;
                 }
+            }
+
+            // break if game ended
+            if(isset($record['t'])) {
+                if(!is_null($lastTime) && $lastTime < $record['t']) {
+                    break;
+                }
+
+                $lastTime = $record['t'];
             }
         }
     }

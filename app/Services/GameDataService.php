@@ -150,6 +150,12 @@ class GameDataService
             $resultId = is_null($result) ? null : $result->getResultId();
         }
 
-        return $this->storage::getTopResults($date, $amount, $resultId);
+        $results = $this->storage::getTopResults($date, is_null($resultId) ? $amount : $amount + 1, $resultId);
+
+        if(count($results) == $amount + 1 && $results[count($results) - 1]->getResultId() != $resultId) {
+            unset($results[count($results) - 1]);
+        }
+
+        return $results;
     }
 }
