@@ -21,9 +21,9 @@
                 <li class="menu__item {{ Route::is('user') || Route::is('history') ? 'menu__item_active' : '' }}">
                     <a class="menu__link" href="{{ route('user') }}">Личный кабинет</a>
                 </li>
-                <li class="menu__item {{ Route::is('winners') ? 'menu__item_active' : '' }}">
+                {{--<li class="menu__item {{ Route::is('winners') ? 'menu__item_active' : '' }}">
                     <a class="menu__link" href="{{ route('winners') }}">Победители</a>
-                </li>
+                </li>--}}
                 <li class="menu__item"><a class="menu__link" href="#">Правила</a></li>
             </ul>
             <ul class="menu__lang lang">

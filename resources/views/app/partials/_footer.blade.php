@@ -1,17 +1,17 @@
 <footer class="footer">
     {{--<div class="footer__contacts"><a class="footer__contact" href="tel:+70007788"><b>Контактный телефон:</b> +7 000 77 88</a><a class="footer__contact" href="tel:+70007788"><b>Viber:</b> +7 000 77 88</a></div>--}}
     <div class="footer__socials">
-        <a class="footer__social" href="#">
+        <a class="footer__social" href="https://vk.com/lays_kz" target="_blank">
             <svg class="svg">
                 <use xlink:href="#svg-ico-vk"></use>
             </svg>
         </a>
-        <a class="footer__social" href="#">
+        <a class="footer__social" href="https://www.facebook.com/pg/layskazakhstan/posts/?ref=page_internal" target="_blank">
             <svg class="svg">
                 <use xlink:href="#svg-ico-fb"></use>
             </svg>
         </a>
-        <a class="footer__social" href="#">
+        <a class="footer__social" href="https://www.instagram.com/lays_kazakhstan/" target="_blank">
             <svg class="svg">
                 <use xlink:href="#svg-ico-instagram"></use>
             </svg>
