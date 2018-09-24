@@ -87,16 +87,17 @@ class RegisterController extends Controller
                 ])->first();
 
         if (! isset($siteUser)) {
-            $user->fill($request->all());
-            $user->password          = User::generatePassword();
-            $user->is_mail_confirmed = true;
-            $user->mail_token        = null;
-            $user->save();
-
             User::checkIsInvite();
+
+            $user->fill($request->all());
+            $user->password      = User::generatePassword();
         } else {
             $user = $siteUser;
         }
+
+        $user->is_mail_confirmed = true;
+        $user->mail_token        = null;
+        $user->save();
 
         $social = session('social');
         if (isset($social)) {
