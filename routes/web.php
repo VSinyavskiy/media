@@ -92,7 +92,10 @@ Route::group([
         Route::get('winners',       'UsersController@winners')->name('winners');       
     });
 
-    Route::get('invite/{user}',  'App\UsersController@invite')->name('invite');
+    // Game
     Route::get('/game_results',  'App\GameController@checkAuth')->name('game.check_auth');
     Route::post('/game_results', 'App\GameController@results')->name('game.results');
+
+    // User
+    Route::get('invite/{user}',  'App\UsersController@invite')->name('invite');
 });
