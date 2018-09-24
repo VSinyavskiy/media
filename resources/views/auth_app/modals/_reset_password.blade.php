@@ -21,7 +21,7 @@
                 </div>
 
                 <div class="form__buttons">
-                    <button class="btn btn_default btn_block" type="submit">Войти</button>
+                    <button class="btn btn_default btn_block" type="submit">Отправить</button>
                 </div>
 
             {{ Form::close() }}
