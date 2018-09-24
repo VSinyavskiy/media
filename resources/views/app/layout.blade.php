@@ -19,8 +19,8 @@
     <meta name="description" content="{{ __('app.shares.description') }}" />
     <!--[if IE 6]>
     <script type="text/javascript">location.replace("http://browsehappy.com/");</script><![endif]-->
-    <link rel="icon" href="favicon.png" type="image/png"/>
-    <link rel="shortcut icon" href="favicon.png" type="image/png"/>
+    <link rel="icon" href="{{ asset('assets/img/favicon.png') }}" type="image/png"/>
+    <link rel="shortcut icon" href="{{ asset('assets/img/favicon.png') }}" type="image/png"/>
     <link rel="stylesheet" href="{{ mix('assets/css/app.css') }}" type="text/css" media="screen"/>
 
     @yield('custom-css')
