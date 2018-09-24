@@ -41,12 +41,12 @@
     </section>
     <section class="share-block">
         <div class="share-block__socials">
-            <a class="share-block__social" href="#">
+            <a class="share-block__social share-vk" href="{{ route('invite', $user) }}">
                 <svg class="svg">
                     <use xlink:href="#svg-ico-vk"></use>
                 </svg>
             </a>
-            <a class="share-block__social" href="#">
+            <a class="share-block__social share-fb" href="{{ route('invite', $user) }}">
                 <svg class="svg">
                     <use xlink:href="#svg-ico-fb"></use>
                 </svg>

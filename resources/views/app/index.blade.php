@@ -134,17 +134,17 @@
             <section class="social-block row__block row__block_half">
                 <div class="social-block__desc"><strong>Подпишись на нас в соцсетях</strong>и участвуй в розыгрышах дополнительных подарков!</div>
                 <div class="social-block__socials">
-                    <a class="social-block__social" href="#">
+                    <a class="social-block__social" href="https://vk.com/lays_kz" target="_blank">
                         <svg class="svg">
                             <use xlink:href="#svg-ico-vk"></use>
                         </svg>
                     </a>
-                    <a class="social-block__social" href="#">
+                    <a class="social-block__social" href="https://www.facebook.com/pg/layskazakhstan/posts/?ref=page_internal" target="_blank">
                         <svg class="svg">
                             <use xlink:href="#svg-ico-fb"></use>
                         </svg>
                     </a>
-                    <a class="social-block__social" href="#">
+                    <a class="social-block__social" href="https://www.instagram.com/lays_kazakhstan/" target="_blank">
                         <svg class="svg">
                             <use xlink:href="#svg-ico-instagram"></use>
                         </svg>
