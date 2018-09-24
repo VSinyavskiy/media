@@ -50,7 +50,6 @@
             </li>
         </ul>
     </section>
-
     <section class="results-block">
         <div class="results-block__bg">
             <div class="results-block__bg-piece results-block__bg-piece_1 bg-piece bg-piece_pepper-v2"></div>
@@ -59,21 +58,25 @@
             <div class="results-block__bg-piece results-block__bg-piece_4 bg-piece bg-piece_paprica"></div>
         </div>
         <div class="results-block__title">Лучшие результаты за день</div>
+
         @if(count($results) > 0)
-        <ul class="results-block__list">
-            @foreach($results as $result)
-            <li class="results-block__item result {{ \Auth::id() == $result->getPlayerId() ? 'result_looser' : '' }}">
-                <div class="result__place"><span>{{ $result->getPlayerRank() }}</span></div>
-                <div class="result__name">{{ $result->getPlayerName() }}</div>
-                <div class="result__score">{{ $result->getPlayerScore() }}</div>
-            </li>
-            @endforeach
-        </ul>
+            <ul class="results-block__list">
+
+                @foreach($results as $result)
+                    <li class="results-block__item result {{ \Auth::id() == $result->getPlayerId() ? 'result_looser' : '' }}">
+                        <div class="result__place"><span>{{ $result->getPlayerRank() }}</span></div>
+                        <div class="result__name">{{ $result->getPlayerName() }}</div>
+                        <div class="result__score">{{ $result->getPlayerScore() }}</div>
+                    </li>
+                @endforeach
+
+            </ul>
         @else
             <p>Турнирная таблица пока еще пуста. Будь первым сегодня!</p>
         @endif
 
-        <p class="results-block__desc">Чего же ждешь, бей рекорд и зарабатывай баллы к твоему донеру</p><a class="results-block__btn btn btn_default {{ isUserAuthorize() ? 'ninja-top-block__game-start'  : 'prevent-default' }}" href="#" {{ isUserAuthorize() ? '' : 'data-dialog=#auth-need-game' }}>ИГРАТЬ</a></section>
+        <p class="results-block__desc">Чего же ждешь, бей рекорд и зарабатывай баллы к твоему донеру</p>
+        <a class="results-block__btn btn btn_default {{ isUserAuthorize() ? 'ninja-top-block__game-start'  : 'prevent-default' }}" href="#" {{ isUserAuthorize() ? '' : 'data-dialog=#auth-need-game' }}>ИГРАТЬ</a></section>
 @endsection
 
 @section('share_title')@endsection
