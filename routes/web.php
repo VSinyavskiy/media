@@ -85,8 +85,6 @@ Route::group([
         // Game
         Route::get('/game',          'GameController@game')->name('game');
         Route::get('/game_iframe',   'GameController@iframe')->name('game.iframe');
-        Route::get('/game_results',  'GameController@checkAuth')->name('game.check_auth');
-        Route::post('/game_results', 'GameController@results')->name('game.results');
 
         // User
         Route::get('user',          'UsersController@user')->name('user')->middleware('auth:web');
@@ -94,5 +92,10 @@ Route::group([
         Route::get('winners',       'UsersController@winners')->name('winners');       
     });
 
-    Route::get('invite/{user}', 'App\UsersController@invite')->name('invite');
+    // Game
+    Route::get('/game_results',  'App\GameController@checkAuth')->name('game.check_auth');
+    Route::post('/game_results', 'App\GameController@results')->name('game.results');
+
+    // User
+    Route::get('invite/{user}',  'App\UsersController@invite')->name('invite');
 });

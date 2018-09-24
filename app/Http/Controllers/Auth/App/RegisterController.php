@@ -87,15 +87,17 @@ class RegisterController extends Controller
                 ])->first();
 
         if (! isset($siteUser)) {
-            $user->fill($request->all());
-            $user->password          = User::generatePassword();
-            $user->is_mail_confirmed = true;
-            $user->save();
-
             User::checkIsInvite();
+
+            $user->fill($request->all());
+            $user->password      = User::generatePassword();
         } else {
             $user = $siteUser;
         }
+
+        $user->is_mail_confirmed = true;
+        $user->mail_token        = null;
+        $user->save();
 
         $social = session('social');
         if (isset($social)) {
@@ -103,10 +105,8 @@ class RegisterController extends Controller
 
             $user->saveSocial($social['provider'], $social['socialId']);
         }
-
-        auth()->guard('web')->login($user);
-
-        return redirect()->route('user')->withCookie(Cookie::forget('invited'));
+        
+        return redirect($this->getIsMailConfirmedRedirectUrl($user))->withCookie(Cookie::forget('invited'));
     }
 
     public function confirm($token)
@@ -118,9 +118,7 @@ class RegisterController extends Controller
 
         User::checkIsInvite();
 
-        auth()->guard('web')->login($user);
-
-        return redirect()->route('user')->withCookie(Cookie::forget('invited'));
+        return redirect($this->getIsMailConfirmedRedirectUrl($user))->withCookie(Cookie::forget('invited'));
     }
 
     /**
@@ -166,10 +164,6 @@ class RegisterController extends Controller
 
         $redirect = $this->getRedirectAttributes($userData);
 
-        if (isset($redirect['user'])) {
-            auth()->guard('web')->login($redirect['user']);
-        }
-
         if (isset($redirect['social'])) {
             session(['social' => $redirect['social']]);
         }
@@ -182,7 +176,7 @@ class RegisterController extends Controller
         $siteUser = $this->findUser($userData);
 
         if (isset($siteUser)) {
-            $url    = route('user');
+            $url = $this->getIsMailConfirmedRedirectUrl($siteUser);
 
             $siteUser->saveSocial($userData['provider'], $userData['socialId']);
         } else {
@@ -221,5 +215,25 @@ class RegisterController extends Controller
         }
 
         return $siteUser;
+    }
+
+    private function authFindedUser($user)
+    {
+        if ($user->is_mail_confirmed) {
+            auth()->guard('web')->login($user);
+        }
+
+        return $user->is_mail_confirmed;
+    }
+
+    private function getIsMailConfirmedRedirectUrl($user)
+    {
+        if ($this->authFindedUser($user)) {
+            $url = route('user');
+        } else {
+            $url = route('home', '#open-auth-social-error-is-mail-confirmed');
+        }
+
+        return $url;
     }
 }

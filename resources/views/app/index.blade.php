@@ -175,5 +175,6 @@
 
     @include('auth_app.modals._auth_need_invite')
     @include('auth_app.modals._auth_social_error')
+    @include('auth_app.modals._auth_social_error_is_mail_confirmed')
     @include('auth_app.modals._registration_confirm_email')
 @endsection

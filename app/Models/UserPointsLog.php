@@ -38,7 +38,7 @@ class UserPointsLog extends Model implements ReceiveGamePointsInterface
         parent::boot();
 
         self::created(function($model) {
-            $model->user->updateTotalPoints($model->points);
+            $model->user->updateTotalPoints();
 
             $model->checkTenthInvitedFriend();
 

@@ -7,25 +7,25 @@
     <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
 
     <meta property="og:type" content="article"/>
-    <meta property="og:title" content="@yield('share_title')"/>
-    <meta property="twitter:title" content="@yield('share_title')"/>
-    <meta property="og:description" content="@yield('share_description')"/>
-    <meta property="twitter:description" content="@yield('share_description')"/>
+    <meta property="og:title" content="{{ __('app.shares.title') }}"/>
+    <meta property="twitter:title" content="{{ __('app.shares.title') }}"/>
+    <meta property="og:description" content="{{ __('app.shares.description') }}"/>
+    <meta property="twitter:description" content="{{ __('app.shares.description') }}"/>
     <meta name="twitter:card" content="summary_large_image">
-    <meta property="og:image" content="" />
-    <meta property="twitter:image" content=""/>
-    <link rel="image_src" href="" />
-    <meta name="title" content="@yield('share_title')" />
-    <meta name="description" content="@yield('share_description')" />
+    <meta property="og:image" content="{{ asset('assets/img/share.png') }}" />
+    <meta property="twitter:image" content="{{ asset('assets/img/share.png') }}"/>
+    <link rel="image_src" href="{{ asset('assets/img/share.png') }}" />
+    <meta name="title" content="{{ __('app.shares.title') }}" />
+    <meta name="description" content="{{ __('app.shares.description') }}" />
     <!--[if IE 6]>
     <script type="text/javascript">location.replace("http://browsehappy.com/");</script><![endif]-->
-    <link rel="icon" href="favicon.png" type="image/png"/>
-    <link rel="shortcut icon" href="favicon.png" type="image/png"/>
+    <link rel="icon" href="{{ asset('assets/img/favicon.png') }}" type="image/png"/>
+    <link rel="shortcut icon" href="{{ asset('assets/img/favicon.png') }}" type="image/png"/>
     <link rel="stylesheet" href="{{ mix('assets/css/app.css') }}" type="text/css" media="screen"/>
 
     @yield('custom-css')
 
-    <title>@yield('share_title')</title>
+    <title>{{ __('app.shares.title') }}</title>
 </head>
 
 <body>
