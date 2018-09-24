@@ -28,8 +28,9 @@ class User extends Authenticatable implements HasMedia
 
     const FIRST_AFTER_INVITE_COOCKIE_LIVE_MINUTES = 2;
 
-    const COUNT_TOP     = 5;
-    const COUNT_HISTORY = 5;
+    const COUNT_TOP        = 5;
+    const COUNT_HISTORY    = 5;
+    const COUNT_TOP_GAMERS = 3;
 
     const GAME_ACTION_END_TIMESTAMP = '30.10.2018 23:59:59';
 
