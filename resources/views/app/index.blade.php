@@ -59,8 +59,16 @@
             <div class="slider__track" data-glide-el="track">
                 <ul class="slider__slides">
                     <li class="slider__slide slide slide_prize">
+                        <div class="slide__img"><img src="{{ asset('assets/img/prize-2000.png') }}"></div>
+                        <div class="slide__desc">{{ __('app.pages.home.certificate_2000') }}</div>
+                    </li>
+                    <li class="slider__slide slide slide_prize">
                         <div class="slide__img"><img src="{{ asset('assets/img/gift-card.png') }}"></div>
-                        <div class="slide__desc">Среди топ-100 тех, кто привел больше всего друзей, мы разыграем три сертификата в магазин электроники</div>
+                        <div class="slide__desc">{{ __('app.pages.home.certificate_10000') }}</div>
+                    </li>
+                    <li class="slider__slide slide slide_prize">
+                        <div class="slide__img"><img src="{{ asset('assets/img/prize-20000.png') }}"></div>
+                        <div class="slide__desc">{{ __('app.pages.home.certificate_20000') }}</div>
                     </li>
                 </ul>
             </div>
@@ -145,7 +153,7 @@
             </section>
         </div>
         <div class="row__col">
-            <section class="squares-block row__block"><img class="squares-block__bg" src="{{ asset('assets/img/text-new-lays-doner-whats-it-like.png') }}">
+            <section class="squares-block row__block"><img class="squares-block__bg" src="{{ asset('assets/img/text-new-lays-doner-whats-it-like-new.png') }}">
                 <div class="squares-block__square squares-block__square_1 square square_yellow">
                     <div class="square__bg"></div>
                     <div class="square__text"><span>Такой же насыщенный вкус</span></div><a class="square__btn" href="#"></a></div>
