@@ -19,7 +19,8 @@
                 <div class="ninja-top-block__bg-piece ninja-top-block__bg-piece_2 bg-piece bg-piece_potato-chip"></div>
             </div>
         </div>
-        <p class="ninja-top-block__desc">Игра весит 3.2Mb</p><a class="ninja-top-block__btn {{ isUserAuthorize() ? 'ninja-top-block__game-start'  : 'prevent-default' }} btn btn_default" href="#" {{ isUserAuthorize() ? '' : 'data-dialog=#auth-need-game' }}>ИГРАТЬ</a>
+        {{--<p class="ninja-top-block__desc">Игра весит 3.2Mb</p>--}}
+        <a class="ninja-top-block__btn {{ isUserAuthorize() ? 'ninja-top-block__game-start'  : 'prevent-default' }} btn btn_default" href="#" {{ isUserAuthorize() ? '' : 'data-dialog=#auth-need-game' }}>ИГРАТЬ</a>
         <div class="scroll-down ninja-top-block__scroll-down">Что нужно делать?</div>
     </section>
     <section class="steps-block steps-block_w-bg">
@@ -40,7 +41,7 @@
                 <div class="step__bg">
                     <div class="step__img step__img_number"><img class="step__number step__number_right" src="{{ asset('assets/img/number-2.png') }}"></div>
                 </div>
-                <div class="step__desc">Держись в рейтенге лучших до конца дня и получай баллы к твоему доннеру</div>
+                <div class="step__desc">Держись в рейтинге лучших до конца дня и получай баллы к твоему донеру</div>
             </li>
             <li class="steps-block__item step">
                 <div class="step__bg">

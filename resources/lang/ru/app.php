@@ -28,7 +28,7 @@ return [
     ],
 
     'shares' => [
-        'title' => '',
-        'description' => '',
+        'title' => 'LAY’S ДОНЕР',
+        'description' => 'Приглашай друзей, получай призы!',
     ],
 ];
