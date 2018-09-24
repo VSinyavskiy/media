@@ -153,10 +153,10 @@ class User extends Authenticatable implements HasMedia
         $this->attributes['mail_token'] = ! is_null($value) ? md5($value . microtime()) : $value;
     }
 
-    public function updateTotalPoints($points)
+    public function updateTotalPoints()
     {
         $this->update([
-            'total_points' => $this->total_points + $points
+            'total_points' => $this->points()->sum('points')
         ]);
     }
 
