@@ -123,7 +123,7 @@
     };
 
     ns.phonePasteDisable = function() {
-        $('[name="phone"], [name="phone_confirmation"]').bind("cut copy paste", function(e) {
+        $('[name="phone"], [name="phone_confirmation"]').on("cut copy paste", function(e) {
             e.preventDefault();
         });
     };

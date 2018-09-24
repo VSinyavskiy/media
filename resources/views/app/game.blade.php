@@ -10,7 +10,7 @@
                     </svg>
                 </div>
                 <div class="close-btn__text"></div>
-            </a><iframe width="1440" height="1760" data-src="{{ route('game.iframe') }}"></iframe></div>
+            </a><iframe width="1440" height="1760" data-src="{{ route('game.iframe') }}" {{ isUserAuthorize() ? "data-share-url=" . route('invite', auth()->guard('web')->user()) : '' }}></iframe></div>
         <div class="ninja-top-block__bg">
             <div class="scene__layer" data-depth="0.6">
                 <div class="ninja-top-block__bg-piece ninja-top-block__bg-piece_1 bg-piece bg-piece_potato-chip"></div>

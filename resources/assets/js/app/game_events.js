@@ -37,7 +37,7 @@
     };
 
     ns.onShareClick = function() {
-        console.log('TODO: implement onShareClick');
+        window.open('https://www.facebook.com/sharer/sharer.php?u=' + $('iframe').data('share-url'),'','width=600, height=400');
     };
 
     ns.init();
