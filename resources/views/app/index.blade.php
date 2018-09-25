@@ -84,7 +84,9 @@
                     <div class="ninja-block__bg-piece ninja-block__bg-piece_3 bg-piece bg-piece_tomato"></div>
                     <div class="ninja-block__bg-piece ninja-block__bg-piece_4 bg-piece bg-piece_potato-chip"></div>
                 </div>
-                <div class="ninja-block__desc"><b>{{ __('app.pages.home.game_description') }}</b>{{ __('app.pages.home.result') }}</div><a class="ninja-block__btn btn btn_default" href="{{ route('game') }}">{{ __('app.pages.home.game') }}</a></section>
+                <div class="ninja-block__desc"><b>{{ __('app.pages.home.game_description') }}</b>{{ __('app.pages.home.result') }}</div>
+                <a class="ninja-block__btn btn btn_default event-play-home" href="{{ route('game') }}">{{ __('app.pages.home.game') }}</a>
+            </section>
         </div>
         <div class="row__col">
             <section class="doners-block row__block">
@@ -134,17 +136,17 @@
             <section class="social-block row__block row__block_half">
                 <div class="social-block__desc"><strong>{{ __('app.pages.home.subscribe_title') }}</strong>{{ __('app.pages.home.subscribe_description') }}</div>
                 <div class="social-block__socials">
-                    <a class="social-block__social" href="https://vk.com/lays_kz" target="_blank">
+                    <a class="social-block__social event-go-to-vk-home" href="https://vk.com/lays_kz" target="_blank">
                         <svg class="svg">
                             <use xlink:href="#svg-ico-vk"></use>
                         </svg>
                     </a>
-                    <a class="social-block__social" href="https://www.facebook.com/pg/layskazakhstan/posts/?ref=page_internal" target="_blank">
+                    <a class="social-block__social event-go-to-fb-home" href="https://www.facebook.com/pg/layskazakhstan/posts/?ref=page_internal" target="_blank">
                         <svg class="svg">
                             <use xlink:href="#svg-ico-fb"></use>
                         </svg>
                     </a>
-                    <a class="social-block__social" href="https://www.instagram.com/lays_kazakhstan/" target="_blank">
+                    <a class="social-block__social event-go-to-ig-home" href="https://www.instagram.com/lays_kazakhstan/" target="_blank">
                         <svg class="svg">
                             <use xlink:href="#svg-ico-instagram"></use>
                         </svg>

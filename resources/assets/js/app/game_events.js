@@ -17,26 +17,40 @@
     };
 
     ns.onStartPlayingClick = function() {
-        console.log('TODO: implement onStartPlayingClick');
+        gtag('event', 'click', {
+          'event_category': 'game_start_play',
+        });
     };
 
     ns.onGoPlayClick = function() {
-        console.log('TODO: implement onGoPlayClick');
+        gtag('event', 'click', {
+          'event_category': 'game_go_play',
+        });
     };
 
     ns.onRulesClick = function() {
-        console.log('TODO: implement onRulesClick');
+        gtag('event', 'click', {
+          'event_category': 'game_rules',
+        });
     };
 
     ns.onGameEnded = function() {
-        console.log('TODO: implement onGameEnded');
+        gtag('event', 'click', {
+          'event_category': 'game_ended',
+        });
     };
 
     ns.onReplayAfterFinish = function() {
-        console.log('TODO: implement onReplayAfterFinish');
+        gtag('event', 'click', {
+          'event_category': 'game_replay_after_finish',
+        });
     };
 
     ns.onShareClick = function() {
+        gtag('event', 'click', {
+          'event_category': 'game_share',
+        });
+
         window.open('https://www.facebook.com/sharer/sharer.php?u=' + $('iframe').data('share-url'),'','width=600, height=400');
     };
 

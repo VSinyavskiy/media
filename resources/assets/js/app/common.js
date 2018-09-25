@@ -18,6 +18,17 @@
         $(document).on('click',  '.share-vk',        ns.shareVk);
         $(document).on('click',  '.share-fb',        ns.shareFb);
 
+        $(document).on('click',  '.event-play-home',        ns.onPlayHomePageClick);
+        $(document).on('click',  '.event-first-play-game',  ns.onFirstPlayGamePageClick);
+        $(document).on('click',  '.event-second-play-game', ns.onSecondPlayGamePageClick);
+        $(document).on('click',  '.event-auth',             ns.onAuthClick);
+        $(document).on('click',  '.event-go-to-vk-home',    ns.onGoToVkHomePageClick);
+        $(document).on('click',  '.event-go-to-fb-home',    ns.onGoToFbHomePageClick);
+        $(document).on('click',  '.event-go-to-ig-home',    ns.onGoToIgHomePageClick);
+        $(document).on('click',  '.event-go-to-vk-footer',  ns.onGoToVkFooterClick);
+        $(document).on('click',  '.event-go-to-fb-footer',  ns.onGoToFbFooterClick);
+        $(document).on('click',  '.event-go-to-ig-footer',  ns.onGoToIgFooterClick);
+
         ns.phonePasteDisable();
         ns.initModalOpen();
     };
@@ -133,11 +144,15 @@
     ns.shareVk = function (e) {
         e.preventDefault();
 
+        ns.onShareVkClick();
+
         window.open('https://vk.com/share.php?url=' + $(e.currentTarget).attr('href'),'','width=600, height=400');
     };
 
     ns.shareFb = function (e) {
         e.preventDefault();
+
+        ns.onShareFbClick();
 
         window.open('https://www.facebook.com/sharer/sharer.php?u=' + $(e.currentTarget).attr('href'),'','width=600, height=400');
     };
@@ -164,6 +179,78 @@
 
     ns.clearUrlHash = function() {
         window.location.hash = "";
+    };
+
+    ns.onPlayHomePageClick = function() {
+        gtag('event', 'click', {
+          'event_category': 'site_play_home_page',
+        });
+    };
+
+    ns.onFirstPlayGamePageClick = function() {
+        gtag('event', 'click', {
+          'event_category': 'site_first_play_game_page',
+        });
+    };
+
+    ns.onSecondPlayGamePageClick = function() {
+        gtag('event', 'click', {
+          'event_category': 'site_second_play_game_page',
+        });
+    };
+
+    ns.onAuthClick = function() {
+        gtag('event', 'click', {
+          'event_category': 'site_auth',
+        });
+    };
+
+    ns.onGoToVkHomePageClick = function() {
+        gtag('event', 'click', {
+          'event_category': 'site_go_to_vk_home_page',
+        });
+    };
+
+    ns.onGoToFbHomePageClick = function() {
+        gtag('event', 'click', {
+          'event_category': 'site_go_to_fb_home_page',
+        });
+    };
+
+    ns.onGoToIgHomePageClick = function() {
+        gtag('event', 'click', {
+          'event_category': 'site_go_to_ig_home_page',
+        });
+    };
+
+    ns.onGoToVkFooterClick = function() {
+        gtag('event', 'click', {
+          'event_category': 'site_go_to_vk_footer',
+        });
+    };
+
+    ns.onGoToFbFooterClick = function() {
+        gtag('event', 'click', {
+          'event_category': 'site_go_to_fb_footer',
+        });
+    };
+
+    ns.onGoToIgFooterClick = function() {
+        gtag('event', 'click', {
+          'event_category': 'site_go_to_ig_footer',
+        });
+    };
+
+    ns.onShareVkClick = function() {
+        gtag('event', 'click', {
+          'event_category': 'site_share_vk',
+        });
+    };
+
+    ns.onShareFbClick = function() {
+        gtag('event', 'click', {
+          'event_category': 'site_share_fb',
+        });
     };
 
     ns.init();
