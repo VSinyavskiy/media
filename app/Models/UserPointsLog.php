@@ -113,32 +113,38 @@ class UserPointsLog extends Model implements ReceiveGamePointsInterface
 
     public function receiveFriendInvitePoints($userId, $points)
     {
-        return new self([
+        $userPointsLog = new self([
             'user_id'    => $userId,
             'event_type' => self::FRIEND_INVITE,
             'points'     => $points,
             'scoring_at' => getNowTimestamp()->format('Y-m-d H:i:s'),
-        ])->save();
+        ]);
+
+        return $userPointsLog->save();
     }
 
     public function receiveGameTopPoints(int $userId, int $points, int $rank, \DateTime $playedOn): bool
     {
-        return new self([
+        $userPointsLog = new self([
             'user_id'    => $userId,
             'event_type' => self::GAMING,
             'points'     => $points,
             'rank'       => $rank,
             'scoring_at' => getTimestampFromDateTime($playedOn)->format('Y-m-d H:i:s'),
-        ])->save();
+        ]);
+
+        return $userPointsLog->save();
     }
 
     public function receiveGameFirstPlayPoints(int $userId, int $points, \DateTime $playedOn): bool
     {
-        return new self([
+        $userPointsLog = new self([
             'user_id'    => $userId,
             'event_type' => self::FIRST_TIME_GAMING,
             'points'     => $points,
             'scoring_at' => getTimestampFromDateTime($playedOn)->format('Y-m-d H:i:s'),
-        ])->save();
+        ]);
+
+        return $userPointsLog->save();
     }
 }
