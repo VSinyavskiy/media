@@ -118,7 +118,7 @@ class UserPointsLog extends Model implements ReceiveGamePointsInterface
             'event_type' => self::FRIEND_INVITE,
             'points'     => $points,
             'scoring_at' => getNowTimestamp()->format('Y-m-d H:i:s'),
-        ])->save();
+        ]);
     }
 
     public function receiveGameTopPoints(int $userId, int $points, int $rank, \DateTime $playedOn): bool
@@ -129,7 +129,7 @@ class UserPointsLog extends Model implements ReceiveGamePointsInterface
             'points'     => $points,
             'rank'       => $rank,
             'scoring_at' => getTimestampFromDateTime($playedOn)->format('Y-m-d H:i:s'),
-        ])->save();
+        ]);
     }
 
     public function receiveGameFirstPlayPoints(int $userId, int $points, \DateTime $playedOn): bool
@@ -139,6 +139,6 @@ class UserPointsLog extends Model implements ReceiveGamePointsInterface
             'event_type' => self::FIRST_TIME_GAMING,
             'points'     => $points,
             'scoring_at' => getTimestampFromDateTime($playedOn)->format('Y-m-d H:i:s'),
-        ])->save();
+        ]);
     }
 }
