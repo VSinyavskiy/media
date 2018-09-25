@@ -67,10 +67,14 @@ class RegisterController extends Controller
     {
         $user->fill($request->all());
         $user->password   = $request->password;
-        $user->mail_token = $request->email;
+        // $user->mail_token = $request->email;
+        $user->is_mail_confirmed = true;
         $user->save();
 
-        return redirect()->route('home', ['#open-registration-confirm-email']);
+        User::checkIsInvite();
+
+        // return redirect()->route('home', ['#open-registration-confirm-email']);
+        return redirect($this->getIsMailConfirmedRedirectUrl($user));
     }
 
     public function registerFromSocial()
