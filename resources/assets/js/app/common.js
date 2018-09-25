@@ -13,6 +13,7 @@
         $(document).on('submit', '.ajax-form',       ns.submitForm);
         $(document).on('click',  '.ajax-more',       ns.getMoreInfo);
         $(document).on('click',  '.prevent-default', ns.preventDefault);
+        $(document).on('click',  '.page-refresh',    ns.pageRefresh);
 
         $(document).on('click',  '.share-vk',        ns.shareVk);
         $(document).on('click',  '.share-fb',        ns.shareFb);
@@ -110,6 +111,10 @@
 
     ns.preventDefault = function(e) {
         e.preventDefault();
+    };
+
+    ns.pageRefresh = function(e) {
+        window.location.reload();
     };
 
     ns.initModalOpen = function() {

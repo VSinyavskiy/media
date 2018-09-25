@@ -3,7 +3,7 @@
 @section('content')
     <section class="ninja-top-block">
         <div class="ninja-top-block__game" id="main">
-            <a class="close-btn ninja-top-block__game-stop" href="#">
+            <a class="close-btn ninja-top-block__game-stop page-refresh" href="#">
                 <div class="close-btn__icon">
                     <svg class="svg">
                         <use xlink:href="#svg-ico-close"></use>
