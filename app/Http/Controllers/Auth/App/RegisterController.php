@@ -15,6 +15,7 @@ use App\Models\UserSocial;
 use App\Http\Requests\App\Auth\RegisterRequest;
 use App\Http\Requests\App\Auth\SocialRegisterRequest;
 
+use LaravelLocalization;
 use Cookie;
 
 class RegisterController extends Controller
@@ -38,6 +39,8 @@ class RegisterController extends Controller
      * @var string
      */
     protected $redirectTo = '/home';
+
+    protected $locale;
 
     /**
      * Create a new controller instance.
@@ -128,6 +131,8 @@ class RegisterController extends Controller
      */
     public function redirectToProvider(Request $request)
     {
+        session(['locale' => LaravelLocalization::getCurrentLocale()]);
+
         return Socialite::driver($request->provider)
                 // ->scopes(['email'/*,'publish_actions'*/])
                 ->redirect();
@@ -140,6 +145,8 @@ class RegisterController extends Controller
      */
     public function handleProviderCallback(Request $request)
     {
+        $this->locale = $request->session()->get('locale');
+
         $loginException = false;
 
         try {
@@ -159,7 +166,7 @@ class RegisterController extends Controller
         }
 
         if ($loginException) {
-            return redirect()->route('home', ['#open-auth-social-error']);
+            return redirect(LaravelLocalization::getLocalizedURL($this->locale, route('home', ['#open-auth-social-error'])));
         }
 
         $redirect = $this->getRedirectAttributes($userData);
@@ -180,7 +187,7 @@ class RegisterController extends Controller
 
             $siteUser->saveSocial($userData['provider'], $userData['socialId']);
         } else {
-            $url    = route('register.social');
+            $url    = LaravelLocalization::getLocalizedURL($this->locale, route('register.social'));
             $params = [
                 'firstName' => $userData['first_name'],
                 'lastName'  => $userData['last_name'],
@@ -229,9 +236,9 @@ class RegisterController extends Controller
     private function getIsMailConfirmedRedirectUrl($user)
     {
         if ($this->authFindedUser($user)) {
-            $url = route('user');
+            $url = LaravelLocalization::getLocalizedURL($this->locale, route('user'));
         } else {
-            $url = route('home', '#open-auth-social-error-is-mail-confirmed');
+            $url = LaravelLocalization::getLocalizedURL($this->locale, route('home', ['#open-auth-social-error-is-mail-confirmed']));
         }
 
         return $url;
