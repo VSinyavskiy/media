@@ -86,7 +86,15 @@
                 <li class="doners-block__item {{ $topDonerUser->id == $user->id ? 'doners-block__item_highlighted' : '' }}">
                     <div class="doner-dude">
                         <div class="doner-dude__avatar"><img class="doner-dude__img" src="{{ $topDonerUser->avatar->getUrl() }}">
-                            <div class="doner-dude__place">{{ $topDonerUser->position ?? $key + 1 }}</div>
+                            <div class="doner-dude__place">
+
+                                @if (isset($topDonerUser->position))
+                                    {{ $topDonerUser->position < 100 ? $topDonerUser->position : 99+ }}                              
+                                @else
+                                    {{ $key + 1 }}
+                                @endif
+
+                            </div>
                         </div>
                         <div class="doner-dude__name">{{ $topDonerUser->first_name }} {{ $topDonerUser->last_name }}<span class="doner-dude__note">{{ __('app.pages.home.doner_like') }}</span></div>
                         <div class="doner-dude__score">{{ $topDonerUser->total_points }}</div>
