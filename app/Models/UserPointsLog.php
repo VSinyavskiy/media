@@ -123,6 +123,8 @@ class UserPointsLog extends Model implements ReceiveGamePointsInterface
 
     public function receiveGameTopPoints(int $userId, int $points, int $rank, \DateTime $playedOn): bool
     {
+        dd(getTimestampFromDateTime($playedOn)->format('Y-m-d H:i:s'));
+
         return self::create([
             'user_id'    => $userId,
             'event_type' => self::GAMING,
