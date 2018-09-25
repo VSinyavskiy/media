@@ -89,7 +89,7 @@
                             <div class="doner-dude__place">
 
                                 @if (isset($topDonerUser->position))
-                                    {{ $topDonerUser->position < 100 ? $topDonerUser->position : 99+ }}                              
+                                    {{ ($topDonerUser->position < 100) ? $topDonerUser->position : '99+' }}                              
                                 @else
                                     {{ $key + 1 }}
                                 @endif
