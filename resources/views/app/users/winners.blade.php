@@ -2,9 +2,9 @@
 
 @section('content')
 	<form class="winners-top-block form" action="#">
-        <div class="winners-top-block__label">Искать по номеру телефона</div>
+        <div class="winners-top-block__label">{{ __('app.pages.winners.search') }}</div>
         <input class="form__control winners-top-block__control mask mask_tel" type="tel" name="telephone" placeholder="+7 ______ ___ ___">
-        <button class="winners-top-block__btn btn btn_default" type="submit">НАЙТИ</button>
+        <button class="winners-top-block__btn btn btn_default" type="submit">{{ __('app.pages.winners.button') }}</button>
     </form>
     <section class="doners-block">
         <div class="doners-block__bg scene">
@@ -74,7 +74,7 @@
                 </div>
             </li>
         </ul>
-        <a class="doners-block__btn btn btn_default" href="#">ПОКАЗАТЬ БОЛЬШЕ</a>
+        <a class="doners-block__btn btn btn_default" href="#">{{ __('app.pages.winners.more') }}</a>
     </section>
 @endsection
 

@@ -34,10 +34,15 @@
                 </div>
                 <div class="doner__score">{{ $user->total_points }}</div>
             </div>
-            <div class="doner__desc"><b>Размер твоего донера</b><a class="doner__link" href="{{ route('history') }}">История получения баллов</a></div>
+            <div class="doner__desc"><b>{{ __('app.pages.users.size') }}</b><a class="doner__link" href="{{ route('history') }}">{{ __('app.pages.users.history') }}</a></div>
         </div>
-        <div class="user-top-block__counter">Ты позвал {{ $user->invited_count }} {{ pluralize($user->invited_count, 'друга', 'друзей', 'друзей') }}</div>
-        <a class="user-top-block__btn btn btn_default prevent-default" href="#" data-dialog="#copy-link">ПОЗВАТЬ ЕЩЕ</a>
+        <div class="user-top-block__counter">
+            {{ str_replace_array('%s', [
+                $user->invited_count, 
+                pluralize($user->invited_count, __('app.pages.users.one_friend'), __('app.pages.users.five_friends'), __('app.pages.users.five_friends'))
+            ], __('app.pages.users.invited')) }}
+        </div>
+        <a class="user-top-block__btn btn btn_default prevent-default" href="#" data-dialog="#copy-link">{{ __('app.pages.users.invite') }}</a>
     </section>
     <section class="share-block">
         <div class="share-block__socials">
@@ -74,16 +79,24 @@
                 <div class="doners-block__bg-piece doners-block__bg-piece_6 bg-piece bg-piece_potato-chip"></div>
             </div>
         </div>
-        <div class="doners-block__title">САМЫЕ ДЛИННЫЕ<strong>ДОООООНЕРЫ</strong></div>
+        <div class="doners-block__title">{!! __('app.pages.users.top_title') !!}</div>
         <ul class="doners-block__list">
 
             @foreach ($topDonerUsers as $key => $topDonerUser)
                 <li class="doners-block__item {{ $topDonerUser->id == $user->id ? 'doners-block__item_highlighted' : '' }}">
                     <div class="doner-dude">
                         <div class="doner-dude__avatar"><img class="doner-dude__img" src="{{ $topDonerUser->avatar->getUrl() }}">
-                            <div class="doner-dude__place">{{ $topDonerUser->position ?? $key + 1 }}</div>
+                            <div class="doner-dude__place">
+
+                                @if (isset($topDonerUser->position))
+                                    {{ ($topDonerUser->position < 100) ? $topDonerUser->position : '99+' }}                              
+                                @else
+                                    {{ $key + 1 }}
+                                @endif
+
+                            </div>
                         </div>
-                        <div class="doner-dude__name">{{ $topDonerUser->first_name }} {{ $topDonerUser->last_name }}<span class="doner-dude__note">Донер как солнце</span></div>
+                        <div class="doner-dude__name">{{ $topDonerUser->first_name }} {{ $topDonerUser->last_name }}<span class="doner-dude__note">{{ __('app.pages.home.doner_like') }}</span></div>
                         <div class="doner-dude__score">{{ $topDonerUser->total_points }}</div>
                     </div>
                 </li>

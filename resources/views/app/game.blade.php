@@ -3,7 +3,7 @@
 @section('content')
     <section class="ninja-top-block">
         <div class="ninja-top-block__game" id="main">
-            <a class="close-btn ninja-top-block__game-stop" href="#">
+            <a class="close-btn ninja-top-block__game-stop page-refresh" href="#">
                 <div class="close-btn__icon">
                     <svg class="svg">
                         <use xlink:href="#svg-ico-close"></use>
@@ -20,8 +20,8 @@
             </div>
         </div>
         {{--<p class="ninja-top-block__desc">Игра весит 3.2Mb</p>--}}
-        <a class="ninja-top-block__btn {{ isUserAuthorize() ? 'ninja-top-block__game-start'  : 'prevent-default' }} btn btn_default" href="#" {{ isUserAuthorize() ? '' : 'data-dialog=#auth-need-game' }}>ИГРАТЬ</a>
-        <div class="scroll-down ninja-top-block__scroll-down">Что нужно делать?</div>
+        <a class="ninja-top-block__btn {{ isUserAuthorize() ? 'ninja-top-block__game-start'  : 'prevent-default' }} btn btn_default" href="#" {{ isUserAuthorize() ? '' : 'data-dialog=#auth-need-game' }}>{{ __('app.pages.home.game') }}</a>
+        <div class="scroll-down ninja-top-block__scroll-down">{{ __('app.pages.home.what_will') }}</div>
     </section>
     <section class="steps-block steps-block_w-bg">
         <div class="steps-block__bg">
@@ -35,19 +35,19 @@
                 <div class="step__bg">
                     <div class="step__img step__img_number"><img class="step__number" src="{{ asset('assets/img/number-1.png') }}"></div>
                 </div>
-                <div class="step__desc">Играй в игру, зарабатывай баллы и попадай в топ 3 игрового рейтинга</div>
+                <div class="step__desc">{{ __('app.pages.game.first_description') }}</div>
             </li>
             <li class="steps-block__item step">
                 <div class="step__bg">
                     <div class="step__img step__img_number"><img class="step__number step__number_right" src="{{ asset('assets/img/number-2.png') }}"></div>
                 </div>
-                <div class="step__desc">Держись в рейтинге лучших до конца дня и получай баллы к твоему донеру</div>
+                <div class="step__desc">{{ __('app.pages.game.second_description') }}</div>
             </li>
             <li class="steps-block__item step">
                 <div class="step__bg">
                     <div class="step__img step__img_number"><img class="step__number" src="{{ asset('assets/img/number-3.png') }}"></div>
                 </div>
-                <div class="step__desc">Чем больше донер – тем больше призов. Дерзай</div>
+                <div class="step__desc">{{ __('app.pages.game.third_description') }}</div>
             </li>
         </ul>
     </section>
@@ -58,7 +58,7 @@
             <div class="results-block__bg-piece results-block__bg-piece_3 bg-piece bg-piece_potato-chip"></div>
             <div class="results-block__bg-piece results-block__bg-piece_4 bg-piece bg-piece_paprica"></div>
         </div>
-        <div class="results-block__title">Лучшие результаты за день</div>
+        <div class="results-block__title">{{ __('app.pages.game.results') }}</div>
 
         @if(count($results) > 0)
             <ul class="results-block__list">
@@ -73,11 +73,11 @@
 
             </ul>
         @else
-            <p>Турнирная таблица пока еще пуста. Будь первым сегодня!</p>
+            <p>{{ __('app.pages.game.empty') }}</p>
         @endif
 
-        <p class="results-block__desc">Чего же ждешь, бей рекорд и зарабатывай баллы к твоему донеру</p>
-        <a class="results-block__btn btn btn_default {{ isUserAuthorize() ? 'ninja-top-block__game-start'  : 'prevent-default' }}" href="#" {{ isUserAuthorize() ? '' : 'data-dialog=#auth-need-game' }}>ИГРАТЬ</a></section>
+        <p class="results-block__desc">{{ __('app.pages.game.question') }}</p>
+        <a class="results-block__btn btn btn_default {{ isUserAuthorize() ? 'ninja-top-block__game-start'  : 'prevent-default' }}" href="#" {{ isUserAuthorize() ? '' : 'data-dialog=#auth-need-game' }}>{{ __('app.pages.home.game') }}</a></section>
 @endsection
 
 @section('share_title')@endsection

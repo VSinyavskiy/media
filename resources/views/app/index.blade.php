@@ -27,8 +27,8 @@
             <div class="scene__layer" data-depth="0.1">
                 <div class="top-block__bg-piece top-block__bg-piece_8 bg-piece bg-piece_pepper"></div>
             </div>
-        </div><a class="top-block__btn btn btn_default prevent-default" href="#" data-dialog="#{{ isUserAuthorize() ? 'copy-link'  : 'auth-need-invite' }}">ПОЗВАТЬ ДРУЗЕЙ</a>
-        <div class="scroll-down top-block__scroll-down">Что нужно делать?</div>
+        </div><a class="top-block__btn btn btn_default prevent-default" href="#" data-dialog="#{{ isUserAuthorize() ? 'copy-link'  : 'auth-need-invite' }}">{{ __('app.pages.home.invite') }}</a>
+        <div class="scroll-down top-block__scroll-down">{{ __('app.pages.home.what_will') }}</div>
     </section>
     <section class="steps-block">
         <ul class="steps-block__list">
@@ -37,23 +37,23 @@
                     <div class="step__bg-piece step__bg-piece_1 bg-piece bg-piece_onion-rings"></div>
                     <div class="step__img"><img class="step__visual img" src="{{ asset('assets/img/step-1.png') }}"><img class="step__number" src="{{ asset('assets/img/number-1.png') }}"></div>
                 </div>
-                <div class="step__desc">Регистрируйся, делись в соцсетях и зови друзей на помощь!</div>
+                <div class="step__desc">{{ __('app.pages.home.registration') }}</div>
             </li>
             <li class="steps-block__item step">
                 <div class="step__bg">
                     <div class="step__bg-piece step__bg-piece_2 bg-piece bg-piece_paprica"></div>
                     <div class="step__img"><img class="step__visual img" src="{{ asset('assets/img/step-2.png') }}"><img class="step__number step__number_right" src="{{ asset('assets/img/number-2.png') }}"></div>
                 </div>
-                <div class="step__desc">Сделай самый вкусный дооонер!</div>
+                <div class="step__desc">{{ __('app.pages.home.make') }}</div>
             </li>
             <li class="steps-block__item step">
                 <div class="step__bg">
                     <div class="step__bg-piece step__bg-piece_3 bg-piece bg-piece_potato-chip"></div>
                     <div class="step__img"><img class="step__visual img" src="{{ asset('assets/img/step-3.png') }}"><img class="step__number" src="{{ asset('assets/img/number-3.png') }}"></div>
                 </div>
-                <div class="step__desc">Лидируй в рейтинге донеров и получай призы!</div>
+                <div class="step__desc">{{ __('app.pages.home.long') }}</div>
             </li>
-        </ul><a class="steps-block__btn btn btn_default prevent-default" href="#" data-dialog="#{{ isUserAuthorize() ? 'copy-link'  : 'auth-need-invite' }}">ПОЗВАТЬ ДРУЗЕЙ</a></section>
+        </ul><a class="steps-block__btn btn btn_default prevent-default" href="#" data-dialog="#{{ isUserAuthorize() ? 'copy-link'  : 'auth-need-invite' }}">{{ __('app.pages.home.invite') }}</a></section>
     <section class="prizes-block"><img class="prizes-block__title" src="{{ asset('assets/img/text-presents.png') }}" alt="prizes">
         <div class="prizes-block__slider slider slider_prizes">
             <div class="slider__track" data-glide-el="track">
@@ -84,11 +84,11 @@
                     <div class="ninja-block__bg-piece ninja-block__bg-piece_3 bg-piece bg-piece_tomato"></div>
                     <div class="ninja-block__bg-piece ninja-block__bg-piece_4 bg-piece bg-piece_potato-chip"></div>
                 </div>
-                <div class="ninja-block__desc"><b>Играй и попадай в топ лучших</b>чем больше результат, тем длинее твой донер</div><a class="ninja-block__btn btn btn_default" href="{{ route('game') }}">ИГРАТЬ</a></section>
+                <div class="ninja-block__desc"><b>{{ __('app.pages.home.game_description') }}</b>{{ __('app.pages.home.result') }}</div><a class="ninja-block__btn btn btn_default" href="{{ route('game') }}">{{ __('app.pages.home.game') }}</a></section>
         </div>
         <div class="row__col">
             <section class="doners-block row__block">
-                <div class="doners-block__title">САМЫЕ ДЛИННЫЕ<strong>ДОООООНЕРЫ</strong></div>
+                <div class="doners-block__title">{!! __('app.pages.home.top_title') !!}</div>
                 <ul class="doners-block__list">
 
                     @foreach ($topDonerUsers as $key => $topDonerUser)
@@ -97,7 +97,7 @@
                                 <div class="doner-dude__avatar"><img class="doner-dude__img" src="{{ $topDonerUser->avatar->getUrl() }}">
                                     <div class="doner-dude__place">{{ $key + 1 }}</div>
                                 </div>
-                                <div class="doner-dude__name">{{ $topDonerUser->first_name }} {{ $topDonerUser->last_name }}<span class="doner-dude__note">Донер как солнце</span></div>
+                                <div class="doner-dude__name">{{ $topDonerUser->first_name }} {{ $topDonerUser->last_name }}<span class="doner-dude__note">{{ __('app.pages.home.doner_like') }}</span></div>
                                 <div class="doner-dude__score">{{ $topDonerUser->total_points }}</div>
                             </div>
                         </li>
@@ -109,7 +109,7 @@
                                 <div class="doner-dude__avatar"><img class="doner-dude__img" src="{{ asset('assets/img/default_avatar.png') }}">
                                     <div class="doner-dude__place">{{ $i + 1 }}</div>
                                 </div>
-                                <div class="doner-dude__name">TBD<span class="doner-dude__note">Донер как солнце</span></div>
+                                <div class="doner-dude__name">TBD<span class="doner-dude__note">{{ __('app.pages.home.doner_like') }}</span></div>
                                 <div class="doner-dude__score">-</div>
                             </div>
                         </li>
@@ -129,10 +129,10 @@
                         <div class="friends-block__bg-piece friends-block__bg-piece_3 bg-piece bg-piece_potato-chip"></div>
                         <div class="friends-block__bg-piece friends-block__bg-piece_4 bg-piece bg-piece_onion-slices"></div>
                     </div>
-                    <div class="friends-block__desc">Окажись в числе самых длинных!<strong>Больше друзей – длиннее дооооонер!</strong></div><a class="friends-block__btn btn btn_default prevent-default" href="#" data-dialog="#{{ isUserAuthorize() ? 'copy-link'  : 'auth-need-invite' }}">ПОЗВАТЬ ДРУЗЕЙ</a></div>
+                    <div class="friends-block__desc">{{ __('app.pages.home.on_top') }}<strong>{{ __('app.pages.home.more_friends') }}</strong></div><a class="friends-block__btn btn btn_default prevent-default" href="#" data-dialog="#{{ isUserAuthorize() ? 'copy-link'  : 'auth-need-invite' }}">{{ __('app.pages.home.invite') }}</a></div>
             </section>
             <section class="social-block row__block row__block_half">
-                <div class="social-block__desc"><strong>Подпишись на нас в соцсетях</strong>и участвуй в розыгрышах дополнительных подарков!</div>
+                <div class="social-block__desc"><strong>{{ __('app.pages.home.subscribe_title') }}</strong>{{ __('app.pages.home.subscribe_description') }}</div>
                 <div class="social-block__socials">
                     <a class="social-block__social" href="https://vk.com/lays_kz" target="_blank">
                         <svg class="svg">
@@ -156,16 +156,16 @@
             <section class="squares-block row__block"><img class="squares-block__bg" src="{{ asset('assets/img/text-new-lays-doner-whats-it-like-new.png') }}">
                 <div class="squares-block__square squares-block__square_1 square square_yellow">
                     <div class="square__bg"></div>
-                    <div class="square__text"><span>Такой же насыщенный вкус</span></div><a class="square__btn" href="#"></a></div>
+                    <div class="square__text"><span>{{ __('app.pages.home.taste_first') }}</span></div><a class="square__btn" href="#"></a></div>
                 <div class="squares-block__square squares-block__square_2 square square_red">
                     <div class="square__bg"></div>
-                    <div class="square__text"><span>С привкусом нежного соуса и специй</span></div><a class="square__btn" href="#"></a></div>
+                    <div class="square__text"><span>{{ __('app.pages.home.taste_second') }}</span></div><a class="square__btn" href="#"></a></div>
                 <div class="squares-block__square squares-block__square_3 square square_green">
                     <div class="square__bg"></div>
-                    <div class="square__text"><span>С оттенком свежих овощей</span></div><a class="square__btn" href="#"></a></div>
+                    <div class="square__text"><span>{{ __('app.pages.home.taste_third') }}</span></div><a class="square__btn" href="#"></a></div>
                 <div class="squares-block__square squares-block__square_4 square square_violet">
                     <div class="square__bg"></div>
-                    <div class="square__text"><span>Такой, как твой любимый донер</span></div><a class="square__btn" href="#"></a></div>
+                    <div class="square__text"><span>{{ __('app.pages.home.taste_fourth') }}</span></div><a class="square__btn" href="#"></a></div>
             </section>
         </div>
     </div>

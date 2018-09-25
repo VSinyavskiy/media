@@ -9,9 +9,9 @@
                     <use xlink:href="#svg-ico-close"></use>
                 </svg>
             </div>
-            <div class="close-btn__text">Закрыть</div>
+            <div class="close-btn__text">{{ __('app.layout.partials.header.close') }}</div>
         </a>
-        <div class="doners-block__title"><strong>ИСТОРИЯ ПОЛУЧЕНИЯ БАЛЛОВ</strong></div>
+        <div class="doners-block__title"><strong>{{ __('app.pages.history.title') }}</strong></div>
         <ul class="doners-block__list">
 
             @include('app.users._history_paginate')
@@ -20,7 +20,7 @@
 
         @if ($lastPage != $currentPage && $lastPage != 0)
             <a class="doners-block__btn btn btn_default ajax-more" href="{{ route('history', ['page' =>  $currentPage + 1]) }}" data-last-page="{{ $lastPage }}">
-                ПОКАЗАТЬ БОЛЬШЕ
+                {{ __('app.pages.history.more') }}
             </a>
         @endif
 

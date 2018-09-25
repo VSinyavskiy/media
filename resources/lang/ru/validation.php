@@ -121,5 +121,12 @@ return [
     */
     'attributes'           => [
         'email' => 'Email',
+        'first_name' => 'Имя',
+        'last_name' => 'Фамилия',
+        'phone' => 'Номер телефона',
+        'phone_confirmation' => 'Повтор номера телефона',
+        'city' => 'Город',
+        'password' => 'Пароль',
+        'password_confirmation' => 'Повтор пароля',
     ],
 ];

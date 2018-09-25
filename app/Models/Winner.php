@@ -26,7 +26,7 @@ class Winner extends Model
 
     public function getPrizeNameAttribute()
     {
-        return $this->getEventTypesList()[$this->prize_type];
+        return $this->getPrizeTypesList()[$this->prize_type];
     }
 
     public function getPrizeTypesList()

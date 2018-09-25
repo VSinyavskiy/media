@@ -2,11 +2,11 @@
 
 @section('content')
 	<section class="age-gate">
-        <div class="age-gate__question">Тебе исполнилось 14 лет?</div>
-        <div class="age-gate__response hidden">Политика компании позволяет открывать сайт только пользователям старше 14 лет. К сожалению, остальные страницы сайта останутся закрытыми</div>
+        <div class="age-gate__question">{{ __('app.pages.age.question') }}</div>
+        <div class="age-gate__response hidden">{{ __('app.pages.age.no_description') }}</div>
         <div class="age-gate__btns">
-            <a class="age-gate__btn btn btn_default" href="{{ route('home', 'age_verified') }}">ДА</a>
-            <a class="age-gate__btn btn btn_default show-no-text" href="#">НЕТ</a>
+            <a class="age-gate__btn btn btn_default" href="{{ route('home', 'age_verified') }}">{{ __('app.pages.age.yes') }}</a>
+            <a class="age-gate__btn btn btn_default show-no-text" href="#">{{ __('app.pages.age.no') }}</a>
         </div>
     </section>
 @endsection
