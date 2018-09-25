@@ -10,7 +10,7 @@
             <p>Чтобы играть сначала нужно авторизоваться!</p>
 
             <div class="form__buttons">
-                <a class="btn btn_default btn_block" href="{{ route('login') }}">Авторизоваться</a>
+                <a class="btn btn_default btn_block" href="{{ route('login', $_SERVER['QUERY_STRING']) }}">Авторизоваться</a>
             </div>
         </div>
         </div>

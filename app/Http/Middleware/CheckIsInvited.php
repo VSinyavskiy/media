@@ -18,7 +18,7 @@ class CheckIsInvited
     public function handle($request, Closure $next)
     {
         if (Route::is('home') && Cookie::has('invited') && Cookie::has('first_after_invite')) {
-            return redirect()->route('game', '#open-invite-success')->withCookie(Cookie::forget('first_after_invite'));
+            return redirect()->route('game', $_SERVER['QUERY_STRING'] . '#open-invite-success')->withCookie(Cookie::forget('first_after_invite'));
         }
 
         return $next($request);

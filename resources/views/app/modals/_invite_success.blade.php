@@ -10,7 +10,7 @@
             <p>Зарегистрируйтесь или авторизуйтесь через социальную сеть<br/>чтобы участвовать и выигрывать!</p>
 
             <div class="form__buttons">
-                <a class="btn btn_default btn_block" href="{{ route('register') }}">Зарегистрироваться</a>
+                <a class="btn btn_default btn_block" href="{{ route('register', $_SERVER['QUERY_STRING']) }}">Зарегистрироваться</a>
             </div>
         </div>
         </div>

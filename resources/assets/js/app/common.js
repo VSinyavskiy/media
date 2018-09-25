@@ -30,6 +30,7 @@
         $(document).on('click',  '.event-go-to-ig-footer',  ns.onGoToIgFooterClick);
 
         ns.phonePasteDisable();
+        ns.initEventAfterRedirect();
         ns.initModalOpen();
     };
 
@@ -251,6 +252,25 @@
         gtag('event', 'click', {
           'event_category': 'site_share_fb',
         });
+    };
+
+    ns.eventAfterRedirect = function(eventCategory) {
+        gtag('event', 'click', {
+          'event_category': eventCategory,
+        });
+    };
+
+    ns.initEventAfterRedirect = function() {
+        var hash   = window.location.hash.substring(1);
+        var prefix = 'event-';
+
+        if(prefix == hash.substring(0, prefix.length)) {
+            var eventCategory = 'site_' + hash.substring(prefix.length).replace(/-/g,"_");
+
+            ns.eventAfterRedirect(eventCategory);
+
+            ns.clearUrlHash();
+        }
     };
 
     ns.init();

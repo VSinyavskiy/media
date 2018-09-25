@@ -41,6 +41,7 @@ class RegisterController extends Controller
     protected $redirectTo = '/home';
 
     protected $locale;
+    protected $queryString;
 
     /**
      * Create a new controller instance.
@@ -65,6 +66,8 @@ class RegisterController extends Controller
      */
     protected function create(RegisterRequest $request, User $user)
     {
+        $this->queryString = $request->session()->get('query');
+
         $user->fill($request->all());
         $user->password   = $request->password;
         // $user->mail_token = $request->email;
@@ -74,7 +77,7 @@ class RegisterController extends Controller
         User::checkIsInvite();
 
         // return redirect()->route('home', ['#open-registration-confirm-email']);
-        return redirect($this->getIsMailConfirmedRedirectUrl($user));
+        return redirect($this->getIsMailConfirmedRedirectUrl($user, ['#event-registration']));
     }
 
     public function registerFromSocial()
@@ -88,6 +91,8 @@ class RegisterController extends Controller
 
     protected function createFromSocial(SocialRegisterRequest $request, User $user)
     {
+        $this->queryString = $request->session()->get('query');
+        
         $siteUser = User::where([
                     'phone' => $request->phone,
                     'email' => $request->email,
@@ -113,7 +118,7 @@ class RegisterController extends Controller
             $user->saveSocial($social['provider'], $social['socialId']);
         }
         
-        return redirect($this->getIsMailConfirmedRedirectUrl($user))->withCookie(Cookie::forget('invited'));
+        return redirect($this->getIsMailConfirmedRedirectUrl($user, ['#event-registration-social']))->withCookie(Cookie::forget('invited'));
     }
 
     public function confirm($token)
@@ -125,7 +130,7 @@ class RegisterController extends Controller
 
         User::checkIsInvite();
 
-        return redirect($this->getIsMailConfirmedRedirectUrl($user))->withCookie(Cookie::forget('invited'));
+        return redirect($this->getIsMailConfirmedRedirectUrl($user, ['#event-registration']))->withCookie(Cookie::forget('invited'));
     }
 
     /**
@@ -135,8 +140,6 @@ class RegisterController extends Controller
      */
     public function redirectToProvider(Request $request)
     {
-        session(['locale' => LaravelLocalization::getCurrentLocale()]);
-
         return Socialite::driver($request->provider)
                 // ->scopes(['email'/*,'publish_actions'*/])
                 ->redirect();
@@ -149,7 +152,8 @@ class RegisterController extends Controller
      */
     public function handleProviderCallback(Request $request)
     {
-        $this->locale = $request->session()->get('locale');
+        $this->locale      = $request->session()->get('locale');
+        $this->queryString = $request->session()->get('query');
 
         $loginException = false;
 
@@ -170,7 +174,7 @@ class RegisterController extends Controller
         }
 
         if ($loginException) {
-            return redirect(LaravelLocalization::getLocalizedURL($this->locale, route('home', ['#open-auth-social-error'])));
+            return redirect($this->getLocalizedUrlByRouteName('home', ['#open-auth-social-error']));
         }
 
         $redirect = $this->getRedirectAttributes($userData);
@@ -187,11 +191,11 @@ class RegisterController extends Controller
         $siteUser = $this->findUser($userData);
 
         if (isset($siteUser)) {
-            $url = $this->getIsMailConfirmedRedirectUrl($siteUser);
+            $url = $this->getIsMailConfirmedRedirectUrl($siteUser, ['#event-login']);
 
             $siteUser->saveSocial($userData['provider'], $userData['socialId']);
         } else {
-            $url    = LaravelLocalization::getLocalizedURL($this->locale, route('register.social'));
+            $url    = $this->getLocalizedUrlByRouteName('register.social');
             $params = [
                 'firstName' => $userData['first_name'],
                 'lastName'  => $userData['last_name'],
@@ -237,14 +241,21 @@ class RegisterController extends Controller
         return $user->is_mail_confirmed;
     }
 
-    private function getIsMailConfirmedRedirectUrl($user)
+    private function getIsMailConfirmedRedirectUrl($user, array $params = [])
     {
         if ($this->authFindedUser($user)) {
-            $url = LaravelLocalization::getLocalizedURL($this->locale, route('user'));
+            $url = $this->getLocalizedUrlByRouteName('user', $params);
         } else {
-            $url = LaravelLocalization::getLocalizedURL($this->locale, route('home', ['#open-auth-social-error-is-mail-confirmed']));
+            $url = $this->getLocalizedUrlByRouteName('home', ['#open-auth-social-error-is-mail-confirmed']);
         }
 
         return $url;
+    }
+
+    private function getLocalizedUrlByRouteName($routeName, array $params = [])
+    {
+        $queryString = ! empty($params) ? '&' . implode('&', $params) : '';
+
+        return LaravelLocalization::getLocalizedURL($this->locale, route($routeName, $this->queryString . $queryString));
     }
 }

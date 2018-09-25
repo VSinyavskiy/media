@@ -3,7 +3,7 @@
 @section('content')
   <section class="top-spacer"></section>
   <section class="links-block">
-      <a class="close-btn links-block__back-btn" href="{{ route('home') }}">
+      <a class="close-btn links-block__back-btn" href="{{ route('home', $_SERVER['QUERY_STRING']) }}">
           <div class="close-btn__icon">
               <svg class="svg">
                   <use xlink:href="#svg-ico-close"></use>
@@ -12,8 +12,8 @@
           <div class="close-btn__text">{{ __('app.layout.partials.header.close') }}</div>
       </a>
       <ul class="links-block__list">
-          <li class="links-block__item"><a class="links-block__link" href="{{ route('login') }}">{{ __('app.pages.auth.title') }}</a></li>
-          <li class="links-block__item links-block__item_active"><a class="links-block__link" href="{{ route('register') }}">{{ __('app.pages.registration.title') }}</a></li>
+          <li class="links-block__item"><a class="links-block__link" href="{{ route('login', $_SERVER['QUERY_STRING']) }}">{{ __('app.pages.auth.title') }}</a></li>
+          <li class="links-block__item links-block__item_active"><a class="links-block__link" href="{{ route('register', $_SERVER['QUERY_STRING']) }}">{{ __('app.pages.registration.title') }}</a></li>
       </ul>
       
       @include('auth_app.partials._socials')

@@ -26,7 +26,7 @@
             <div class="doner__name">{{ $user->first_name }} {{ $user->last_name }}</div>
             <div class="doner__info">
                 <div class="doner__avatar"><img class="doner__img" src="{{ $user->avatar->getUrl() }}">
-                    <a class="doner__logout" href="{{ route('logout') }}">
+                    <a class="doner__logout" href="{{ route('logout', $_SERVER['QUERY_STRING']) }}">
                         <svg class="svg">
                             <use xlink:href="#svg-ico-logout"></use>
                         </svg>
@@ -34,7 +34,7 @@
                 </div>
                 <div class="doner__score">{{ $user->total_points }}</div>
             </div>
-            <div class="doner__desc"><b>{{ __('app.pages.users.size') }}</b><a class="doner__link" href="{{ route('history') }}">{{ __('app.pages.users.history') }}</a></div>
+            <div class="doner__desc"><b>{{ __('app.pages.users.size') }}</b><a class="doner__link" href="{{ route('history', $_SERVER['QUERY_STRING']) }}">{{ __('app.pages.users.history') }}</a></div>
         </div>
         <div class="user-top-block__counter">
             {{ str_replace_array('%s', [

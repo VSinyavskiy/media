@@ -85,7 +85,7 @@
                     <div class="ninja-block__bg-piece ninja-block__bg-piece_4 bg-piece bg-piece_potato-chip"></div>
                 </div>
                 <div class="ninja-block__desc"><b>{{ __('app.pages.home.game_description') }}</b>{{ __('app.pages.home.result') }}</div>
-                <a class="ninja-block__btn btn btn_default event-play-home" href="{{ route('game') }}">{{ __('app.pages.home.game') }}</a>
+                <a class="ninja-block__btn btn btn_default event-play-home" href="{{ route('game', $_SERVER['QUERY_STRING']) }}">{{ __('app.pages.home.game') }}</a>
             </section>
         </div>
         <div class="row__col">
