@@ -38,12 +38,6 @@
     <!--<link rel="apple-touch-icon-precomposed" href=".png" />-->
 
     <link rel="stylesheet" type="text/css" href="{{ asset('game_build/style-mobile.css') }}"/>
-    <style>
-        #GameCanvas {
-            position: fixed;
-            bottom: 0;
-        }
-    </style>
 </head>
 <body>
 <canvas id="GameCanvas" oncontextmenu="event.preventDefault()" tabindex="0"></canvas>

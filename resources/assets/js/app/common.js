@@ -14,6 +14,9 @@
         $(document).on('click',  '.ajax-more',       ns.getMoreInfo);
         $(document).on('click',  '.prevent-default', ns.preventDefault);
 
+        $(document).on('click',  '.share-vk',        ns.shareVk);
+        $(document).on('click',  '.share-fb',        ns.shareFb);
+
         ns.phonePasteDisable();
         ns.initModalOpen();
     };
@@ -120,6 +123,18 @@
 
             ns.clearUrlHash();
         }
+    };
+
+    ns.shareVk = function (e) {
+        e.preventDefault();
+
+        window.open('https://vk.com/share.php?url=' + $(e.currentTarget).attr('href'),'','width=600, height=400');
+    };
+
+    ns.shareFb = function (e) {
+        e.preventDefault();
+
+        window.open('https://www.facebook.com/sharer/sharer.php?u=' + $(e.currentTarget).attr('href'),'','width=600, height=400');
     };
 
     ns.phonePasteDisable = function() {
