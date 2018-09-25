@@ -113,7 +113,7 @@ class UserPointsLog extends Model implements ReceiveGamePointsInterface
 
     public function receiveFriendInvitePoints($userId, $points)
     {
-        return new self([
+        return self::create([
             'user_id'    => $userId,
             'event_type' => self::FRIEND_INVITE,
             'points'     => $points,
@@ -123,7 +123,7 @@ class UserPointsLog extends Model implements ReceiveGamePointsInterface
 
     public function receiveGameTopPoints(int $userId, int $points, int $rank, \DateTime $playedOn): bool
     {
-        return new self([
+        return self::create([
             'user_id'    => $userId,
             'event_type' => self::GAMING,
             'points'     => $points,
@@ -134,7 +134,7 @@ class UserPointsLog extends Model implements ReceiveGamePointsInterface
 
     public function receiveGameFirstPlayPoints(int $userId, int $points, \DateTime $playedOn): bool
     {
-        return new self([
+        return self::create([
             'user_id'    => $userId,
             'event_type' => self::FIRST_TIME_GAMING,
             'points'     => $points,
