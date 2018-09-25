@@ -1,10 +1,10 @@
 <header class="header {{ Route::is('login') || Route::is('register') || Route::is('history') ? 'header_dark' : '' }}">
-    <a class="header__button header__button_open" href="#" data-title="Меню">
+    <a class="header__button header__button_open" href="#" data-title="{{ __('app.layout.partials.header.menu_item') }}">
         <svg class="svg">
             <use xlink:href="#svg-ico-menu"></use>
         </svg>
     </a>
-    <a class="header__button header__button_close" href="#" data-title="Меню">
+    <a class="header__button header__button_close" href="#" data-title="{{ __('app.layout.partials.header.menu_item') }}">
         <svg class="svg">
             <use xlink:href="#svg-ico-close"></use>
         </svg>
@@ -13,18 +13,18 @@
         <nav class="menu__nav">
             <ul class="menu__list">
                 <li class="menu__item {{ Route::is('home') ? 'menu__item_active' : '' }}">
-                    <a class="menu__link" href="{{ route('home') }}">Главная</a>
+                    <a class="menu__link" href="{{ route('home') }}">{{ __('app.layout.partials.header.menu.home') }}</a>
                 </li>
                 <li class="menu__item {{ Route::is('game') ? 'menu__item_active' : '' }}">
-                    <a class="menu__link" href="{{ route('game') }}">Игра</a>
+                    <a class="menu__link" href="{{ route('game') }}">{{ __('app.layout.partials.header.menu.game') }}</a>
                 </li>
                 <li class="menu__item {{ Route::is('user') || Route::is('history') ? 'menu__item_active' : '' }}">
-                    <a class="menu__link" href="{{ route('user') }}">Личный кабинет</a>
+                    <a class="menu__link" href="{{ route('user') }}">{{ __('app.layout.partials.header.user') }}</a>
                 </li>
                 {{--<li class="menu__item {{ Route::is('winners') ? 'menu__item_active' : '' }}">
-                    <a class="menu__link" href="{{ route('winners') }}">Победители</a>
+                    <a class="menu__link" href="{{ route('winners') }}">{{ __('app.layout.partials.header.menu.winners') }}</a>
                 </li>--}}
-                <li class="menu__item"><a class="menu__link" href="#">Правила</a></li>
+                <li class="menu__item"><a class="menu__link" href="#">{{ __('app.layout.partials.header.menu.rules') }}</a></li>
             </ul>
             <ul class="menu__lang lang">
 
@@ -47,7 +47,7 @@
                 <img src="{{ auth()->guard('web')->user()->avatar->getUrl() }}" width="70px" />
             </div>
         @else
-            <div class="user__name">Личный кабинет</div>
+            <div class="user__name">{{ __('app.layout.partials.header.user') }}</div>
             <div class="user__avatar">
                 <img src="{{ asset('assets/img/default_avatar.png') }}" width="70px" />
             </div>

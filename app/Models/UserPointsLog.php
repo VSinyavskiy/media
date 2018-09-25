@@ -13,7 +13,7 @@ class UserPointsLog extends Model implements ReceiveGamePointsInterface
     const GAMING            = 3;
 
     const COUNT_FRIEND_INVITES_FOR_DATE = 10;
-    const COUNT_POINT_FOR_FRIEND_INVITE = 10;
+    const COUNT_POINT_FOR_FRIEND_INVITE = 1;
 
     const COUNT_WINNER_GAME_RANKS          = 3;
     const COUNT_POINT_FOR_WINNER_GAME_RANK = 5;
@@ -79,9 +79,9 @@ class UserPointsLog extends Model implements ReceiveGamePointsInterface
     public function getEventTypesList()
     {
         return [
-            self::FRIEND_INVITE     => 'Пригласил друга', //__('') 
-            self::FIRST_TIME_GAMING => 'Впервые сыграл', //__('')
-            self::GAMING            => 'В списке лидеров за день', //__('')
+            self::FRIEND_INVITE     => __('app.pages.history.invite'),
+            self::FIRST_TIME_GAMING => __('app.pages.history.first_time'),
+            self::GAMING            => str_replace('%s', $this->rank, __('app.pages.history.top')),
         ];
     }
 

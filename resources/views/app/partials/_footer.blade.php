@@ -17,5 +17,5 @@
             </svg>
         </a>
     </div>
-    <div class="footer__copyright">&copy;2018 ТОО «ВБД-ЦА-Алматы». Все права сохранены.</div>
+    <div class="footer__copyright">&copy;2018 {{ __('app.layout.partials.footer.description') }}</div>
 </footer>

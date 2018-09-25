@@ -141,12 +141,13 @@ return [
     */
 
     'attributes' => [
-        'test_name'               => 'Сынақ атауы',
-        'test_description'        => 'Сынақ сипаттамасы',
-        'test_locale'             => 'Тілі',
-        'image'                   => 'Кескін',
-        'result_text_under_image' => 'Кескін астындағы нәтиже мәтіні',
-        'short_text'              => 'Қысқа мәтін',
         'email' => 'Email',
+        'first_name' => 'Атың',
+        'last_name' => 'Тегің',
+        'phone' => 'Телефон нөмірің',
+        'phone_confirmation' => 'Телефон нөмірін қайта жаз',
+        'city' => 'Қалаң',
+        'password' => 'Құпиясөз',
+        'password_confirmation' => 'Құпиясөзді қайта жаз',
     ],
 ];
