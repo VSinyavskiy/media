@@ -66,8 +66,7 @@ class RegisterController extends Controller
      */
     protected function create(RegisterRequest $request, User $user)
     {
-        // $this->queryString = $request->session()->get('query');
-        $this->queryString = $request->cookie('query');
+        $this->queryString = $request->session()->get('query');
 
         $user->fill($request->all());
         $user->password   = $request->password;
@@ -92,8 +91,7 @@ class RegisterController extends Controller
 
     protected function createFromSocial(SocialRegisterRequest $request, User $user)
     {
-        // $this->queryString = $request->session()->get('query');
-        $this->queryString = $request->cookie('query');
+        $this->queryString = $request->session()->get('query');
         
         $siteUser = User::where([
                     'phone' => $request->phone,
@@ -154,10 +152,8 @@ class RegisterController extends Controller
      */
     public function handleProviderCallback(Request $request)
     {
-        // $this->locale      = $request->session()->get('locale');
-        // $this->queryString = $request->session()->get('query');
-        $this->locale      = $request->cookie('locale');
-        $this->queryString = $request->cookie('query');
+        $this->locale      = $request->session()->get('locale');
+        $this->queryString = $request->session()->get('query');
 
         $loginException = false;
 

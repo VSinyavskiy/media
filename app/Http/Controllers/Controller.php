@@ -15,12 +15,9 @@ class Controller extends BaseController
 
     public function __construct()
     {
-    	cookie('locale', LaravelLocalization::getCurrentLocale());
-    	cookie('query', $_SERVER['QUERY_STRING']);
-
-        // session([
-        //     'locale' => LaravelLocalization::getCurrentLocale(),
-        //     'query'  => $_SERVER['QUERY_STRING'],
-        // ]);
+        session([
+            'locale' => LaravelLocalization::getCurrentLocale(),
+            'query'  => $_SERVER['QUERY_STRING'],
+        ]);
     }
 }
