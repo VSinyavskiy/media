@@ -259,6 +259,7 @@ class RegisterController extends Controller
     {
         $queryString = ! empty($params) ? '&' . implode('&', $params) : '';
 
-        return LaravelLocalization::getLocalizedURL($this->locale, route($routeName, $this->queryString . $queryString));
+        // return LaravelLocalization::getLocalizedURL($this->locale, route($routeName, $this->queryString . $queryString));
+        return route($routeName, $this->queryString . $queryString);
     }
 }
