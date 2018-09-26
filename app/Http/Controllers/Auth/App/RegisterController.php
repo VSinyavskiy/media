@@ -141,6 +141,7 @@ class RegisterController extends Controller
     public function redirectToProvider(Request $request)
     {
         return Socialite::driver($request->provider)
+                ->redirectUrl(route('login.social.callback', $request->provider))
                 // ->scopes(['email'/*,'publish_actions'*/])
                 ->redirect();
     }

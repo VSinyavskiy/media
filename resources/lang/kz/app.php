@@ -163,7 +163,7 @@ return [
             'button' => 'Жіберу',
             'fields' => [
                 'email' => 'Email',
-                'email_placeholder' => 'Өз e-mail-ді енгіз',
+                'email_placeholder' => 'Өз Email-ді енгіз',
             ],
         ],
         'reset_password_second_step' => [
