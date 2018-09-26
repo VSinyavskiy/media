@@ -159,9 +159,9 @@ class RegisterController extends Controller
         $loginException = false;
 
         try {
-            $user      = Socialite::driver($request->provider)->redirectUrl(route('login.social.callback', $request->provider))->user();
-
-            dd($user);
+            $user      = Socialite::driver($request->provider)
+                                    ->redirectUrl(route('login.social.callback', $request->provider))
+                                    ->user();
 
             $userName  = explode(' ', $user->getName());
             $userData  = [
