@@ -153,8 +153,6 @@ class RegisterController extends Controller
      */
     public function handleProviderCallback(Request $request)
     {
-        dd($request->provider);
-
         $this->locale      = $request->session()->get('locale');
         $this->queryString = $request->session()->get('query');
 
