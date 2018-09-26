@@ -84,7 +84,7 @@ return [
                 'phone_confirmation' => 'Повтори номер телефона',
                 'city' => 'Город',
                 'email' => 'Email',
-                'email_placeholder' => 'Введи свой e-maile',
+                'email_placeholder' => 'Введи свой Email',
                 'password' => 'Пароль',
                 'password_confirmation' => 'Повтори пароль',
             ],

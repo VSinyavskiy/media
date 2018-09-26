@@ -84,7 +84,7 @@ return [
                 'phone_confirmation' => 'Телефон нөмірін қайта жаз',
                 'city' => 'Қалаң',
                 'email' => 'Email',
-                'email_placeholder' => 'Өз e-mail-ді енгіз',
+                'email_placeholder' => 'Өз Email-ді енгіз',
                 'password' => 'Құпиясөз',
                 'password_confirmation' => 'Құпиясөзді қайта жаз',
             ],
