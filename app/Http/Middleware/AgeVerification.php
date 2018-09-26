@@ -28,19 +28,19 @@ class AgeVerification
         }
 
         if ($request->has('age_verified')) {
-            return redirect()->route('home')->withCookie(Cookie::make('age_verified', true));
+            return redirect()->route('home', str_replace(['&age_verified', 'age_verified'], '', $_SERVER['QUERY_STRING']))->withCookie(Cookie::make('age_verified', true));
         }
 
         if (! Route::is('age') && ! Cookie::get('age_verified')) {
             if (Cookie::has('invited')) {
-                return redirect()->route('age')->withCookie(Cookie::make('first_after_invite', true, User::FIRST_AFTER_INVITE_COOCKIE_LIVE_MINUTES));
+                return redirect()->route('age', $_SERVER['QUERY_STRING'])->withCookie(Cookie::make('first_after_invite', true, User::FIRST_AFTER_INVITE_COOCKIE_LIVE_MINUTES));
             } else {
-                return redirect()->route('age');
+                return redirect()->route('age', $_SERVER['QUERY_STRING']);
             }
         }
 
         if (Route::is('age') && Cookie::get('age_verified')) {
-            return redirect()->route('home');
+            return redirect()->route('home', $_SERVER['QUERY_STRING']);
         }
 
         return $next($request);

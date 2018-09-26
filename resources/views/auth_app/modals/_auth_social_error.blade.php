@@ -5,9 +5,9 @@
                 <use xlink:href="#svg-ico-close"></use>
             </svg>
         </a>
-        <div class="dialog__title">Ошибка авторизации</div>
+        <div class="dialog__title">{{ __('app.modals.auth_social_error.title') }}</div>
         <div class="dialog__body form">
-            <p>Произошла ошибка авторизации!<br>В окне социальной сети необходимо разрешить приложению доступ к персональной информации.</p>
+            <p>{!! __('app.modals.auth_social_error.description') !!}</p>
         </div>
     </div>
 </div>

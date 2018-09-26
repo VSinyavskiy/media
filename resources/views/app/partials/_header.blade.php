@@ -13,16 +13,16 @@
         <nav class="menu__nav">
             <ul class="menu__list">
                 <li class="menu__item {{ Route::is('home') ? 'menu__item_active' : '' }}">
-                    <a class="menu__link" href="{{ route('home') }}">{{ __('app.layout.partials.header.menu.home') }}</a>
+                    <a class="menu__link" href="{{ route('home', $_SERVER['QUERY_STRING']) }}">{{ __('app.layout.partials.header.menu.home') }}</a>
                 </li>
                 <li class="menu__item {{ Route::is('game') ? 'menu__item_active' : '' }}">
-                    <a class="menu__link" href="{{ route('game') }}">{{ __('app.layout.partials.header.menu.game') }}</a>
+                    <a class="menu__link" href="{{ route('game', $_SERVER['QUERY_STRING']) }}">{{ __('app.layout.partials.header.menu.game') }}</a>
                 </li>
                 <li class="menu__item {{ Route::is('user') || Route::is('history') ? 'menu__item_active' : '' }}">
-                    <a class="menu__link" href="{{ route('user') }}">{{ __('app.layout.partials.header.user') }}</a>
+                    <a class="menu__link" href="{{ route('user', $_SERVER['QUERY_STRING']) }}">{{ __('app.layout.partials.header.user') }}</a>
                 </li>
                 {{--<li class="menu__item {{ Route::is('winners') ? 'menu__item_active' : '' }}">
-                    <a class="menu__link" href="{{ route('winners') }}">{{ __('app.layout.partials.header.menu.winners') }}</a>
+                    <a class="menu__link" href="{{ route('winners', $_SERVER['QUERY_STRING']) }}">{{ __('app.layout.partials.header.menu.winners') }}</a>
                 </li>--}}
                 <li class="menu__item"><a class="menu__link" href="#">{{ __('app.layout.partials.header.menu.rules') }}</a></li>
             </ul>
@@ -38,8 +38,8 @@
 
             </ul>
         </nav>
-    </div><a class="header__logo logo" href="{{ ! Route::is('home') ? route('home') : '' }}"><img class="logo__img" src="{{ asset('assets/img/logo.png') }}" alt="logo"></a>
-    <a class="header__user user" href="{{ route('user') }}">
+    </div><a class="header__logo logo" href="{{ ! Route::is('home') ? route('home', $_SERVER['QUERY_STRING']) : '' }}"><img class="logo__img" src="{{ asset('assets/img/logo.png') }}" alt="logo"></a>
+    <a class="header__user user" href="{{ route('user', $_SERVER['QUERY_STRING']) }}">
 
         @if (isUserAuthorize())
             <div class="user__name">{{ auth()->guard('web')->user()->first_name }} {{ auth()->guard('web')->user()->last_name }}</div>

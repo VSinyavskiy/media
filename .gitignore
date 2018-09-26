@@ -6,6 +6,7 @@
 /public/media/*
 /public/sitemap.xml
 /public/mix-manifest.json
+/public/.well-known
 /storage/*.key
 /storage/*
 /vendor

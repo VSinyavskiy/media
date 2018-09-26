@@ -20,7 +20,7 @@
             </div>
         </div>
         {{--<p class="ninja-top-block__desc">Игра весит 3.2Mb</p>--}}
-        <a class="ninja-top-block__btn {{ isUserAuthorize() ? 'ninja-top-block__game-start'  : 'prevent-default' }} btn btn_default" href="#" {{ isUserAuthorize() ? '' : 'data-dialog=#auth-need-game' }}>{{ __('app.pages.home.game') }}</a>
+        <a class="ninja-top-block__btn {{ isUserAuthorize() ? 'ninja-top-block__game-start'  : 'prevent-default' }} btn btn_default event-first-play-game" href="#" {{ isUserAuthorize() ? '' : 'data-dialog=#auth-need-game' }}>{{ __('app.pages.home.game') }}</a>
         <div class="scroll-down ninja-top-block__scroll-down">{{ __('app.pages.home.what_will') }}</div>
     </section>
     <section class="steps-block steps-block_w-bg">
@@ -77,7 +77,7 @@
         @endif
 
         <p class="results-block__desc">{{ __('app.pages.game.question') }}</p>
-        <a class="results-block__btn btn btn_default {{ isUserAuthorize() ? 'ninja-top-block__game-start'  : 'prevent-default' }}" href="#" {{ isUserAuthorize() ? '' : 'data-dialog=#auth-need-game' }}>{{ __('app.pages.home.game') }}</a></section>
+        <a class="results-block__btn btn btn_default {{ isUserAuthorize() ? 'ninja-top-block__game-start'  : 'prevent-default' }} event-second-play-game" href="#" {{ isUserAuthorize() ? '' : 'data-dialog=#auth-need-game' }}>{{ __('app.pages.home.game') }}</a></section>
 @endsection
 
 @section('share_title')@endsection

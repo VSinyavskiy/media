@@ -3,7 +3,7 @@
 @section('content')
 	<section class="top-spacer"></section>
     <section class="doners-block">
-        <a class="close-btn doners-block__back-btn" href="{{ route('user') }}">
+        <a class="close-btn doners-block__back-btn" href="{{ route('user', $_SERVER['QUERY_STRING']) }}">
             <div class="close-btn__icon">
                 <svg class="svg">
                     <use xlink:href="#svg-ico-close"></use>

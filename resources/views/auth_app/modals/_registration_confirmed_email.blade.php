@@ -5,9 +5,9 @@
                 <use xlink:href="#svg-ico-close"></use>
             </svg>
         </a>
-        <div class="dialog__title">Регистрация прошла успешно!</div>
+        <div class="dialog__title">{{ __('app.modals.registration_confirmed_email.title') }}</div>
         <div class="dialog__body form">
-            <p>Добро пожаловать в игру!</p>
+            <p>{{ __('app.modals.registration_confirmed_email.description') }}</p>
         </div>
     </div>
 </div>

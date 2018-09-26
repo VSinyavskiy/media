@@ -91,6 +91,6 @@ class Handler extends ExceptionHandler
                 break;
         }
 
-        return redirect()->guest(route($login));
+        return redirect()->guest(route($login, $_SERVER['QUERY_STRING']));
     }
 }

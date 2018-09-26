@@ -46,11 +46,11 @@ class UserResetPasswordNotification extends Notification
     {  
         return (new MailMessage)
                     ->from('noreply@' . $_SERVER['HTTP_HOST'], env('APP_NAME'))
-                    ->subject('Восстановление пароля')
-                    ->greeting('Здравствуйте!')
-                    ->line('Вы получили это письмо потому что была попытка восстановления пароля для Вашего email. Нажмите на кнопку для продолжения!')
-                    ->action('Восстановить пароль', route('password.reset', [$this->token, 'email' => Crypt::encryptString($notifiable->email)]))
-                    ->line('If you have not tried to recover a password, contact the administrator!');
+                    ->subject(__('app.emails.user_reset_password_notification.subject'))
+                    ->greeting(__('app.emails.user_reset_password_notification.greeting'))
+                    ->line(__('app.emails.user_reset_password_notification.first_line'))
+                    ->action(__('app.emails.user_reset_password_notification.button'), route('password.reset', [$this->token, 'email' => Crypt::encryptString($notifiable->email)]))
+                    ->line(__('app.emails.user_reset_password_notification.second_line'));
     }
 
     /**

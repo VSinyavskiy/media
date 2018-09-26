@@ -32,6 +32,8 @@ class LoginController extends Controller
      */
     protected $redirectTo = '/user';
 
+    protected $queryString;
+
     /**
      * Create a new controller instance.
      *
@@ -55,12 +57,15 @@ class LoginController extends Controller
             'password' => 'required',
         ]);
 
+        // $this->queryString = $request->session()->get('query');
+        $this->queryString = $request->cookie('query');
+
         if (Auth::guard('web')->attempt(['phone' => $request->phone, 'password' => $request->password, 'role' => User::ROLE_USER, 'is_mail_confirmed' => true])) {
-            return redirect()->intended(route('user'));
+            return redirect(route('user', $this->queryString . '&#event-login'));
         } 
 
-        return redirect()->back()->withInput($request->only('email', 'is_remember'))->withErrors([
-            'password' => __('app.login.error'),
+        return redirect(url()->previous() . '?' . $this->queryString)->withInput($request->only('email', 'is_remember'))->withErrors([
+            'password' => __('app.pages.auth.error'),
         ]);
     }
 
@@ -68,6 +73,6 @@ class LoginController extends Controller
     {
         auth()->guard('web')->logout();
 
-        return redirect()->route('home');
+        return redirect()->route('home', $_SERVER['QUERY_STRING']);
     }
 }
