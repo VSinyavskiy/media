@@ -21,7 +21,14 @@
             <div class="scene__layer" data-depth="0.8">
                 <div class="user-top-block__bg-piece user-top-block__bg-piece_6 bg-piece bg-piece_potato-chip"></div>
             </div>
-        </div><img class="user-top-block__title" src="{{ asset('assets/img/text-personal-donery.png') }}" alt="personal donery">
+        </div>
+
+        @if (LaravelLocalization::getCurrentLocale() == 'kz')
+            <img class="user-top-block__title" src="{{ asset('assets/img/text-personal-donery-kz.png') }}" alt="personal donery">
+        @else
+            <img class="user-top-block__title" src="{{ asset('assets/img/text-personal-donery.png') }}" alt="personal donery">
+        @endif
+
         <div class="user-top-block__doner doner">
             <div class="doner__name">{{ $user->first_name }} {{ $user->last_name }}</div>
             <div class="doner__info">
@@ -113,4 +120,14 @@
 @section('modals')
     @include('app.modals._invite')
     @include('auth_app.modals._registration_confirmed_email')
+@endsection
+
+@section ('custom-css')
+    @if (LaravelLocalization::getCurrentLocale() == 'kz')
+        <style type="text/css">
+            .share-block {
+                background-image: url({{ asset('assets/img/share-kz.png') }});
+            }
+        </style>
+    @endif
 @endsection

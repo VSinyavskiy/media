@@ -54,7 +54,14 @@
                 <div class="step__desc">{{ __('app.pages.home.long') }}</div>
             </li>
         </ul><a class="steps-block__btn btn btn_default prevent-default" href="#" data-dialog="#{{ isUserAuthorize() ? 'copy-link'  : 'auth-need-invite' }}">{{ __('app.pages.home.invite') }}</a></section>
-    <section class="prizes-block"><img class="prizes-block__title" src="{{ asset('assets/img/text-presents.png') }}" alt="prizes">
+    <section class="prizes-block">
+
+        @if (LaravelLocalization::getCurrentLocale() == 'kz')
+            <img class="prizes-block__title" src="{{ asset('assets/img/text-presents-kz.png') }}" alt="prizes">
+        @else
+            <img class="prizes-block__title" src="{{ asset('assets/img/text-presents.png') }}" alt="prizes">
+        @endif
+
         <div class="prizes-block__slider slider slider_prizes">
             <div class="slider__track" data-glide-el="track">
                 <ul class="slider__slides">
@@ -155,7 +162,14 @@
             </section>
         </div>
         <div class="row__col">
-            <section class="squares-block row__block"><img class="squares-block__bg" src="{{ asset('assets/img/text-new-lays-doner-whats-it-like-new.png') }}">
+            <section class="squares-block row__block">
+
+                @if (LaravelLocalization::getCurrentLocale() == 'kz')
+                    <img class="squares-block__bg" src="{{ asset('assets/img/text-new-lays-doner-whats-it-like-new.png') }}">
+                @else
+                    <img class="squares-block__bg" src="{{ asset('assets/img/text-new-lays-doner-whats-it-like-new.png') }}">
+                @endif
+
                 <div class="squares-block__square squares-block__square_1 square square_yellow">
                     <div class="square__bg"></div>
                     <div class="square__text"><span>{{ __('app.pages.home.taste_first') }}</span></div><a class="square__btn" href="#"></a></div>
@@ -187,4 +201,23 @@
     @include('auth_app.modals._auth_social_error')
     @include('auth_app.modals._auth_social_error_is_mail_confirmed')
     @include('auth_app.modals._registration_confirm_email')
+@endsection
+
+@section ('custom-css')
+    @if (LaravelLocalization::getCurrentLocale() == 'kz')
+        <style type="text/css">
+            .top-block__bg {
+                background-image: url({{ asset('assets/img/main-tab-kz.png') }});
+            }
+            .ninja-block__bg {
+                background-image: url({{ asset('assets/img/doner-ninja-kz.png') }});
+            }
+
+            @media (min-width: 1200px) {
+                .top-block__bg {
+                    background-image: url({{ asset('assets/img/main-desktop-kz.png') }});
+                }
+            }
+        </style>
+    @endif
 @endsection

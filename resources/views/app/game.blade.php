@@ -88,3 +88,19 @@
     @include('auth_app.modals._auth_need_game')
     @include('app.modals._invite_success')
 @endsection
+
+@section ('custom-css')
+    @if (LaravelLocalization::getCurrentLocale() == 'kz')
+        <style type="text/css">
+            .ninja-top-block {
+                background-image: url({{ asset('assets/img/doner-ninja-tab-kz.png') }});
+            }
+
+            @media (min-width: 800px) {
+                .ninja-top-block {
+                    background-image: url({{ asset('assets/img/doner-ninja-desktop-kz.png') }});
+                }
+            }
+        </style>
+    @endif
+@endsection

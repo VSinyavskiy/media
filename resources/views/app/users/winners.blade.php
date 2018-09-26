@@ -81,3 +81,19 @@
 @section('share_title')@endsection
 
 @section('share_description')@endsection
+
+@section ('custom-css')
+    @if (LaravelLocalization::getCurrentLocale() == 'kz')
+        <style type="text/css">
+            .winners-top-block {
+                background-image: url({{ asset('assets/img/winners-tab-kz.png') }});
+            }
+
+            @media (min-width: 800px) {
+                .winners-top-block {
+                    background-image: url({{ asset('assets/img/winners-desktop-kz.png') }});
+                }
+            }
+        </style>
+    @endif
+@endsection
