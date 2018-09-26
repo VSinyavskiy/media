@@ -57,7 +57,8 @@ class LoginController extends Controller
             'password' => 'required',
         ]);
 
-        $this->queryString = $request->session()->get('query');
+        // $this->queryString = $request->session()->get('query');
+        $this->queryString = $request->cookie('query');
 
         if (Auth::guard('web')->attempt(['phone' => $request->phone, 'password' => $request->password, 'role' => User::ROLE_USER, 'is_mail_confirmed' => true])) {
             return redirect(route('user', $this->queryString . '&#event-login'));
