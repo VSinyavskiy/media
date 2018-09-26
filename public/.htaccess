@@ -5,8 +5,8 @@
 
     RewriteEngine On
 
-    RewriteCond %{HTTPS} !on
-    RewriteRule (.*) https://%{HTTP_HOST}%{REQUEST_URI}
+    RewriteCond %{HTTP:X-HTTPS} !1
+    RewriteRule ^(.*)$ https://%{HTTP_HOST}/$1 [R=301,L]
 
     # Handle Authorization Header
     RewriteCond %{HTTP:Authorization} .
