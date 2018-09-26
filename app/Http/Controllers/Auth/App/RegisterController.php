@@ -161,6 +161,8 @@ class RegisterController extends Controller
         try {
             $user      = Socialite::driver($request->provider)->user();
 
+            dd($user);
+
             $userName  = explode(' ', $user->getName());
             $userData  = [
                 'provider'   => $request->provider,
