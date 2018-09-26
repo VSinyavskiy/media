@@ -72,7 +72,8 @@ mix.combine([
 		'resources/assets/js/app/game_events.js',
 	], 'public/assets/js/app.js')
 	.copy('markup/build/assets/img', 'public/assets/img')
-	.copy('resources/assets/images', 'public/assets/img')
+    .copy('resources/assets/images', 'public/assets/img')
+	.copy('resources/assets/files', 'public/assets/files')
 	.copy('markup/build/assets/fonts', 'public/assets/fonts');
 
 if (mix.config.inProduction) {

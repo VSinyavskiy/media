@@ -24,7 +24,11 @@
                 {{--<li class="menu__item {{ Route::is('winners') ? 'menu__item_active' : '' }}">
                     <a class="menu__link" href="{{ route('winners', $_SERVER['QUERY_STRING']) }}">{{ __('app.layout.partials.header.menu.winners') }}</a>
                 </li>--}}
-                <li class="menu__item"><a class="menu__link" href="#">{{ __('app.layout.partials.header.menu.rules') }}</a></li>
+                <li class="menu__item">
+                    <a class="menu__link" href="{{ asset('assets/files/rules.ru.pdf') }}" target="_blank">
+                        {{ __('app.layout.partials.header.menu.rules') }}
+                    </a>
+                </li>
             </ul>
             <ul class="menu__lang lang">
 
