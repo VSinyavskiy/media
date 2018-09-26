@@ -221,15 +221,15 @@ class RegisterController extends Controller
 
     private function findUser($userData)
     {
-        if (! empty($userData['email'])) {
-            $siteUser = User::where('email', $userData['email'])->first();
-        } else {
-            $siteUser = User::whereHas('socials', function ($query) use ($userData) {
+        $siteUser = User::whereHas('socials', function ($query) use ($userData) {
                             $query->where([
                                 'social_type' => $userData['provider'],
                                 'social_id'   => $userData['socialId'],
                             ]);
                         })->first();
+
+        if (! isset($siteUser) && ! empty($userData['email'])) {
+            $siteUser = User::where('email', $userData['email'])->first();
         }
 
         return $siteUser;
