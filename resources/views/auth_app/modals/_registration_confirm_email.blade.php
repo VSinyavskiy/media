@@ -5,9 +5,9 @@
                 <use xlink:href="#svg-ico-close"></use>
             </svg>
         </a>
-        <div class="dialog__title">Подтверждение регистрации</div>
+        <div class="dialog__title">{{ __('app.modals.registration_confirm_email.title') }}</div>
         <div class="dialog__body form">
-            <p>На Ваш email было отправлено письмо с ссылкой для подтверждения регистрации.<br>Перейдите по ссылке для завершения регистрации.</p>
+            <p>{!! __('app.modals.registration_confirm_email.description') !!}</p>
         </div>
     </div>
 </div>

@@ -5,9 +5,9 @@
                 <use xlink:href="#svg-ico-close"></use>
             </svg>
         </a>
-        <div class="dialog__title">Восстановление пароля</div>
+        <div class="dialog__title">{{ __('app.modals.reset_password_second_step.title') }}</div>
         <div class="dialog__body form">
-            <p>Введите Ваш новый пароль.</p>
+            <p>{{ __('app.modals.reset_password_second_step.description') }}</p>
 
             {{ Form::open([
                 'route' => 'password.reset.post',
@@ -17,20 +17,22 @@
                 {{ Form::hidden('token', session('token')) }}
                 {{ Form::hidden('email', session('email')) }}
 
-                <label class="form__label">Пароль</label>
+                <label class="form__label">{{ __('app.modals.reset_password_second_step.fields.password') }}</label>
                 <div class="form__item form__item_required">
                     {{ Form::password('password', ['class' => 'form__control', 'id' => 'password']) }}
                     <span class="help-block error">{{ $errors->first('password') }}</span>
                 </div>
 
-                <label class="form__label">Повторите пароль</label>
+                <label class="form__label">{{ __('app.modals.reset_password_second_step.fields.password_confirmation') }}</label>
                 <div class="form__item form__item_required">
                     {{ Form::password('password_confirmation', ['class' => 'form__control', 'id' => 'password_confirmation']) }}
                     <span class="help-block error">{{ $errors->first('password_confirmation') }}</span>
                 </div>
 
                 <div class="form__buttons">
-                    <button class="btn btn_default btn_block" type="submit">Войти</button>
+                    <button class="btn btn_default btn_block" type="submit">
+                        {{ __('app.modals.reset_password_second_step.button') }}
+                    </button>
                 </div>
 
             {{ Form::close() }}

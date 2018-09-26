@@ -5,9 +5,9 @@
                 <use xlink:href="#svg-ico-close"></use>
             </svg>
         </a>
-        <div class="dialog__title">Ошибка авторизации</div>
+        <div class="dialog__title">{{ __('app.modals.auth_social_error_is_mail_confirmed.title') }}</div>
         <div class="dialog__body form">
-            <p>Произошла ошибка авторизации!<br>Свяжитесь с администратором сайта для получения детальной информации.</p>
+            <p>{!! __('app.modals.auth_social_error_is_mail_confirmed.description') !!}</p>
         </div>
     </div>
 </div>

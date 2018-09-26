@@ -5,9 +5,9 @@
                 <use xlink:href="#svg-ico-close"></use>
             </svg>
         </a>
-        <div class="dialog__title">Восстановление пароля</div>
+        <div class="dialog__title">{{ __('app.modals.reset_password_second_step_success.title') }}</div>
         <div class="dialog__body form">
-            <p>Ваш пароль успешно восстановлен!</p>
+            <p>{{ __('app.modals.reset_password_second_step_success.description') }}</p>
         </div>
     </div>
 </div>
