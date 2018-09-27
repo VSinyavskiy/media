@@ -78,8 +78,8 @@
           { data: 'email', name: 'email' },
           { data: 'is_mail_confirmed', name: 'is_mail_confirmed' },
           { data: 'total_points', name: 'total_points' },
-          { data: '10th_friend_invited_at', name: '10th_friend_invited_at', searchable: false, orderable: false },
-          { data: 'created_at', name: 'created_at', searchable: false, orderable: false },
+          { data: '10th_friend_invited_at', name: '10th_friend_invited_at', searchable: false },
+          { data: 'created_at', name: 'created_at', searchable: false },
           { data: 'actions', searchable: false, orderable: false, width: '8%' }
       ]);
     });
