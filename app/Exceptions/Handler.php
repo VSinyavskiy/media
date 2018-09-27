@@ -55,7 +55,30 @@ class Handler extends ExceptionHandler
             return redirect()->route('home');
         }
 
-        return parent::render($request, $exception);
+        if ($this->isHttpException($exception)) {
+            switch ($exception->getStatusCode()) {
+                // not found
+                case 404:
+                    return redirect()->route('home', $_SERVER['QUERY_STRING']);
+                    break;
+
+                // forbidden
+                case 403:
+                    return redirect()->route('home', $_SERVER['QUERY_STRING']);
+                    break;
+
+                // internal error
+                case '500':
+                    return redirect()->route('home', $_SERVER['QUERY_STRING']);
+                    break;
+
+                default:
+                    return $this->renderHttpException($exception);
+                    break;
+            }
+        } else {
+            return parent::render($request, $exception);
+        }
     }
 
     private function redirectToLowerUrl($request)
