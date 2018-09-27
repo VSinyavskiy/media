@@ -66,15 +66,15 @@
             <div class="slider__track" data-glide-el="track">
                 <ul class="slider__slides">
                     <li class="slider__slide slide slide_prize">
-                        <div class="slide__img"><img src="{{ asset('assets/img/prize-2000.png') }}"></div>
+                        <div class="slide__img"><img src="{{ asset('assets/img/prize-2000' . (App::getLocale() == 'kz' ? '-kz' : '') .  '.png') }}"></div>
                         <div class="slide__desc">{{ __('app.pages.home.certificate_2000') }}</div>
                     </li>
                     <li class="slider__slide slide slide_prize">
-                        <div class="slide__img"><img src="{{ asset('assets/img/gift-card.png') }}"></div>
+                        <div class="slide__img"><img src="{{ asset('assets/img/gift-card' . (App::getLocale() == 'kz' ? '-kz' : '') .  '.png') }}"></div>
                         <div class="slide__desc">{{ __('app.pages.home.certificate_10000') }}</div>
                     </li>
                     <li class="slider__slide slide slide_prize">
-                        <div class="slide__img"><img src="{{ asset('assets/img/prize-20000.png') }}"></div>
+                        <div class="slide__img"><img src="{{ asset('assets/img/prize-20000' . (App::getLocale() == 'kz' ? '-kz' : '') .  '.png') }}"></div>
                         <div class="slide__desc">{{ __('app.pages.home.certificate_20000') }}</div>
                     </li>
                 </ul>
