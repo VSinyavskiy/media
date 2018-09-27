@@ -49,7 +49,7 @@
                 pluralize($user->invited_count, __('app.pages.users.one_friend'), __('app.pages.users.five_friends'), __('app.pages.users.five_friends'))
             ], __('app.pages.users.invited')) }}
         </div>
-        <a class="user-top-block__btn btn btn_default prevent-default" href="#" data-dialog="#copy-link">{{ __('app.pages.users.invite') }}</a>
+        <a class="user-top-block__btn btn btn_default prevent-default event-invite-user" href="#" data-dialog="#copy-link">{{ __('app.pages.users.invite') }}</a>
     </section>
     <section class="share-block">
         <div class="share-block__socials">

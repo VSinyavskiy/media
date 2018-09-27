@@ -28,6 +28,7 @@
         $(document).on('click',  '.event-go-to-vk-footer',  ns.onGoToVkFooterClick);
         $(document).on('click',  '.event-go-to-fb-footer',  ns.onGoToFbFooterClick);
         $(document).on('click',  '.event-go-to-ig-footer',  ns.onGoToIgFooterClick);
+        $(document).on('click',  '.event-invite-user',      ns.onInviteUserPageClick);
 
         ns.phonePasteDisable();
         ns.initEventAfterRedirect();
@@ -239,6 +240,12 @@
     ns.onGoToIgFooterClick = function() {
         gtag('event', 'click', {
           'event_category': 'site_go_to_ig_footer',
+        });
+    };
+
+    ns.onInviteUserPageClick = function() {
+        gtag('event', 'click', {
+          'event_category': 'site_invite_user_page',
         });
     };
 
