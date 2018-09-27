@@ -106,19 +106,19 @@
                                 <div class="doner-dude__avatar"><img class="doner-dude__img" src="{{ $topDonerUser->avatar->getUrl() }}">
                                     <div class="doner-dude__place">{{ $key + 1 }}</div>
                                 </div>
-                                <div class="doner-dude__name">{{ $topDonerUser->first_name }} {{ $topDonerUser->last_name }}<span class="doner-dude__note">{{ __('app.pages.home.doner_like') }}</span></div>
+                                <div class="doner-dude__name">{{ $topDonerUser->first_name }} {{ $topDonerUser->last_name }}<span class="doner-dude__note">{{ __('app.pages.home.doner')[$key] }}</span></div>
                                 <div class="doner-dude__score">{{ $topDonerUser->total_points }}</div>
                             </div>
                         </li>
                     @endforeach
 
-                    @for ($i = $topDonerUsers->count(); $i <= \App\Models\User::COUNT_TOP - $topDonerUsers->count(); $i++)
+                    @for ($i = isset($key) ? $key + 1 : 0; $i < \App\Models\User::COUNT_TOP - $topDonerUsers->count() + isset($key) ? 1 : 0; $i++)
                         <li class="doners-block__item">
                             <div class="doner-dude">
                                 <div class="doner-dude__avatar"><img class="doner-dude__img" src="{{ asset('assets/img/default_avatar.png') }}">
                                     <div class="doner-dude__place">{{ $i + 1 }}</div>
                                 </div>
-                                <div class="doner-dude__name">TBD<span class="doner-dude__note">{{ __('app.pages.home.doner_like') }}</span></div>
+                                <div class="doner-dude__name">TBD<span class="doner-dude__note">{{ __('app.pages.home.doner')[$i] }}</span></div>
                                 <div class="doner-dude__score">-</div>
                             </div>
                         </li>

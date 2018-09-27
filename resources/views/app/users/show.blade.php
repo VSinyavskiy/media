@@ -103,7 +103,7 @@
 
                             </div>
                         </div>
-                        <div class="doner-dude__name">{{ $topDonerUser->first_name }} {{ $topDonerUser->last_name }}<span class="doner-dude__note">{{ __('app.pages.home.doner_like') }}</span></div>
+                        <div class="doner-dude__name">{{ $topDonerUser->first_name }} {{ $topDonerUser->last_name }}<span class="doner-dude__note">{{ __('app.pages.home.doner')[$key] }}</span></div>
                         <div class="doner-dude__score">{{ $topDonerUser->total_points }}</div>
                     </div>
                 </li>
