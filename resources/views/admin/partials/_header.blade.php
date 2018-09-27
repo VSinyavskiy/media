@@ -30,13 +30,13 @@
           <li class="dropdown user user-menu">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">
             <img src="{{ Auth::guard('admin')->user()->avatar->getUrl() }}" class="user-image" alt="User Image">
-            <span class="hidden-xs">{{ Auth::guard('admin')->user()->name }}</span>
+            <span class="hidden-xs">{{ Auth::guard('admin')->user()->first_name }} {{ Auth::guard('admin')->user()->last_name }}</span>
           </a>
           <ul class="dropdown-menu">
             <li class="user-header">
               <img src="{{ Auth::guard('admin')->user()->avatar->getUrl() }}" class="img-circle" alt="{{ Auth::guard('admin')->user()->name }}">
               <p>
-                {{ Auth::guard('admin')->user()->name }}
+                {{ Auth::guard('admin')->user()->first_name }} {{ Auth::guard('admin')->user()->last_name }}
                 <small>{{ Auth::guard('admin')->user()->email }}</small>
               </p>
             </li>
