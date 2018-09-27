@@ -12,9 +12,18 @@
     <meta property="og:description" content="{{ __('app.shares.description') }}"/>
     <meta property="twitter:description" content="{{ __('app.shares.description') }}"/>
     <meta name="twitter:card" content="summary_large_image">
-    <meta property="og:image" content="{{ asset('assets/img/default_share.png') }}" />
-    <meta property="twitter:image" content="{{ asset('assets/img/default_share.png') }}"/>
-    <link rel="image_src" href="{{ asset('assets/img/default_share.png') }}" />
+
+    @if (LaravelLocalization::getCurrentLocale() == 'kz')
+        <meta property="og:image" content="{{ asset('assets/img/default_share-kz.png') }}" />
+        <meta property="twitter:image" content="{{ asset('assets/img/default_share-kz.png') }}"/>
+        <link rel="image_src" href="{{ asset('assets/img/default_share-kz.png') }}" />
+    @else
+        <meta property="og:image" content="{{ asset('assets/img/default_share.png') }}" />
+        <meta property="twitter:image" content="{{ asset('assets/img/default_share.png') }}"/>
+        <link rel="image_src" href="{{ asset('assets/img/default_share.png') }}" />
+    @endif
+
+
     <meta name="title" content="{{ __('app.shares.title') }}" />
     <meta name="description" content="{{ __('app.shares.description') }}" />
     <!--[if IE 6]>

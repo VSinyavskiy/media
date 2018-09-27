@@ -165,7 +165,7 @@
             <section class="squares-block row__block">
 
                 @if (LaravelLocalization::getCurrentLocale() == 'kz')
-                    <img class="squares-block__bg" src="{{ asset('assets/img/text-new-lays-doner-whats-it-like-new.png') }}">
+                    <img class="squares-block__bg" src="{{ asset('assets/img/text-new-lays-doner-whats-it-like-new-kz.png') }}">
                 @else
                     <img class="squares-block__bg" src="{{ asset('assets/img/text-new-lays-doner-whats-it-like-new.png') }}">
                 @endif
