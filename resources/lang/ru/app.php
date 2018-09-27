@@ -163,7 +163,7 @@ return [
             'button' => 'Отправить',
             'fields' => [
                 'email' => 'Email',
-                'email_placeholder' => 'Введи свой Emaile',
+                'email_placeholder' => 'Введи свой Email',
             ],
         ],
         'reset_password_second_step' => [
