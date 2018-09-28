@@ -31,9 +31,9 @@
           <h3 class="profile-adminname text-center">{{ $user->first_name }} {{ $user->last_name }}</h3>
 
           <div class="text-center">
-            <p class="text-muted">{{ $user->phone }}</p>
+            <p class="text-muted">{{ $user->masked_phone }}</p>
             <p class="text-muted">{{ $user->email }}</p>
-            <a class="btn btn-block btn-success add-block" href="#" data-append-block-id="winners_block" data-route="" data-num-block="1">{{ __('admin.users.add_winner') }}</a>
+            <a class="btn btn-block btn-success show-winners-tab" href="#prizes" data-toggle="tab">{{ __('admin.users.add_winner') }}</a>
           </div>
         </div>
         <!-- /.box-body -->
@@ -48,6 +48,7 @@
           <li class="active"><a href="#fields" data-toggle="tab">{{ __('admin.users.fields_tab') }}</a></li>
           <li><a href="#socials" data-toggle="tab">{{ __('admin.users.socials_tab') }}</a></li>
           <li><a href="#points" data-toggle="tab">{{ __('admin.users.points_tab') }}</a></li>
+          <li class="winners_tab"><a href="#prizes" data-toggle="tab">{{ __('admin.users.prizes_tab') }}</a></li>
         </ul>
         <div class="tab-content">
           <div class="active tab-pane" id="fields">
@@ -136,11 +137,38 @@
               <p class="text-center">{{ __('admin.users.no_points') }}</p>
             @endif
           </div>
+          <div class="tab-pane" id="prizes">
+            <table class="table table-striped text-center">
+              <thead>
+                <tr>
+                  <th width="20%">{{ __('admin.users.fields.presents.prize_image') }}</th>
+                  <th>{{ __('admin.users.fields.presents.prize_name') }}</th>
+                  <th>{{ __('admin.users.fields.presents.actions') }}</th>
+                  <th class="pull-right">
+                    <a class="btn btn-block btn-success add-block" href="{{ route('admin.presents.render') }}" data-append-block-id="add_presents_block" data-user-id="{{ $user->id }}">
+                      {{ __('admin.users.add_present') }}
+                    </a>
+                  </th>
+                </tr>
+              </thead>
+              <tbody id="presents_block">
+
+                @foreach ($user->presents as $present)
+                  @include('admin.presents._present')
+                @endforeach
+
+              </tbody>
+            </table>
+          </div>
 
         </div>
         <!-- /.tab-content -->
       </div>
       <!-- /.nav-tabs-custom -->
+      <div id="add_presents_block">
+      
+      </div>
+    </div>
   </div>
   <!-- /.row -->
 @endsection

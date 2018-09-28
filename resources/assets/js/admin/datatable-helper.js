@@ -49,7 +49,7 @@
             },
             createdRow: function (row, data, index) {        
                 coloredColumns.forEach(function(item, i) {
-                    $('td:has(' + item.condition_value + ')', row).addClass(item.class);
+                    $('td:has(' + item.condition_value + ')', row).parent().addClass(item.class);
                 });
             },
         });

@@ -118,14 +118,19 @@ class User extends Authenticatable implements HasMedia
         return $this->hasMany(UserPointsLog::class);
     }
 
-    // public function presents()
-    // {
-    //     return $this->hasMany(Present::class);
-    // }
+    public function presents()
+    {
+        return $this->hasMany(Present::class);
+    }
 
     public function getInvitedCountAttribute()
     {
         return $this->points()->friendInviteEvent()->count();
+    }
+
+    public function getIsWinnerAttribute()
+    {
+        return $this->presents()->count() ? true : false;
     }
 
     public function getSortedPointsDescAttribute()

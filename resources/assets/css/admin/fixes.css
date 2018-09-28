@@ -2,3 +2,17 @@
 	display: none; 
 }*/
 
+.nav-tabs-custom > .nav-tabs > li.winners_tab {
+	border-top-color: #00ab57;
+}
+
+table.table-bordered.dataTable tbody tr.winners-border td {
+	border-top: 1px solid #00ab57;
+	border-bottom: 1px solid #00ab57;
+}
+table.table-bordered.dataTable tbody tr.winners-border td:first-child {
+	border-left: 1px solid #00ab57;
+}
+table.table-bordered.dataTable tbody tr.winners-border td:last-child {
+	border-right: 1px solid #00ab57;
+}

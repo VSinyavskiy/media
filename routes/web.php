@@ -68,7 +68,12 @@ Route::group([
             'index'   => 'users.index',
             'show'    => 'users.show',
             'update'  => 'users.update',
-        ]);   
+        ]);
+
+        // Presents
+        Route::get('presents/render',       'PresentsController@render')->name('presents.render');
+        Route::post('presents',             'PresentsController@store')->name('presents');
+        Route::delete('presents/{present}', 'PresentsController@destroy')->name('presents.delete');
     });
 
     // App routes

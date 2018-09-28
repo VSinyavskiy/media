@@ -20,7 +20,7 @@
           <h3 class="box-title">{{ __('admin.users.list_title') }}</h3>
         </div>
         <!-- /.box-header -->
-        <div class="box-body table-responsive">
+        <div class="box-body">
           <table id="crud-table" class="table table-bordered table-striped">
             <thead>
               <tr>
@@ -68,7 +68,7 @@
 @section('custom-script')
   <script type="text/javascript">
     $(function() {
-      namespace('datatable-helper').initTable('#crud-table', '{!! route('admin.users.data') !!}', [
+      namespace('datatable-helper').initTable('#crud-table', '{!! route('admin.users.data', ['winners' => $request->winners]) !!}', [
           { data: 'id', name: 'id' },
           { data: 'avatar', name: 'avatar', searchable: false, orderable: false },
           { data: 'first_name', name: 'first_name' },
@@ -81,6 +81,8 @@
           { data: '10th_friend_invited_at', name: '10th_friend_invited_at', searchable: false },
           { data: 'created_at', name: 'created_at', searchable: false },
           { data: 'actions', searchable: false, orderable: false, width: '8%' }
+      ], [
+          { name: 'id', condition_value: 'span.winners', class: 'winners-border' },
       ]);
     });
   </script>

@@ -7,6 +7,8 @@ use App\Http\Controllers\Controller;
 use App\Models\User;
 use App\Http\Requests\Admin\Users\UpdateUserRequest;
 
+use Illuminate\Http\Request;
+
 use Datatables;
 use Html;
 
@@ -17,11 +19,11 @@ class UsersController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $pageTitle      = __('app.users.title');
+        $pageTitle      = __('admin.users.title');
 
-        return view('admin.users.index', compact('role', 'pageTitle'));
+        return view('admin.users.index', compact('role', 'pageTitle', 'request'));
     }
 
     /**
@@ -29,13 +31,25 @@ class UsersController extends Controller
      *
      * @return \Illuminate\Http\JsonResponse
      */
-    public function data()
+    public function data(Request $request)
     {
-        $users = User::users()->with('media');
+        $users = User::users();
+
+        if ($request->has('winners')) {
+            $user = $users->whereHas('presents');
+        }
+
+        $users = $users->with('media');
 
         $datatables = Datatables::of($users)
+            ->editColumn('id', function(User $user) {
+                return $user->id . ($user->is_winner ? '<span class="winners"></span>' : '');
+            })
             ->editColumn('avatar', function(User $user) {
                 return Html::image($user->avatar->getUrl(), null, ['width' => 100])->toHtml();
+            })
+            ->editColumn('phone', function(User $user) {
+                return $user->masked_phone;
             })
             ->editColumn('is_mail_confirmed', function(User $user) {
                 return getBooleanText($user->is_mail_confirmed);
@@ -77,7 +91,7 @@ class UsersController extends Controller
      */
     public function show(User $user)
     {
-        $pageTitle = __('app.users.show_title');
+        $pageTitle = __('admin.users.show_title');
 
         return view('admin.users.show', compact('pageTitle', 'user'));
     }
