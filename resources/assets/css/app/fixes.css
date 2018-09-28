@@ -4,3 +4,9 @@
 
 .help-block { font-size: 12px; }
 .error { color: #e42313; }
+
+.not-found-winners {
+	color: #e42313;
+	text-align: center;
+	font-weight: 700;
+}

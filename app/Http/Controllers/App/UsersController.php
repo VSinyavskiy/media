@@ -7,6 +7,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
 use App\Models\User;
+use App\Models\Present;
+use App\Http\Requests\App\Users\WinnersRequest;
 
 class UsersController extends Controller
 {
@@ -45,7 +47,7 @@ class UsersController extends Controller
         $currentPage = $points->currentPage();
         if ($request->ajax()) {
             return [
-                'result'      => view('app.users._history_paginate', compact('points', 'leftTotalPoints'))->render(),
+                'result'      => view('app.users._history_paginate', compact('points'))->render(),
                 'currentPage' => $currentPage,
             ];
         }
@@ -55,8 +57,28 @@ class UsersController extends Controller
         return view('app.users.history', compact('points', 'currentPage', 'lastPage'));
     }
 
-    public function winners()
+    public function winners(WinnersRequest $request)
     {
-        return view('app.users.winners');
+        $presents = Present::select(['*']);
+
+        if ($request->has('phone') && !is_null($request->phone)) {
+            $presents = $presents->whereHas('user', function ($query) use ($request) {
+                $query->where('phone', 'like', '%' . withoutSymbols($request->phone, ['_', ' ']) . '%');
+            });
+        }
+
+        $presents = $presents->sortByCreatedAT()->with('user')->paginate(Present::COUNT_WINNERS);
+
+        $currentPage = $presents->currentPage();
+        if ($request->ajax()) {
+            return [
+                'result'      => view('app.users._winners_paginate', compact('presents', 'currentPage'))->render(),
+                'currentPage' => $currentPage,
+            ];
+        }
+
+        $lastPage = $presents->lastPage();
+
+        return view('app.users.winners', compact('presents', 'currentPage', 'lastPage', 'request'));
     }
 }

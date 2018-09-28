@@ -21,9 +21,13 @@
                 <li class="menu__item {{ Route::is('user') || Route::is('history') ? 'menu__item_active' : '' }}">
                     <a class="menu__link" href="{{ route('user', $_SERVER['QUERY_STRING']) }}">{{ __('app.layout.partials.header.user') }}</a>
                 </li>
-                {{--<li class="menu__item {{ Route::is('winners') ? 'menu__item_active' : '' }}">
-                    <a class="menu__link" href="{{ route('winners', $_SERVER['QUERY_STRING']) }}">{{ __('app.layout.partials.header.menu.winners') }}</a>
-                </li>--}}
+
+                @if (\App\Models\Present::issetWinners())
+                    <li class="menu__item {{ Route::is('winners') ? 'menu__item_active' : '' }}">
+                        <a class="menu__link" href="{{ route('winners', $_SERVER['QUERY_STRING']) }}">{{ __('app.layout.partials.header.menu.winners') }}</a>
+                    </li>
+                @endif
+
                 <li class="menu__item">
                     <a class="menu__link" href="{{ asset('assets/files/rules.ru.pdf') }}" target="_blank">
                         {{ __('app.layout.partials.header.menu.rules') }}

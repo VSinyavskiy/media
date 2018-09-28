@@ -67,3 +67,8 @@ function withoutSpace($value)
 {
     return str_replace(' ', '', $value);
 }
+
+function withoutSymbols($value, $symbols = [])
+{
+    return str_replace($symbols, '', $value);
+}

@@ -10,6 +10,8 @@ class Present extends Model
     const SECOND_TYPE = 2;
     const THIRD_TYPE  = 3;
 
+    const COUNT_WINNERS = 5;
+
     /**
      * The attributes that are mass assignable.
      *
@@ -18,6 +20,11 @@ class Present extends Model
     protected $fillable = [
         'user_id', 'prize_type',
     ];
+
+    public function scopeSortByCreatedAT($query)
+    {
+        $query->orderBy('created_at', 'DESC');
+    }
 
     public function user()
     {
