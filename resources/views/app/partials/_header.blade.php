@@ -29,7 +29,7 @@
                 @endif
 
                 <li class="menu__item">
-                    <a class="menu__link" href="{{ asset('assets/files/rules.' App::getLocale() '.pdf') }}" target="_blank">
+                    <a class="menu__link" href="{{ asset('assets/files/rules.' . App::getLocale() . '.pdf') }}" target="_blank">
                         {{ __('app.layout.partials.header.menu.rules') }}
                     </a>
                 </li>
