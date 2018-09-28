@@ -9,7 +9,7 @@ export default class {
         switch (true) {
           case el.matches('.mask_tel'): {
             Inputmask({
-              mask: '+7 999999 999 999',
+              mask: '+7 9999 99 99 99',
               placeholder: '_',
               showMaskOnHover: false,
               showMaskOnFocus: true,
