@@ -28,7 +28,7 @@ class RegisterRequest extends FormRequest
         return [
             'first_name'            => 'required|max:191',
             'last_name'             => 'required|max:191',
-            'phone'                 => 'required|confirmed|unique:users,phone|max:191',
+            'phone'                 => 'required|confirmed|unique:users,phone|max:191|regex:/(^[0-9 +]+$)+/',
             'phone_confirmation'    => 'max:191',
             'city'                  => 'required|max:191',
             'email'                 => 'required|email|unique:users,email|max:191',
