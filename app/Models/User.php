@@ -118,10 +118,10 @@ class User extends Authenticatable implements HasMedia
         return $this->hasMany(UserPointsLog::class);
     }
 
-    public function winners()
-    {
-        return $this->hasMany(Winner::class);
-    }
+    // public function presents()
+    // {
+    //     return $this->hasMany(Present::class);
+    // }
 
     public function getInvitedCountAttribute()
     {
@@ -141,6 +141,20 @@ class User extends Authenticatable implements HasMedia
     public function setPosition($position)
     {
         return $this->position = $position;
+    }
+
+    public function getMaskedPhoneAttribute()
+    {
+        return substr($this->attributes['phone'], 0, 2) . ' ' . 
+               substr($this->attributes['phone'], 2, 4) . ' ' . 
+               substr($this->attributes['phone'], 6, 2) . ' ' . 
+               substr($this->attributes['phone'], 8, 2) . ' ' . 
+               substr($this->attributes['phone'], 10, 2);
+    }
+
+    public function setPhoneAttribute($value)
+    {
+        $this->attributes['phone'] = withoutSpace($value);
     }
 
     public function setPasswordAttribute($value)

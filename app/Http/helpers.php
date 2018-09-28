@@ -62,3 +62,8 @@ function getTimestampFromDateTime($dateTime) // \DateTime
 {
     return Carbon::parse($dateTime, config('app.timezone'));
 }
+
+function withoutSpace($value)
+{
+    return str_replace(' ', '', $value);
+}

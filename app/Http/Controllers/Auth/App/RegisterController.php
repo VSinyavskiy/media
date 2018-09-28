@@ -94,7 +94,7 @@ class RegisterController extends Controller
         $this->queryString = $request->session()->get('query');
         
         $siteUser = User::where([
-                    'phone' => $request->phone,
+                    'phone' => withoutSpace($request->phone),
                     'email' => $request->email,
                 ])->first();
 

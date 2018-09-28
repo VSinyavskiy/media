@@ -24,7 +24,7 @@
     {{ Form::open() }}
       <label class="form__label">{{ __('app.pages.auth.fields.phone') }}</label>
       <div class="form__item {{ $errors->has('phone') ? 'form__item_error' : '' }}">
-        {{ Form::text('phone', old('phone'), ['class' => 'form__control mask mask_tel', 'placeholder' => '+7 ______ ___ ___']) }}
+        {{ Form::text('phone', old('phone'), ['class' => 'form__control mask mask_tel', 'placeholder' => '+7 ____ __ __ __']) }}
         <span class="help-block error">{{ $errors->first('phone') }}</span>
       </div>
 

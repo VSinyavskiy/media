@@ -32,11 +32,11 @@ class UniqueCombination implements Rule
      */
     public function passes($attribute, $value)
     {
-        $baseRaw = $this->model::where($attribute, 'like', $value ?? '')->first();
+        $baseRaw = $this->model::where($attribute, 'like', withoutSpace($value) ?? '')->first();
 
         $rawsForCheck = [];
         foreach ($this->fields as $attributel => $value) {
-            $raw = $this->model::where($attributel, 'like', $value ?? '')->first();
+            $raw = $this->model::where($attributel, 'like', withoutSpace($value) ?? '')->first();
 
             if (is_null($raw)) {
                 $nullCheck = true;

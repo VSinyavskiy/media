@@ -29,7 +29,7 @@ class SocialRegisterRequest extends FormRequest
         return [
             'first_name'            => 'required|max:191',
             'last_name'             => 'required|max:191',
-            'phone'                 => ['required', 'confirmed', 'min:8', 'max:191',  new UniqueCombination( //'regex:/(^[0-9 +]+$)+/',
+            'phone'                 => ['required', 'confirmed', 'min:8', 'max:191', 'regex:/(^[0-9 +]+$)+/', new UniqueCombination(
                                         User::class, [
                                             'email' => $this->request->get('email'),
                                         ])],

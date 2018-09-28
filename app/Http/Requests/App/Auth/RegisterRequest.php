@@ -5,6 +5,7 @@ namespace App\Http\Requests\App\Auth;
 use Illuminate\Foundation\Http\FormRequest;
 
 use App\Models\User;
+use App\Rules\UniqueWithoutSpace;
 
 class RegisterRequest extends FormRequest
 {
@@ -28,7 +29,7 @@ class RegisterRequest extends FormRequest
         return [
             'first_name'            => 'required|max:191',
             'last_name'             => 'required|max:191',
-            'phone'                 => 'required|confirmed|unique:users,phone|max:191', //|regex:/(^[0-9 +]+$)+/
+            'phone'                 => ['required', 'confirmed', 'max:191', 'regex:/(^[0-9 +]+$)+/', new UniqueWithoutSpace(User::class)],
             'phone_confirmation'    => 'max:191',
             'city'                  => 'required|max:191',
             'email'                 => 'required|email|unique:users,email|max:191',

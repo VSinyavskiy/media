@@ -36,13 +36,13 @@
 
       <label class="form__label">{{ __('app.pages.registration.fields.phone') }}</label>
       <div class="form__item form__item_required {{ $errors->has('phone') ? 'form__item_error' : '' }}">
-        {{ Form::text('phone', old('phone'), ['class' => 'form__control mask mask_tel', 'placeholder' => '+7 ______ ___ ___']) }}
+        {{ Form::text('phone', old('phone'), ['class' => 'form__control mask mask_tel', 'placeholder' => '+7 ____ __ __ __']) }}
         <span class="help-block error">{{ $errors->first('phone') }}</span>
       </div>
 
       <label class="form__label">{{ __('app.pages.registration.fields.phone_confirmation') }}</label>
       <div class="form__item form__item_required {{ $errors->has('phone_confirmation') ? 'form__item_error' : '' }}">
-        {{ Form::text('phone_confirmation', old('phone_confirmation'), ['class' => 'form__control mask mask_tel', 'placeholder' => '+7 ______ ___ ___']) }}
+        {{ Form::text('phone_confirmation', old('phone_confirmation'), ['class' => 'form__control mask mask_tel', 'placeholder' => '+7 ____ __ __ __']) }}
         <span class="help-block error">{{ $errors->first('phone_confirmation') }}</span>
       </div>
 
