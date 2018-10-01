@@ -63,6 +63,11 @@ function getTimestampFromDateTime($dateTime) // \DateTime
     return Carbon::parse($dateTime, config('app.timezone'));
 }
 
+function getTimestampFromFormat($format, $dateTime) // \DateTime
+{
+    return Carbon::createFromFormat($format, $dateTime, config('app.timezone'));
+}
+
 function withoutSpace($value)
 {
     return str_replace(' ', '', $value);

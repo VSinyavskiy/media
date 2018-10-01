@@ -33,6 +33,7 @@ class User extends Authenticatable implements HasMedia
     const COUNT_TOP_GAMERS = 3;
 
     const GAME_ACTION_END_TIMESTAMP = '30.10.2018 23:59:59';
+    const REPORTS_TOP_COUNT = 100;
 
     private $position;
 

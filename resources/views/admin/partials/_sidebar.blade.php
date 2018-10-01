@@ -17,6 +17,10 @@
         </li>
       @endif
 
+      <li class="{{ Request::is('*exports*') ? 'active' : '' }}">
+        <a href="{{ route('admin.exports.index') }}"><i class="fa fa-download"></i> {{ __('admin.sidebar.exports') }}</a>
+      </li>
+
     </ul>
   </section>
 </aside>

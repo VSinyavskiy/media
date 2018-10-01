@@ -20,6 +20,7 @@
 
         ns.initSelect2();
         ns.initiCheck();
+        ns.initMask();
     };
 
     ns.clickBlockDynamicRemove = function(e) {
@@ -118,6 +119,10 @@
             radioClass: 'iradio_square-blue',
             increaseArea: '20%' // optional
         });
+    };
+
+    ns.initMask = function() {
+        $('.mask').inputmask();
     };
 
     ns.init();

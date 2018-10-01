@@ -74,6 +74,11 @@ Route::group([
         Route::get('presents/render',       'PresentsController@render')->name('presents.render');
         Route::post('presents',             'PresentsController@store')->name('presents');
         Route::delete('presents/{present}', 'PresentsController@destroy')->name('presents.delete');
+
+        // Exports
+        Route::get('exports',               'ExportsController@index')->name('exports.index');
+        Route::post('exports/invited',      'ExportsController@invited')->name('exports.invited');
+        Route::post('exports/top',          'ExportsController@top')->name('exports.top');
     });
 
     // App routes
