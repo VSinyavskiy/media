@@ -29,15 +29,13 @@
             </div>
         @endif
 
-        <ul class="doners-block__list">
-
-            @if ($presents->count())
+        @if ($presents->count())
+            <ul class="doners-block__list">
                 @include('app.users._winners_paginate')
-            @else
-                <p class="not-found-winners">{{ __('app.pages.winners.not_found') }}</p>
-            @endif
-
-        </ul>
+            </ul>
+        @else
+            <p class="not-found-winners">{{ __('app.pages.winners.not_found') }}</p>
+        @endif
 
         @if ($lastPage != $currentPage && $lastPage != 0)
             <a class="doners-block__btn btn btn_default ajax-more" href="{{ route('winners', ['page' =>  $currentPage + 1]) }}" data-last-page="{{ $lastPage }}">
