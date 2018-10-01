@@ -4,6 +4,7 @@
 /public/storage
 /public/assets/*
 /public/media/*
+/public/reports/*
 /public/sitemap.xml
 /public/mix-manifest.json
 /public/.well-known
