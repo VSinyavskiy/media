@@ -5,26 +5,30 @@
     @include('app.users._winners_search')
 
     <section class="doners-block">
-        <div class="doners-block__bg scene">
-            <div class="scene__layer" data-depth="0.6">
-                <div class="doners-block__bg-piece doners-block__bg-piece_1 bg-piece bg-piece_potato-chip"></div>
+
+        @if ($presents->count() && $presents->count() > 2)
+            <div class="doners-block__bg scene">
+                <div class="scene__layer" data-depth="0.6">
+                    <div class="doners-block__bg-piece doners-block__bg-piece_1 bg-piece bg-piece_potato-chip"></div>
+                </div>
+                <div class="scene__layer" data-depth="0.1">
+                    <div class="doners-block__bg-piece doners-block__bg-piece_2 bg-piece bg-piece_onion-rings"></div>
+                </div>
+                <div class="scene__layer" data-depth="0.6">
+                    <div class="doners-block__bg-piece doners-block__bg-piece_3 bg-piece bg-piece_tomato"></div>
+                </div>
+                <div class="scene__layer" data-depth="0.8">
+                    <div class="doners-block__bg-piece doners-block__bg-piece_4 bg-piece bg-piece_paprica"></div>
+                </div>
+                <div class="scene__layer" data-depth="0.7">
+                    <div class="doners-block__bg-piece doners-block__bg-piece_5 bg-piece bg-piece_garlic"></div>
+                </div>
+                <div class="scene__layer" data-depth="0.9">
+                    <div class="doners-block__bg-piece doners-block__bg-piece_6 bg-piece bg-piece_potato-chip"></div>
+                </div>
             </div>
-            <div class="scene__layer" data-depth="0.1">
-                <div class="doners-block__bg-piece doners-block__bg-piece_2 bg-piece bg-piece_onion-rings"></div>
-            </div>
-            <div class="scene__layer" data-depth="0.6">
-                <div class="doners-block__bg-piece doners-block__bg-piece_3 bg-piece bg-piece_tomato"></div>
-            </div>
-            <div class="scene__layer" data-depth="0.8">
-                <div class="doners-block__bg-piece doners-block__bg-piece_4 bg-piece bg-piece_paprica"></div>
-            </div>
-            <div class="scene__layer" data-depth="0.7">
-                <div class="doners-block__bg-piece doners-block__bg-piece_5 bg-piece bg-piece_garlic"></div>
-            </div>
-            <div class="scene__layer" data-depth="0.9">
-                <div class="doners-block__bg-piece doners-block__bg-piece_6 bg-piece bg-piece_potato-chip"></div>
-            </div>
-        </div>
+        @endif
+
         <ul class="doners-block__list">
 
             @if ($presents->count())
