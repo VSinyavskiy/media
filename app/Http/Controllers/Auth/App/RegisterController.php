@@ -74,10 +74,10 @@ class RegisterController extends Controller
         $user->is_mail_confirmed = true;
         $user->save();
 
-        User::checkIsInvite();
+        $user->checkIsInvite();
 
         // return redirect()->route('home', ['#open-registration-confirm-email']);
-        return redirect($this->getIsMailConfirmedRedirectUrl($user, ['#event-registration']));
+        return redirect($this->getIsMailConfirmedRedirectUrl($user, ['#event-registration']))->withCookie(Cookie::forget('invited'));
     }
 
     public function registerFromSocial()
@@ -99,17 +99,20 @@ class RegisterController extends Controller
                 ])->first();
 
         if (! isset($siteUser)) {
-            User::checkIsInvite();
-
             $user->fill($request->all());
             $user->password      = User::generatePassword();
+            $user->is_mail_confirmed = true;
+            $user->mail_token        = null;
+            $user->save();
+
+            $user->checkIsInvite();
         } else {
             $user = $siteUser;
-        }
 
-        $user->is_mail_confirmed = true;
-        $user->mail_token        = null;
-        $user->save();
+            $user->is_mail_confirmed = true;
+            $user->mail_token        = null;
+            $user->save();
+        }
 
         $social = session('social');
         if (isset($social)) {
@@ -128,7 +131,7 @@ class RegisterController extends Controller
         $user->mail_token        = null;
         $user->save();
 
-        User::checkIsInvite();
+        $user->checkIsInvite();
 
         return redirect($this->getIsMailConfirmedRedirectUrl($user, ['#event-registration']))->withCookie(Cookie::forget('invited'));
     }

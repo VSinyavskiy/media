@@ -93,7 +93,10 @@ class UsersController extends Controller
     {
         $pageTitle = __('admin.users.show_title');
 
-        return view('admin.users.show', compact('pageTitle', 'user'));
+        $invitedUsersIds = $user->points()->friendInviteEvent()->pluck('invited_user_id')->toArray();
+        $invitedUsers    = User::find($invitedUsersIds);
+
+        return view('admin.users.show', compact('pageTitle', 'user', 'invitedUsers'));
     }
 
     /**
@@ -118,7 +121,7 @@ class UsersController extends Controller
         $user->updateConfirmed($request->is_mail_confirmed);
 
         if(!$request->ajax()) {
-            return redirect()->route('admin.users.index');
+            return redirect()->back();
         }
     }
 

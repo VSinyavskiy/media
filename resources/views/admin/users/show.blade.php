@@ -33,6 +33,16 @@
           <div class="text-center">
             <p class="text-muted">{{ $user->masked_phone }}</p>
             <p class="text-muted">{{ $user->email }}</p>
+            <a class="btn {{ $user->is_mail_confirmed ? 'btn-success' : 'btn-danger' }} btn-block" href="{{ route('admin.users.update', [$user, 'is_mail_confirmed' => ! $user->is_mail_confirmed]) }}" data-onclick="if(!confirm('{{ __('admin_layout.global.are_you_sure') }}')) return false;" data-method="put" data-ajax="true">
+
+              @if ($user->is_mail_confirmed)
+                {{ __('admin.users.non_block') }}
+              @else
+                {{ __('admin.users.block') }}
+              @endif
+              
+            </a>
+            <br/>
             <a class="btn btn-block btn-success show-winners-tab" href="#prizes" data-toggle="tab">{{ __('admin.users.add_winner') }}</a>
           </div>
         </div>
@@ -118,6 +128,10 @@
                       <th>{{ __('admin.users.fields.points.points') }}</th>
                       <th>{{ __('admin.users.fields.points.rank') }}</th>
                       <th>{{ __('admin.users.fields.points.scoring_at') }}</th>
+                      <th>{{ __('admin.users.fields.invited_friend_name') }}</th>
+                      <th>{{ __('admin.users.fields.phone') }}</th>
+                      <th>{{ __('admin.users.fields.email') }}</th>
+                      <th>{{ __('admin.users.fields.total_points') }}</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -128,6 +142,26 @@
                       <td>{{ $points->points }}</td>
                       <td>{{ $points->rank ?? '-' }}</td>
                       <td>{{ $points->scoring_at->format('d.m.Y H:i:s') }}</td>
+
+                      @if ($points->event_type == \App\Models\UserPointsLog::FRIEND_INVITE && 
+                          ! is_null($points->invited_user_id))
+                        <?php $invitedUser = $invitedUsers->where('id', $points->invited_user_id)->first(); ?>
+
+                        <td>
+                          <a href="{{ route('admin.users.show', $invitedUser) }}" target="_blank">
+                            {{ $invitedUser->first_name }} {{ $invitedUser->last_name }}
+                          </a>
+                        </td>
+                        <td>{{ $invitedUser->phone }}</td>
+                        <td>{{ $invitedUser->email }}</td>
+                        <td>{{ $invitedUser->total_points }}</td>
+                      @else
+                        <td>-</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>-</td>
+                      @endif
+                      
                     </tr>
                   @endforeach
 

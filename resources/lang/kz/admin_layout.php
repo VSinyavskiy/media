@@ -19,6 +19,7 @@ return [
         'logout'  => 'Шығу',
         'moveUp' => 'Көтеру',
         'moveDown' => 'Төменгі',
+        'confirmed' => 'Расталған',
     ],
     'login' => [
         'title_text' => 'Сессияны бастау үшін кіріңіз',

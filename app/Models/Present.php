@@ -26,6 +26,13 @@ class Present extends Model
         $query->orderBy('created_at', 'DESC');
     }
 
+    public function scopeUserConfirmed($query)
+    {
+        $query->whereHas('user', function ($query) {
+            $query->where('is_mail_confirmed', true);
+        });
+    }
+
     public function user()
     {
         return $this->belongsTo(User::class, 'user_id');

@@ -67,7 +67,7 @@ class UsersController extends Controller
             });
         }
 
-        $presents = $presents->sortByCreatedAT()->with('user')->paginate(Present::COUNT_WINNERS);
+        $presents = $presents->userConfirmed()->sortByCreatedAT()->with('user')->paginate(Present::COUNT_WINNERS);
 
         $currentPage = $presents->currentPage();
         if ($request->ajax()) {

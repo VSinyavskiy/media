@@ -237,19 +237,19 @@ class User extends Authenticatable implements HasMedia
         return $position + 1; //since it will be a zero-indexed collection
     }
 
-    public static function generatePassword()
-    {
-        return str_random(self::DEFAULT_PASSWORD_LENGTH);
-    }
-
-    public static function checkIsInvite()
+    public function checkIsInvite()
     {
         $userId = Cookie::get('invited');
 
         if (isset($userId)) {
             $userPointsLog = new UserPointsLog();
 
-            return $userPointsLog->receiveFriendInvitePoints($userId, UserPointsLog::COUNT_POINT_FOR_FRIEND_INVITE);
+            return $userPointsLog->receiveFriendInvitePoints($userId, UserPointsLog::COUNT_POINT_FOR_FRIEND_INVITE, $this->id);
         }
+    }
+
+    public static function generatePassword()
+    {
+        return str_random(self::DEFAULT_PASSWORD_LENGTH);
     }
 }

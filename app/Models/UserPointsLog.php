@@ -21,7 +21,7 @@ class UserPointsLog extends Model implements ReceiveGamePointsInterface
     public $timestamps = false;
 
     protected $fillable = [
-        'user_id', 'event_type', 'points', 'rank', 'scoring_at',
+        'user_id', 'event_type', 'points', 'rank', 'scoring_at', 'invited_user_id',
     ];
 
     /**
@@ -111,13 +111,14 @@ class UserPointsLog extends Model implements ReceiveGamePointsInterface
         }
     }
 
-    public function receiveFriendInvitePoints($userId, $points)
+    public function receiveFriendInvitePoints($userId, $points, $invitedUserId)
     {
         $userPointsLog = new self([
-            'user_id'    => $userId,
-            'event_type' => self::FRIEND_INVITE,
-            'points'     => $points,
-            'scoring_at' => getNowTimestamp()->format('Y-m-d H:i:s'),
+            'user_id'         => $userId,
+            'event_type'      => self::FRIEND_INVITE,
+            'points'          => $points,
+            'scoring_at'      => getNowTimestamp()->format('Y-m-d H:i:s'),
+            'invited_user_id' => $invitedUserId,
         ]);
 
         return $userPointsLog->save();
