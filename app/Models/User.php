@@ -73,7 +73,7 @@ class User extends Authenticatable implements HasMedia
                      ->preservingOriginal()
                      ->toMediaCollection('avatar');
 
-            // $model->sendRegisterNotification();
+            $model->sendRegisterNotification();
         });
     }
 

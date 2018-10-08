@@ -41,11 +41,11 @@ class UserRegisterNotification extends Notification
     {  
         return (new MailMessage)
                     ->from('noreply@' . $_SERVER['HTTP_HOST'], env('APP_NAME'))
-                    ->subject('Подтверждение регистрации')
-                    ->greeting('Здравствуйте!')
-                    ->line('Для успешного прохождения регистрации перейдите по ссылке ниже!')
-                    ->action('Присоединиться к игре!', route('register.confirm', [$notifiable->mail_token, '#open-registration-confirmed-email']))
-                    ->line('If you have not tried to recover a password, contact the administrator!');
+                    ->subject(__('app.emails.user_register_notification.subject'))
+                    ->greeting(__('app.emails.user_register_notification.greeting'))
+                    ->line(__('app.emails.user_register_notification.first_line'))
+                    ->action(__('app.emails.user_register_notification.button'), route('register.confirm', [$notifiable->mail_token, '#open-registration-confirmed-email']))
+                    ->line(__('app.emails.user_register_notification.second_line'));
     }
 
     /**
