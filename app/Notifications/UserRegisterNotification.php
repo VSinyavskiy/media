@@ -44,8 +44,7 @@ class UserRegisterNotification extends Notification
                     ->subject(__('app.emails.user_register_notification.subject'))
                     ->greeting(__('app.emails.user_register_notification.greeting'))
                     ->line(__('app.emails.user_register_notification.first_line'))
-                    ->action(__('app.emails.user_register_notification.button'), route('register.confirm', [$notifiable->mail_token, '#open-registration-confirmed-email']))
-                    ->line(__('app.emails.user_register_notification.second_line'));
+                    ->action(__('app.emails.user_register_notification.button'), route('register.confirm', [$notifiable->mail_token, '#open-registration-confirmed-email']));
     }
 
     /**
