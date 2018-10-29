@@ -1,10 +1,30 @@
 .footer {
+  $this: &;
+
   display: flex;
   flex-direction: column;
   justify-content: center;
   padding-top: 20px;
   padding-bottom: 20px;
   background-color: $color-gray-1;
+
+  &_stub {
+    box-sizing: border-box;
+    padding: 20px;
+    color: #fff;
+    text-align: center;
+    background-color: $color-yellow;
+
+    #{$this}__socials {
+      margin: 15px 0 0;
+    }
+
+    #{$this}__social {
+      background: none;
+      border: 2px solid #fff;
+      border-radius: 50%;
+    }
+  }
 
   &__contact {
     display: block;
@@ -71,6 +91,12 @@
     text-align: center;
   }
 
+  &__text {
+    margin: 0;
+    font-size: em(16px);
+    font-weight: 500;
+  }
+
   @media (min-width: 600px) {
     &__contact {
       margin-left: 25px;
@@ -78,6 +104,26 @@
     }
     &__contacts {
       flex-direction: row;
+    }
+  }
+
+  @media (min-width: 768px) {
+    &_stub {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      background-color: rgba(0,0,0,0);
+    }
+
+    &__text {
+      font-size: em(22px);
+    }
+  }
+
+  @media (min-width: 1900px) {
+    &__text {
+      font-size: em(26px);
     }
   }
   // END .footer

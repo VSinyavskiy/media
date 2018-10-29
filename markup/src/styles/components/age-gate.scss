@@ -8,6 +8,11 @@
   padding: 20px;
   background-color: $color-yellow;
 
+  &_stub {
+    text-align: center;
+    color: #fff;
+  }
+
   &__question {
     max-width: 600px;
     margin-bottom: 40px;
@@ -31,9 +36,46 @@
     flex-direction: column;
   }
 
+  &__title {
+    width: 100%;
+    //max-width: 715px;
+    max-width: 365px;
+    margin: 0 auto;
+  }
+
+  &__desc {
+    font-size: em(20px);
+    font-weight: bold;
+    margin: 0;
+
+    &:first-of-type {
+      margin-top: 30px;
+    }
+
+    a {
+      color: inherit;
+    }
+  }
+
   @media (min-width: 600px) {
     &__btns {
       flex-direction: row;
+    }
+  }
+
+  @media (min-width: 768px) {
+    &_stub {
+      background: $color-yellow url('~Images/elements.png') 50% 0 no-repeat;
+      background-size: auto auto;
+    }
+
+    &__title {
+      width: 50%;
+      max-width: 715px;
+    }
+
+    &__desc {
+      font-size: em(26px);
     }
   }
 
@@ -43,6 +85,22 @@
     }
     &__response {
       font-size: 18px;
+    }
+
+    &__title {
+      width: 40%;
+    }
+  }
+
+  @media (min-width: 1900px) {
+    &__desc {
+      font-size: em(30px);
+    }
+  }
+
+  @media (min-height: 900px) {
+    &_stub {
+      background-size: 100% auto;
     }
   }
   // END .age-gate
