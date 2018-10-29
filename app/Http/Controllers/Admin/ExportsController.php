@@ -68,7 +68,7 @@ class ExportsController extends Controller
     public function top(Request $request)
     {
         $this->validate($request, [
-            'end_top'   => 'required|date',
+            'end_top'   => 'required',
         ]);
 
         $filename  = 'top_' . date('d-m-Y_H-i-s') . '.csv';
