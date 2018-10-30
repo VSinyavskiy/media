@@ -87,7 +87,7 @@ Route::group([
         'middleware' => ['age', 'stub'],
     ], function () {
         // Age Gate
-    	Route::get('age',       'AppController@age')->name('age');
+    	// Route::get('age',       'AppController@age')->name('age');
 
         // Home
         Route::get('/',         'AppController@index')->name('home')->middleware('invite');
@@ -102,6 +102,7 @@ Route::group([
         // Route::get('winners',       'UsersController@winners')->name('winners');       
     });
 
+    Route::get('age',           'App\AppController@age')->name('age')->middleware('age');
     Route::get('winners',       'App\UsersController@winners')->name('winners')->middleware('age');
     Route::get('stub',          'App\AppController@stub')->name('stub')->middleware('age');
 
