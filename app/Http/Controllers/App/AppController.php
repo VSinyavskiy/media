@@ -25,4 +25,9 @@ class AppController extends Controller
 
         return view('app.index', compact('user', 'topDonerUsers'));
     }
+
+    public function stub()
+    {
+        return view('app.stub');
+    }
 }

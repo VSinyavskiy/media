@@ -30,7 +30,7 @@ Route::group([
 
     Route::group([
         'namespace'  => 'Auth\App',
-        'middleware' => ['age'],
+        'middleware' => ['age', 'stub'],
     ], function () {
 
         // Auth
@@ -84,7 +84,7 @@ Route::group([
     // App routes
     Route::group([
         'namespace'  => 'App',
-        'middleware' => ['age'],
+        'middleware' => ['age', 'stub'],
     ], function () {
         // Age Gate
     	Route::get('age',       'AppController@age')->name('age');
@@ -99,13 +99,22 @@ Route::group([
         // User
         Route::get('user',          'UsersController@user')->name('user')->middleware('auth:web');
         Route::get('history',       'UsersController@history')->name('history')->middleware('auth:web');
-        Route::get('winners',       'UsersController@winners')->name('winners');       
+        // Route::get('winners',       'UsersController@winners')->name('winners');       
     });
 
-    // Game
-    Route::get('/game_results',  'App\GameController@checkAuth')->name('game.check_auth');
-    Route::post('/game_results', 'App\GameController@results')->name('game.results');
+    Route::get('winners',       'App\UsersController@winners')->name('winners')->middleware('age');
+    Route::get('stub',          'App\AppController@stub')->name('stub')->middleware('age');
 
-    // User
-    Route::get('invite/{user}',  'App\UsersController@invite')->name('invite');
+    Route::group([
+        'namespace'  => 'App',
+        'middleware' => ['stub'],
+    ], function () {
+
+        // Game
+        Route::get('/game_results',  'GameController@checkAuth')->name('game.check_auth');
+        Route::post('/game_results', 'GameController@results')->name('game.results');
+
+        // User
+        Route::get('invite/{user}',  'UsersController@invite')->name('invite');
+    });
 });

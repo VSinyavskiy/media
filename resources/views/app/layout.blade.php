@@ -83,7 +83,7 @@
 
     <div class="app">
         
-        @if (Route::is('age'))
+        @if (Route::is('age') || isEndGameTime(\App\Models\User::GAME_ACTION_END_TIMESTAMP))
           @include('app.partials._header_age_gate')
         @else
           @include('app.partials._header')
@@ -96,7 +96,12 @@
         </main>
         
         @if (! Route::is('age'))
-          @include('app.partials._footer')
+
+          @if (isEndGameTime(\App\Models\User::GAME_ACTION_END_TIMESTAMP))
+            @include('app.partials._footer_stub')
+          @else
+            @include('app.partials._footer')
+          @endif
         @endif
 
     </div>

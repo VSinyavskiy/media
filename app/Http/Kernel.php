@@ -69,5 +69,6 @@ class Kernel extends HttpKernel
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'age' => \App\Http\Middleware\AgeVerification::class,
         'invite' => \App\Http\Middleware\CheckIsInvited::class,
+        'stub' => \App\Http\Middleware\StubIsEndGameTime::class,
     ];
 }

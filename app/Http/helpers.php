@@ -68,6 +68,11 @@ function getTimestampFromFormat($format, $dateTime) // \DateTime
     return Carbon::createFromFormat($format, $dateTime, config('app.timezone'));
 }
 
+function isEndGameTime($endGameTimestamp) 
+{
+    return getNowTimestamp() <= getTimestampFromDateTime($endGameTimestamp);
+}
+
 function withoutSpace($value)
 {
     return str_replace(' ', '', $value);
