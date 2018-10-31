@@ -96,8 +96,7 @@
         </main>
         
         @if (! Route::is('age'))
-
-          @if (isEndGameTime(\App\Models\User::GAME_ACTION_END_TIMESTAMP))
+          @if (Route::is('stub'))
             @include('app.partials._footer_stub')
           @else
             @include('app.partials._footer')
