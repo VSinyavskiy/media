@@ -70,7 +70,7 @@ function getTimestampFromFormat($format, $dateTime) // \DateTime
 
 function isEndGameTime($endGameTimestamp) 
 {
-    return getNowTimestamp() <= getTimestampFromDateTime($endGameTimestamp);
+    return getNowTimestamp() >= getTimestampFromDateTime($endGameTimestamp);
 }
 
 function withoutSpace($value)
